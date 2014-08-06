@@ -1,0 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Passion+One|Open+Sans+Condensed:300,700);
+
+// Font weights
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+// Base Font
+$default-font: Open Sans Condensed, sans-serif;
+$default-weight: $light;
+$base-font-size: 13px;
+$base-line-height: 1.4;
+
+// Header Font
+$fixed-font-family: Passion One, sans-serif;
+
+// Headings
+$header-font-weight: $bold;
+
+// Styles
+body {
+  font-family: $default-font;
+  font-weight: $default-weight;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: $default-weight;
+}
