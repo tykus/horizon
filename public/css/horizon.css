@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Passion+One);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
  body, html {
     font-family: Open Sans, sans-serif;
@@ -94,8 +93,7 @@ span.highlight {
     background: url('../img/team_bg.jpg') repeat;
 }
 .content-about img {
-    border: 1px solid #333;
-    padding: 5px;
+    border: 5px solid #1886ff;
 }
 .content-about h1 {
     color: #ffffff;

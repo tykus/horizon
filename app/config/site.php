@@ -3,15 +3,13 @@
 return array(
 
 	'app_name' => 'Horizon',
-	'business_name' => 'Horizon Centre',
-	'business_address' => 'Denshaw House,
-												 121 Baggot Street Lower, 
-												 Dublin 2',
+	'business_name' => "Horizon Centre",
+	'business_address' => "Denshaw House,\n121 Baggot Street Lower,\nDublin 2",
 	'business_location' => array(
 		'latitude' => 53.3372335,
 		'longitude' => -6.2501318
 	),
-	'telephone' => '01-234-5678',
+	'telephone' => '',
 	'mobile' => '087-654-3210',
 	'url' => 'http://www.horizoncentre.ie',
 	'email' => 'robert@horizoncentre.ie',

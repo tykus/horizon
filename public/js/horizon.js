@@ -4,11 +4,10 @@
 
     init: function() {
       this.bindEvents();
-      this.smoothScroll()
-      ;
+      this.smoothScroll();
 
       if($('#map-canvas').length) {
-        this.initMap();
+        this.initMap(window.business_location);
       }
 
     },
@@ -20,9 +19,9 @@
       });
     },
 
-    initMap: function() {
-
-      var myLatLng = new google.maps.LatLng(53.3372335,-6.2501318)
+    initMap: function(location) {
+      console.log(location);
+      var myLatLng = new google.maps.LatLng( location.latitude, location.longitude ); 
 
       var mapOptions = {
         zoom: 16,

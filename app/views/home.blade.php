@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="{{ Config::get('site.description') }}">
+  <meta name="author" content="{{ Config::get('site.author') }}">
 
-  <title>Horizon Centre</title>
+  <title>{{ Config::get('site.business_name') }}</title>
 
-  <!-- Bootstrap Core CSS -->
+  <!-- CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
   <link href="css/horizon.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
   <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +28,6 @@
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -47,23 +39,15 @@
           <img src="img/logo_white.png" style="height:52px;width:auto;">
         </a>
       </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#services">Services</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
   </nav>
 
   <!-- Header -->
@@ -74,21 +58,17 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="intro-message">
-            <img src="img/logo.png" class="col-lg-8 col-lg-offset-2 ">
+            <img src="{{ Config::get('site.logo_path') }}" class="col-lg-8 col-lg-offset-2 ">
             <div class="clearfix"></div>
-            <h3>Inspiring Positive Recovery</h3>
+            <h3>{{ Config::get('site.slogan') }}</h3>
           </div>
         </div>
       </div>
-
     </div>
-    <!-- /.container -->
 
   </div>
-  <!-- /.intro-header -->
 
   <!-- Page Content -->
-
   <div id="services" class="content-services">
     <div class="container">
       <div class="row">
@@ -102,7 +82,6 @@
             <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
             </p>
           </div>
-          <!-- /.col-lg-4 -->
 
           <div class="col-lg-4 service">
             <img class="img-circle" src="img/addiction.jpg">
@@ -111,7 +90,6 @@
             <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
             </p>
           </div>
-          <!-- /.col-lg-4 -->
 
           <div class="col-lg-4 service">
             <img class="img-circle" src="img/anxiety.jpg">
@@ -120,14 +98,11 @@
             <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
             </p>
           </div>
-          <!-- /.col-lg-4 -->
 
         </div>
       </div>
     </div>
-    <!-- /.container -->
   </div>
-  <!-- /.content-services -->
 
   <div id="about" class="content-about">
     <div class="container">
@@ -141,16 +116,15 @@
           </p>
         </div>
         <div class="col-lg-3 col-lg-offset-2 col-sm-6">
-          <img class="img-responsive" src="img/robertgill.jpg" alt="">
+          <img class="img-responsive pull-right" src="img/robertgill.jpg" alt="">
         </div>
       </div>
     </div>
-    <!-- /.container -->
   </div>
-  <!-- /.content-about -->
 
-  <div class="content-map" id="map-canvas"></div>
-  <!-- /.content-map -->
+  <div id="location">
+    <div class="content-map" id="map-canvas"></div>
+  </div>
 
   <div id="contact" class="content-contact">
     <div class="container">
@@ -162,17 +136,19 @@
       <div class="row">
         <div class="col-lg-3">
           <p class="lead">
-            <span class="highlight">Horizon Centre</span class="highlight">
-            <br>Denshaw House,
-            <br>121 Baggot Street Lower,
-            <br>Dublin 2
+            <span class="highlight">{{ Config::get('site.business_name') }}</span class="highlight">
+            <br>
+            {{ nl2br(Config::get('site.business_address')) }}
           </p>
           <p class="lead">
-            <i class="fa fa-envelope"></i> robert@horizoncentre.ie
+            <i class="fa fa-envelope"></i> 
+            {{ HTML::mailto(HTML::email(Config::get('site.email')), Config::get('site.email')) }}
             <br>
-            <i class="fa fa-phone"></i> 086 347 3774
+            <i class="fa fa-phone"></i> 
+            {{ Config::get('site.mobile') }}
             <br>
-            <i class="fa fa-globe"></i> www.horizoncentre.ie
+            <i class="fa fa-globe"></i> 
+            {{ HTML::link(Config::get('site.url'), Config::get('site.url')) }}
           </p>
         </div>
         <div class="col-lg-6 col-lg-offset-3">
@@ -199,10 +175,7 @@
         </div>
       </div>
     </div>
-    <!-- /.container -->
   </div>
-  <!-- /.content-contact -->
-
 
 
   <!-- Footer -->
@@ -224,13 +197,19 @@
             </li>
             <li class="footer-menu-divider">&sdot;</li>
             <li>
+              <a href="#location">Location</a>
+            </li>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
               <a href="#contact">Contact</a>
             </li>
           </ul>
-          <p class="copyright text-muted small">Copyright &copy; Horizon Centre 2014. All Rights Reserved</p>
+          <p class="copyright text-muted small">
+            Copyright &copy; {{ date('Y') }} {{ Config::get('site.business_name') }}
+          </p>
         </div>
         <div class="col-lg-2">
-          <img src="img/logo_small.png">
+          <img src="{{ Config::get('site.logo_small_path') }}">
         </div>
         <div class="col-lg-3 col-lg-offset-1" id="social">
           <a href="#" class="pull-right" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
@@ -241,14 +220,14 @@
     </div>
   </footer>
 
-  <!-- jQuery Version 1.11.0 -->
+  <!-- Javascripts -->
   <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script src="js/horizon.js"></script>
-
+  <script type="text/javascript">
+    var business_location = <?php echo json_encode(Config::get('site.business_location')); ?>
+  </script>
 </body>
 
 </html>
