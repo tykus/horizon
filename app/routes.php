@@ -18,8 +18,7 @@ Route::get('/', function()
 
 Route::group(array('prefix'=>'admin'), function(){
 
-  Route::get('/', function(){
-    return View::make('layouts.admin');
-  });
+  Route::get('/', array('uses' => '\App\Controllers\Admin\DashboardController@index'));
+  Route::resource('enquiries', '\App\Controllers\Admin\EnquiriesController');
 
 });

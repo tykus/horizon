@@ -11,8 +11,8 @@
     <title>{{ Config::get('site.app_name') }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/admin.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -51,28 +51,30 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <img src="{{ Config::get('site.logo_small_path') }}">
+          <img src="/{{ Config::get('site.logo_small_path') }}">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li class="active"><a href="#"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+            <li><a href="/admin/enquiries"><i class="glyphicon glyphicon-envelope"></i> Enquiries Inbox</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-stats"></i> Google Analytics</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-picture"></i> Media Manager</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-cog"></i> Services</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-question-sign"></i> FAQ's</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-map-marker"></i> Address / Location</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-user"></i> Users Admin</a></li>
+            <li><a href=""><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
           </ul>
+
+          @yield('sidebar')
+
         </div>
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
 
           @yield('content')
 
@@ -83,8 +85,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/admin.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/admin.js"></script>
   </body>
 </html>
