@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body id="horizon">
 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -52,20 +52,17 @@
 
   <!-- Header -->
   <div id="home" class="intro-header">
-
     <div class="container">
-
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12">
           <div class="intro-message">
-            <img src="{{ Config::get('site.logo_path') }}" class="col-lg-8 col-lg-offset-2 ">
+            <img src="{{ Config::get('site.logo_path') }}" class="col-sm-8 col-sm-offset-2 ">
             <div class="clearfix"></div>
             <h3>{{ Config::get('site.slogan') }}</h3>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Page Content -->
@@ -129,12 +126,12 @@
   <div id="contact" class="content-contact">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12">
           <h2>Contact</h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-sm-3">
           <p class="lead">
             <span class="highlight">{{ Config::get('site.business_name') }}</span class="highlight">
             <br>
@@ -151,19 +148,19 @@
             {{ HTML::link(Config::get('site.url'), Config::get('site.url')) }}
           </p>
         </div>
-        <div class="col-lg-6 col-lg-offset-3">
-          <form method="post" action="process_form.php" class="form-horizontal" role="form" id="contact-form">
+        <div class="col-sm-6 col-sm-offset-3">
+          <form method="post" action="/enquiries" class="form-horizontal" role="form" id="contact-form">
             <div class="form-group">
-              <input type="text" class="form-control" id="name" placeholder="Name" required>
+              <input type="text" class="form-control" name="name" placeholder="Name" required>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" id="email" placeholder="Email" required>
+              <input type="email" class="form-control" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
-              <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+              <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
             </div>
             <div class="form-group">
-              <textarea class="form-control" id="message" placeholder="Message"></textarea>
+              <textarea class="form-control" name="message" placeholder="Message"></textarea>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-default" id="submit">
@@ -182,7 +179,7 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-sm-6">
           <ul class="list-inline">
             <li>
               <a href="#home">Home</a>
@@ -208,10 +205,10 @@
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business_name') }}
           </p>
         </div>
-        <div class="col-lg-2">
+        <div class="col-sm-2">
           <img src="{{ Config::get('site.logo_small_path') }}">
         </div>
-        <div class="col-lg-3 col-lg-offset-1" id="social">
+        <div class="col-sm-4" id="social">
           <a href="#" class="pull-right" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
           <a href="#" class="pull-right" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
           <a href="#" class="pull-right" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
@@ -224,7 +221,7 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-  <script src="js/horizon.js"></script>
+  <script src="js/app.js"></script>
   <script type="text/javascript">
     var business_location = <?php echo json_encode(Config::get('site.business_location')); ?>
   </script>
