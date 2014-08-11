@@ -13,7 +13,8 @@
     padding-bottom: 20%;
 
     img {
-      background-color: #fff;
+      height: auto;
+      width: 700px;
     }
 
     > h3 {
@@ -29,10 +30,16 @@
 
       .intro-message {
         padding-bottom: 15%;
-      }
 
-      .intro-message > h1 {
-        font-size: 3em;
+        img {
+          height: auto;
+          width: 700px;
+        }
+        
+        > h1 {
+          font-size: 3em;
+        }
+
       }
 
       ul.intro-social-buttons > li {

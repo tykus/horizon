@@ -1,6 +1,6 @@
 class GoogleMapCanvas
 	constructor: () ->
-    @business_info = window.map_info
+    @business = window.map_info
     @buildMap()
     @bindEvents()
 
@@ -9,19 +9,23 @@ class GoogleMapCanvas
       @infoWindow.open(@map,@marker)
 
   buildMap: ->
-    @googleLatLng = new google.maps.LatLng( @business_info.latitude, @business_info.longitude ); 
+    @googleLatLng = new google.maps.LatLng( @business.latitude, @business.longitude ); 
     mapOptions =
       zoom: 16,
-      center: @googleLatLng
+      center: @googleLatLng,
+      panControl: false,
+      zoomControl: false,
+      scaleControl: true
     @map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
     @placeMarker()
 
   placeMarker: -> 
+    # TODO: can this be done with Handlebars????
     content = """
       <img src="/img/logo_small.png"><br>
-      #{@business_info.address}<br>
-      #{@business_info.phone}<br>
-      <a href="mailto:#{@business_info.email}">#{@business_info.email}</a>
+      #{@business.address}<br>
+      #{@business.phone}<br>
+      <a href="mailto:#{@business.email}">#{@business.email}</a>
     """
     @infoWindow = new google.maps.InfoWindow
       content: content
@@ -29,4 +33,4 @@ class GoogleMapCanvas
     @marker = new google.maps.Marker
       position: @googleLatLng,
       map: @map,
-      title: @business_info.name # TODO: get this from the server side Site config
+      title: @business.name

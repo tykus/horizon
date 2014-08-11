@@ -104,7 +104,7 @@
 
   GoogleMapCanvas = (function() {
     function GoogleMapCanvas() {
-      this.business_info = window.map_info;
+      this.business = window.map_info;
       this.buildMap();
       this.bindEvents();
     }
@@ -118,10 +118,13 @@
 
     GoogleMapCanvas.prototype.buildMap = function() {
       var mapOptions;
-      this.googleLatLng = new google.maps.LatLng(this.business_info.latitude, this.business_info.longitude);
+      this.googleLatLng = new google.maps.LatLng(this.business.latitude, this.business.longitude);
       mapOptions = {
         zoom: 16,
-        center: this.googleLatLng
+        center: this.googleLatLng,
+        panControl: false,
+        zoomControl: false,
+        scaleControl: true
       };
       this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
       return this.placeMarker();
@@ -129,14 +132,14 @@
 
     GoogleMapCanvas.prototype.placeMarker = function() {
       var content;
-      content = "<img src=\"/img/logo_small.png\"><br>\n" + this.business_info.address + "<br>\n" + this.business_info.phone + "<br>\n<a href=\"mailto:" + this.business_info.email + "\">" + this.business_info.email + "</a>";
+      content = "<img src=\"/img/logo_small.png\"><br>\n" + this.business.address + "<br>\n" + this.business.phone + "<br>\n<a href=\"mailto:" + this.business.email + "\">" + this.business.email + "</a>";
       this.infoWindow = new google.maps.InfoWindow({
         content: content
       });
       return this.marker = new google.maps.Marker({
         position: this.googleLatLng,
         map: this.map,
-        title: this.business_info.name
+        title: this.business.name
       });
     };
 

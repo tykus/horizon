@@ -7,7 +7,7 @@
   <meta name="description" content="{{ Config::get('site.description') }}">
   <meta name="author" content="{{ Config::get('site.author') }}">
 
-  <title>{{ Config::get('site.business_name') }}</title>
+  <title>{{ Config::get('site.business.name') }}</title>
 
   <!-- CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@
           <div class="intro-message">
             <img src="{{ Config::get('site.logo_path') }}" class="col-sm-8 col-sm-offset-2 ">
             <div class="clearfix"></div>
-            <h3>{{ Config::get('site.slogan') }}</h3>
+            <h3>{{ Config::get('site.business.slogan') }}</h3>
           </div>
         </div>
       </div>
@@ -134,19 +134,19 @@
       <div class="row">
         <div class="col-sm-3">
           <p class="lead">
-            <span class="highlight">{{ Config::get('site.business_name') }}</span class="highlight">
+            <span class="highlight">{{ Config::get('site.business.name') }}</span class="highlight">
             <br>
-            {{ nl2br(Config::get('site.business_address')) }}
+            {{ Config::get('site.business.address') }}
           </p>
           <p class="lead">
             <i class="fa fa-envelope"></i> 
-            {{ HTML::mailto(HTML::email(Config::get('site.email')), Config::get('site.email')) }}
+            {{ HTML::mailto(HTML::email(Config::get('site.business.email')), Config::get('site.business.email')) }}
             <br>
             <i class="fa fa-phone"></i> 
-            {{ Config::get('site.mobile') }}
+            {{ Config::get('site.business.mobile') }}
             <br>
             <i class="fa fa-globe"></i> 
-            {{ HTML::link(Config::get('site.url'), Config::get('site.url')) }}
+            {{ HTML::link(Config::get('site.business.url'), Config::get('site.business.url')) }}
           </p>
         </div>
         <div class="col-sm-6 col-sm-offset-3">
@@ -203,7 +203,7 @@
             </li>
           </ul>
           <p class="copyright text-muted small">
-            Copyright &copy; {{ date('Y') }} {{ Config::get('site.business_name') }}
+            Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
           </p>
         </div>
         <div class="col-sm-2">
@@ -224,7 +224,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script src="js/app.js"></script>
   <script type="text/javascript">
-    var map_info = <?php echo json_encode(Config::get('site.business_info')); ?>
+    var map_info = <?php echo json_encode(Config::get('site.business')); ?>
   </script>
 </body>
 
