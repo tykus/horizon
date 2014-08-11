@@ -1,0 +1,22 @@
+.content-services {
+    background-color: $horizon-white;
+    padding: 100px 0;
+    border-top: 1px solid $horizon-light-grey;
+    border-bottom: 1px solid $horizon-light-grey;
+
+    img {
+        display: block;
+        height: 200px;
+        margin: 0 auto;
+        width: auto;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    p {
+        text-align: justify;
+        vertical-align: middle;
+    }
+}

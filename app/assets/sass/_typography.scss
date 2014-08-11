@@ -1,29 +1,29 @@
-@import url(http://fonts.googleapis.com/css?family=Passion+One|Open+Sans+Condensed:300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
 // Font weights
-$light: 300;
-$regular: 400;
+$regular: 300;
 $bold: 700;
 
 // Base Font
-$default-font: Open Sans Condensed, sans-serif;
-$default-weight: $light;
+$default-font: Open Sans, sans-serif;
+$default-weight: $regular;
 $base-font-size: 13px;
 $base-line-height: 1.4;
-
-// Header Font
-$fixed-font-family: Passion One, sans-serif;
 
 // Headings
 $header-font-weight: $bold;
 
-// Styles
-body {
+h1, h2, h3, h4, h5, h6 {
+  color: $horizon-blue;
   font-family: $default-font;
   font-weight: $default-weight;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font;
-  font-weight: $default-weight;
+span.highlight {
+    font-weight: 700;
+    color: $horizon-blue;
+}
+.lead {
+    font-size: 18px;
+    font-weight: 400;
 }

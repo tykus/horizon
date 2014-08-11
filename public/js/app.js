@@ -5,7 +5,7 @@
   App = (function() {
     function App() {
       if ($('#map-canvas').length) {
-        new GoogleMapCanvas(window.business_location);
+        new GoogleMapCanvas();
       }
       if ($('#contact-form').length) {
         new ContactForm($('#contact-form'));
@@ -103,21 +103,42 @@
   })();
 
   GoogleMapCanvas = (function() {
-    function GoogleMapCanvas(location) {
-      var map, mapOptions, marker, myLatLng;
-      console.log(location);
-      myLatLng = new google.maps.LatLng(location.latitude, location.longitude);
+    function GoogleMapCanvas() {
+      this.business_info = window.map_info;
+      this.buildMap();
+      this.bindEvents();
+    }
+
+    GoogleMapCanvas.prototype.bindEvents = function() {
+      var _this = this;
+      return google.maps.event.addListener(this.marker, 'click', function() {
+        return _this.infoWindow.open(_this.map, _this.marker);
+      });
+    };
+
+    GoogleMapCanvas.prototype.buildMap = function() {
+      var mapOptions;
+      this.googleLatLng = new google.maps.LatLng(this.business_info.latitude, this.business_info.longitude);
       mapOptions = {
         zoom: 16,
-        center: myLatLng
+        center: this.googleLatLng
       };
-      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Horizon Centre'
+      this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      return this.placeMarker();
+    };
+
+    GoogleMapCanvas.prototype.placeMarker = function() {
+      var content;
+      content = "<img src=\"/img/logo_small.png\"><br>\n" + this.business_info.address + "<br>\n" + this.business_info.phone + "<br>\n<a href=\"mailto:" + this.business_info.email + "\">" + this.business_info.email + "</a>";
+      this.infoWindow = new google.maps.InfoWindow({
+        content: content
       });
-    }
+      return this.marker = new google.maps.Marker({
+        position: this.googleLatLng,
+        map: this.map,
+        title: this.business_info.name
+      });
+    };
 
     return GoogleMapCanvas;
 

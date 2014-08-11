@@ -24,4 +24,13 @@ return array(
 	'author_url' => 'http://www.tykus.ie',
 	'author_email' => 'brian@tykus.ie',
 
+	// Google Maps Canvas
+	'business_info' => array(
+		'latitude' => 53.3372335,
+		'longitude' => -6.2501318,
+		'name' => 'Horizon Centre',
+		'address' => "Denshaw House,\n121 Baggot Street Lower,\nDublin 2",
+		'email' => 'robert@horizoncentre.ie',
+		'phone' => '087-654-3210',
+	)
 );

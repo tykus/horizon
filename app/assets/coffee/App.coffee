@@ -1,9 +1,8 @@
 class App
 	constructor: ->
-		new GoogleMapCanvas(window.business_location) if $('#map-canvas').length
+		new GoogleMapCanvas() if $('#map-canvas').length
 		new ContactForm($('#contact-form')) if $('#contact-form').length
 		@bindEvents()
-
 
 	bindEvents: ->
 		$('a[href*=#]:not([href=#])').click (e) => @smoothScroll(e)
