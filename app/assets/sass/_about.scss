@@ -4,10 +4,14 @@
     background: url('../img/team_bg.jpg') repeat;
 
 	img {
-	    border: 5px solid $horizon-blue;
+	    border: 5px solid $horizon-white;
 	}
 
 	h1 {
 	    color: #ffffff;
+	}
+
+	p {
+		text-align: justify;
 	}
 }

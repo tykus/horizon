@@ -108,12 +108,12 @@
         <div class="col-lg-7 col-sm-6">
           <h1 class="section-heading">About</h1>
           <p class="lead">
-            <strong>Robert Gill &mdash; Dip. Psych., M.I.A.C.P.</strong>is an integrative psychotherapist/counsellorbased in Dublin city centre.</p>
+            <strong>Robert Gill &mdash; Dip. Psych., M.I.A.C.P.</strong> is an integrative psychotherapist/counsellorbased in Dublin city centre.</p>
           <p class="lead">Degree in Integrative Psychotherapy and Counselling. Accredited with the Irish Association of Humanistic and Integrative Psychotherapy (IAHIP) and the Irish Association for Counselling and Psychotherapy (IACP). Accredited supervisor with IAHIP.</p>
           <p class="lead">Specialist experience in anxiety, depression, relationships, body-based psychological problems or 'psychosomatic' problems, trauma, bereavement, eating disorders, addictions, anger management, men’s issues, self esteem, among others.</p>
           </p>
         </div>
-        <div class="col-lg-3 col-lg-offset-2 col-sm-6">
+        <div class="col-lg-4 col-lg-offset-1 col-sm-6">
           <img class="img-responsive pull-right" src="img/robertgill.jpg" alt="">
         </div>
       </div>
