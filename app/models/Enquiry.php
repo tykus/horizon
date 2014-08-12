@@ -1,5 +1,5 @@
-<?php namespace App\Models;
+<?php
 
 class Enquiry extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = ['name','email','telephone','message','viewed'];
 }

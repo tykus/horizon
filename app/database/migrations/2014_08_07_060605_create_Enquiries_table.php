@@ -12,7 +12,7 @@ class CreateEnquiriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Enquiries', function(Blueprint $table)
+		Schema::create('enquiries', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
@@ -32,7 +32,7 @@ class CreateEnquiriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Enquiries');
+		Schema::drop('enquiries');
 	}
 
 }

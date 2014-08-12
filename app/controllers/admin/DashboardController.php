@@ -1,7 +1,7 @@
 <?php namespace App\Controllers\Admin;
 
-use \View as View;
-use App\Models\Enquiry as Enquiry;
+use \Enquiry;
+use \View;
 
 class DashboardController extends \BaseController {
 

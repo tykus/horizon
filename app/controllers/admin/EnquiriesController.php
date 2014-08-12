@@ -1,7 +1,10 @@
 <?php namespace App\Controllers\Admin;
 
-use App\Models\Enquiry as Enquiry;
-use \View as View;
+use \Enquiry;
+use \Input;
+use \View;
+use \Mail;
+use \Response;
 
 class EnquiriesController extends \BaseController {
 
@@ -29,17 +32,6 @@ class EnquiriesController extends \BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 * POST /enquiries
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 * GET /enquiries/{id}
 	 *
@@ -48,19 +40,8 @@ class EnquiriesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /enquiries/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		$enquiry = Enquiry::find($id);
+		return View::make('admin.enquiries.show', compact('enquiry'));
 	}
 
 	/**
@@ -72,7 +53,9 @@ class EnquiriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$enquiry = Enquiry::find($id);
+		$enquiry->viewed = json_decode(Input::get('viewed'));
+		return Response::json(null, 204);
 	}
 
 	/**
@@ -85,6 +68,18 @@ class EnquiriesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+
+	public function reply()
+	{
+		$data = [];
+
+		Mail::pretend('emails.reply', $data, function($message)
+		{
+			$message->to(e(Input::get('email')))
+							->subject(e(Input::get('subject')));
+		});
 	}
 
 }

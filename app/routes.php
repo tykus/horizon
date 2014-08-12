@@ -13,12 +13,19 @@
 
 Route::get('/', function()
 {
-	return View::make('home');
+  return "Hello World";
 });
 
-Route::group(array('prefix'=>'admin'), function(){
 
-  Route::get('/', array('uses' => '\App\Controllers\Admin\DashboardController@index'));
-  Route::resource('enquiries', '\App\Controllers\Admin\EnquiriesController');
+// ADMIN ROUTES
 
+Route::group(array('namespace'=>'App\\Controllers'), function(){
+
+
+
+  Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
+    Route::get('/', array('uses' => 'DashboardController@index'));
+    Route::resource('enquiries', 'EnquiriesController');
+    Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+  });
 });

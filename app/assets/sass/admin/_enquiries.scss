@@ -1,0 +1,26 @@
+#enquiries {
+
+  p.heading {
+    display: inline-block;
+    font-weight: 700;
+    width: 150px;
+  }
+
+  p.detail {
+    display: inline-block;
+    margin-left: 150px;
+  }
+
+}
+
+#reply {
+   #editor {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #333;
+    font-size: 1.4em;
+    overflow: scroll;
+    min-height: 200px;
+    max-height: 300px;
+  }
+}
