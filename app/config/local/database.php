@@ -24,12 +24,12 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'horizon',
-			'username'  => 'horizon',
-			'password'  => 'Hmq27yKdYndUGBQ7',
+			'username'  => 'root',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),
+		)
 
 	),
 
