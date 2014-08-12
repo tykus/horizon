@@ -13,5 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('home');
+	$about = Content::where('name', 'about')->first();
+
+	return View::make('home', compact('about'));
 });

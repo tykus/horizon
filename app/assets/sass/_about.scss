@@ -1,17 +1,20 @@
 .content-about {
+  color: #ffffff;
+  padding: 100px 0;
+  background: url('../img/team_bg.jpg') repeat;
+
+  p {
+  	font-size: 1.4em;
+
+  }
+
+  img {
+    border: 5px solid $horizon-white;
+  }
+  h1 {
     color: #ffffff;
-    padding: 100px 0;
-    background: url('../img/team_bg.jpg') repeat;
-
-	img {
-	    border: 5px solid $horizon-white;
-	}
-
-	h1 {
-	    color: #ffffff;
-	}
-
-	p {
-		text-align: justify;
-	}
+  }
+  p {
+    text-align: justify;
+  }
 }
