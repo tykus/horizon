@@ -5,6 +5,7 @@ class Enquiries
     @buttonDelete = $("#delete-button")
     @buttonMarkAsRead = $("#mark-read-button")
     @buttonMarkAsUnread = $("#mark-unread-button")
+    @enquiryReplyForm = $("#enquiry-reply-form")
     @bindEvents()
 
   # Events
@@ -14,6 +15,7 @@ class Enquiries
     @buttonMarkAsRead.click => @markSelected(true)
     @buttonMarkAsUnread.click => @markSelected(false)
     @allCheckboxes.click => @checkboxClicked()
+    @enquiryReplyForm.submit (e) => @sendReply(e)
 
   selectAllClicked: ->
     if @checkboxSelectAll.prop('checked')
@@ -29,43 +31,53 @@ class Enquiries
 
   # Actions
   selectAllCheckboxes: ->
-    @allCheckboxes.each -> $(@).prop('checked', true)
+    @allCheckboxes.prop('checked', true)
 
   unselectAllCheckboxes: ->
-    @allCheckboxes.each -> $(@).prop('checked', false)
+    @allCheckboxes.prop('checked', false)
 
   deleteSelected: ->
-    @checkedCheckboxes().each ->
-      $(@).closest('tr').remove()
+    @checkedCheckboxes().each (idx, checkbox) =>
+      id = $(checkbox).data('id')
+      $(checkbox).closest('tr').fadeOut 500
+      $.ajax
+        type: "delete"
+        url: "/admin/enquiries/#{id}"
+        success: ->
+          console.log "Deleted!"
+        error: ->
+          console.log "Problem :("
 
-  markSelected: (enquiryIsRead) ->
-    @checkedCheckboxes().each (idx, chk) =>
-      if (enquiryIsRead)
-        $(chk).closest('tr').removeClass('info')
-        viewed = enquiryIsRead
+  markSelected: (viewed) ->
+    # Grab all of the checked checkboxes
+    @checkedCheckboxes().each (idx, checkbox) =>
+      id = $(checkbox).data('id')
+      if viewed
+        $(checkbox).closest('tr').removeClass('info')
       else
-        $(chk).closest('tr').addClass('info')
-        viewed = !enquiryIsRead
-      $(chk).prop('checked', false)
+        $(checkbox).closest('tr').addClass('info')
+
+      @unselectAllCheckboxes()
       @checkboxSelectAll.prop('checked', false)
-      @makeRequest 'PUT', {
-        id: $(chk).val()
-        viewed: viewed
-      }
+
+      $.ajax
+        type: "put"
+        url: "/admin/enquiries/#{id}"
+        data: {viewed: viewed}
+        success: (data) ->
+          console.log "Success!"
+        error: ->
+          console.log "There was a problem updating the record(s)"
 
   checkedCheckboxes: ->
     $("input[name='enquiry[]']:checked")
 
-  makeRequest: (method, data) ->
+  sendReply: (e) ->
+    data = @enquiryReplyForm.serialize()
+    e.preventDefault()
     $.ajax
-      url: "/admin/enquiries/#{data.id}"
-      type: method
+      type: "POST"
+      url: "/admin/enquiries/reply"
       data: data
-      success: ->
-        console.log "Success"
-      error: ->
-        console.log "Problem"
-
-  serialize: ->
-    # need to write a function to serialize a collection of jQuery objects based on their data-id properties
-
+      success: (data) ->
+        console.log data

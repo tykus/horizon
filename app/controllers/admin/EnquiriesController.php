@@ -55,7 +55,9 @@ class EnquiriesController extends \BaseController {
 	{
 		$enquiry = Enquiry::find($id);
 		$enquiry->viewed = json_decode(Input::get('viewed'));
-		return Response::json(null, 204);
+
+		$success = $enquiry->save();
+		return Response::json(["status"=>$success], 200);
 	}
 
 	/**
@@ -67,19 +69,27 @@ class EnquiriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if (Enquiry::find($id)->delete())
+			return Response::json(null, 204);
+		else
+			return Response::json(null, 404);
 	}
 
 
 	public function reply()
 	{
-		$data = [];
+		$data = [
+			'message' => Input::get('message')
+		];
 
-		Mail::pretend('emails.reply', $data, function($message)
+		Mail::send('emails.reply', $data, function($message)
 		{
 			$message->to(e(Input::get('email')))
 							->subject(e(Input::get('subject')));
 		});
+
+		return Response::json(null, 204);
+
 	}
 
 }

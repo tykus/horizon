@@ -5,5 +5,6 @@
 </head>
 <body>
   This is the body of the email.
+  {{ "hello worlds" }}
 </body>
 </html>

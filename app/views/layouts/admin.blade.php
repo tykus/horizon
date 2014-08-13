@@ -39,7 +39,7 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout Auth::user()->name</a></li> <!-- TODO: echo this out whenever Auth is properly setup -->
+            <li><a href="#">Logout Robbie</a></li> <!-- TODO: echo this out whenever Auth is properly setup -->
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

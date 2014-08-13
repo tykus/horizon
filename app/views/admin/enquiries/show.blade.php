@@ -4,40 +4,52 @@
   <h1 class="page-header">Enquiry</h1>
   <div id="enquiries" class="row">
     <div class="col-lg-12">
-      <div class="lead">
-        <p class="heading">From:</p>
-        <p class="detail">{{{ $enquiry->name }}} &laquo; {{{ $enquiry->email }}} &raquo;</p>
-      </div>
-      <div class="lead">
-        <p class="heading">Telephone:</p>
-        <p class="detail">{{{ $enquiry->telephone }}}</p>
-      </div>
-      <div class="lead">
-        <p class="heading">Date:</p>
-        <p class="detail">{{ $enquiry->created_at }}</p>
-      </div>
-      <div class="lead">
-        <p class="heading">Message:</p>
-        <p class="detail">{{{ $enquiry->message }}}</p>
-      </div>
+      <p>
+        <span class="heading col-sm-2">From</span>
+        {{{ $enquiry->name }}} &laquo; {{{ $enquiry->email }}} &raquo;
+      </p>
+      <p>
+        <span class="heading col-sm-2">Telephone</span>
+        {{{ $enquiry->telephone }}}
+      </p>
+      <p>
+        <span class="heading col-sm-2">Date</span>
+        {{ date_format($enquiry->created_at, 'd M Y - H:i:s') }}
+      </p>
+      <p>
+        <span class="heading col-sm-2">Message</span>
+        {{{ $enquiry->message }}}
+      </p>
     </div>
   </div>
   <hr>
   <div id="reply" class="row">
-    <h2>Reply</h2>
+    <h3>Reply</h3>
+    <p>You can reply directly to the query from here:</p>
     <div class="col-lg-12">
-      {{ Form::open(array('url'=>'/admin/enquiries/reply', 'POST', 'class'=>'form-horizontal')) }}
+      {{ Form::open(array('url'=>'/admin/enquiries/reply', 'POST', 'class'=>'form-horizontal', 'id'=>"enquiry-reply-form")) }}
       <div class="form-group">
-        {{ Form::text('email', e($enquiry->email), array('class'=>'form-control', 'placeholder'=>'Email Address')) }}
+        {{Form::label('email', 'Email', array('class'=>'col-sm-2 control-label')) }}
+        <div class="col-sm-10">
+          {{ Form::text('email', e($enquiry->email), array('class'=>'form-control')) }}
+        </div>
       </div>
       <div class="form-group">
-        {{ Form::text('subject', null, array('class'=>'form-control', 'placeholder'=>'Email Subject')) }}
+        {{Form::label('subject', 'Subject', array('class'=>'col-sm-2 control-label')) }}
+        <div class="col-sm-10">
+          {{ Form::text('subject', null, array('class'=>'form-control')) }}
+        </div>
       </div>
       <div class='form-group'>
-        {{ Form::textarea('message', null, array('id'=>'editor', 'class'=>'form-control', 'placeholder'=>'Email Message')) }}
+        {{Form::label('message', 'Message', array('class'=>'col-sm-2 control-label')) }}
+        <div class="col-sm-10">
+          {{ Form::textarea('message', null, array('id'=>'editor', 'class'=>'form-control')) }}
+        </div>
       </div>
       <div class="form-group">
-        {{ Form::submit('Send', array('class'=>'btn btn-default')) }}
+        <div class="col-sm-10 col-sm-offset-2">
+          {{ Form::submit('Send', array('class'=>'btn btn-default')) }}
+        </div>
       </div>
       {{ Form::close() }}
     </div>

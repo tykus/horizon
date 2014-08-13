@@ -1,26 +1,30 @@
 #enquiries {
 
-  p.heading {
-    display: inline-block;
-    font-weight: 700;
-    width: 150px;
-  }
+  p {
+    font-size: 1.2em;
 
-  p.detail {
-    display: inline-block;
-    margin-left: 150px;
+    span.heading {
+      font-weight: 700;
+      text-align: right;
+    }
+
   }
 
 }
 
 #reply {
-   #editor {
-    background-color: #fff;
-    border: 1px solid #dcdcdc;
+  font-size: 1.1em;
+
+  #editor {
     color: #333;
-    font-size: 1.4em;
     overflow: scroll;
     min-height: 200px;
     max-height: 300px;
   }
+
+  input[type=text] {
+    color: #333;
+    font-size: 1.1em;
+  }
+
 }

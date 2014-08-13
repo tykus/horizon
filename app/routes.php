@@ -21,11 +21,10 @@ Route::get('/', function()
 
 Route::group(array('namespace'=>'App\\Controllers'), function(){
 
-
-
   Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
     Route::get('/', array('uses' => 'DashboardController@index'));
     Route::resource('enquiries', 'EnquiriesController');
     Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
   });
+
 });

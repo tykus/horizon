@@ -27,6 +27,7 @@
       this.buttonDelete = $("#delete-button");
       this.buttonMarkAsRead = $("#mark-read-button");
       this.buttonMarkAsUnread = $("#mark-unread-button");
+      this.enquiryReplyForm = $("#enquiry-reply-form");
       this.bindEvents();
     }
 
@@ -44,8 +45,11 @@
       this.buttonMarkAsUnread.click(function() {
         return _this.markSelected(false);
       });
-      return this.allCheckboxes.click(function() {
+      this.allCheckboxes.click(function() {
         return _this.checkboxClicked();
+      });
+      return this.enquiryReplyForm.submit(function(e) {
+        return _this.sendReply(e);
       });
     };
 
@@ -66,39 +70,56 @@
     };
 
     Enquiries.prototype.selectAllCheckboxes = function() {
-      return this.allCheckboxes.each(function() {
-        return $(this).prop('checked', true);
-      });
+      return this.allCheckboxes.prop('checked', true);
     };
 
     Enquiries.prototype.unselectAllCheckboxes = function() {
-      return this.allCheckboxes.each(function() {
-        return $(this).prop('checked', false);
-      });
+      return this.allCheckboxes.prop('checked', false);
     };
 
     Enquiries.prototype.deleteSelected = function() {
-      return this.checkedCheckboxes().each(function() {
-        return $(this).closest('tr').remove();
+      var _this = this;
+      return this.checkedCheckboxes().each(function(idx, checkbox) {
+        var id;
+        id = $(checkbox).data('id');
+        $(checkbox).closest('tr').fadeOut(500);
+        return $.ajax({
+          type: "delete",
+          url: "/admin/enquiries/" + id,
+          success: function() {
+            return console.log("Deleted!");
+          },
+          error: function() {
+            return console.log("Problem :(");
+          }
+        });
       });
     };
 
-    Enquiries.prototype.markSelected = function(enquiryIsRead) {
+    Enquiries.prototype.markSelected = function(viewed) {
       var _this = this;
-      return this.checkedCheckboxes().each(function(idx, chk) {
-        var viewed;
-        if (enquiryIsRead) {
-          $(chk).closest('tr').removeClass('info');
-          viewed = enquiryIsRead;
+      return this.checkedCheckboxes().each(function(idx, checkbox) {
+        var id;
+        id = $(checkbox).data('id');
+        if (viewed) {
+          $(checkbox).closest('tr').removeClass('info');
         } else {
-          $(chk).closest('tr').addClass('info');
-          viewed = !enquiryIsRead;
+          $(checkbox).closest('tr').addClass('info');
         }
-        $(chk).prop('checked', false);
+        _this.unselectAllCheckboxes();
         _this.checkboxSelectAll.prop('checked', false);
-        return _this.makeRequest('PUT', {
-          id: $(chk).val(),
-          viewed: viewed
+        return $.ajax({
+          type: "put",
+          url: "/admin/enquiries/" + id,
+          data: {
+            viewed: viewed
+          },
+          success: function(data) {
+            return console.log("Success!");
+          },
+          error: function() {
+            return console.log("There was a problem updating the record(s)");
+          }
         });
       });
     };
@@ -107,21 +128,19 @@
       return $("input[name='enquiry[]']:checked");
     };
 
-    Enquiries.prototype.makeRequest = function(method, data) {
+    Enquiries.prototype.sendReply = function(e) {
+      var data;
+      data = this.enquiryReplyForm.serialize();
+      e.preventDefault();
       return $.ajax({
-        url: "/admin/enquiries/" + data.id,
-        type: method,
+        type: "POST",
+        url: "/admin/enquiries/reply",
         data: data,
-        success: function() {
-          return console.log("Success");
-        },
-        error: function() {
-          return console.log("Problem");
+        success: function(data) {
+          return console.log(data);
         }
       });
     };
-
-    Enquiries.prototype.serialize = function() {};
 
     return Enquiries;
 
