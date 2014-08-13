@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-  return "Hello World";
+Route::get('/', function(){
+  return View::make('home');
 });
 
 
