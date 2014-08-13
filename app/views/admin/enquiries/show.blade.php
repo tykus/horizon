@@ -4,7 +4,7 @@
   <h1 class="page-header">Enquiry</h1>
   <div id="enquiries" class="row">
     <div class="col-lg-12">
-      <h2>Information Received</h2>
+      <h3>Information Received</h3>
       <p>
         <span class="heading col-sm-2">From</span>
         {{{ $enquiry->name }}} &laquo; {{{ $enquiry->email }}} &raquo;
@@ -25,16 +25,17 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-2">
-      {{ HTML::linkRoute('admin.enquiries.index', 'Back to index', null, ['class'=>'btn btn-default pull-right']) }}
+    <div class="col-lg-12">
+      {{ HTML::linkRoute('admin.enquiries.index', 'Back to index', null, ['class'=>'btn btn-default']) }}
     </div>
   </div>
 
   <hr>
+
   <div id="reply" class="row">
-    <h3>Reply</h3>
-    <p>You can reply directly to the query from here:</p>
     <div class="col-lg-12">
+      <h3>Reply</h3>
+      <p>You can reply directly to the query from here:</p>
       {{ Form::open(array('url'=>'/admin/enquiries/reply', 'POST', 'class'=>'form-horizontal', 'id'=>"enquiry-reply-form")) }}
       {{ Form::hidden('id', $enquiry->id) }}
       <div class="form-group">

@@ -27,7 +27,7 @@
           <td>{{{ $enquiry->email }}}</td>
           <td>{{{ $enquiry->telephone }}}</td>
           <td>{{{ Str::limit($enquiry->message, 40) }}}</td>
-          <td><a href="/admin/enquiries/{{ $enquiry->id }}" class="btn btn-default pull-right">Show</a></td>
+          <td>{{ HTML::linkRoute('admin.enquiries.show', 'Show', $enquiry->id, ['class'=>'btn btn-default pull-right'] ) }}
         </tr>
       @endforeach
       <tr>
