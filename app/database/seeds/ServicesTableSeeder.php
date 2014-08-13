@@ -13,7 +13,8 @@ class ServicesTableSeeder extends Seeder {
       'title' => 'Counselling & Psychotherapy',
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
-      'image_path' => '/img/depression.jpg'
+      'image_path' => '/img/depression.jpg',
+      'sort_order' => 1
     ]);
 
     Service::create([
@@ -21,6 +22,7 @@ class ServicesTableSeeder extends Seeder {
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
       'image_path' => '/img/addiction.jpg',
+      'sort_order' => 2
     ]);
 
 		Service::create([
@@ -28,6 +30,7 @@ class ServicesTableSeeder extends Seeder {
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
       'image_path' => '/img/anxiety.jpg',
+      'sort_order' => 3
 		]);
 
 	}
