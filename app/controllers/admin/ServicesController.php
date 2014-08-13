@@ -55,8 +55,8 @@ class ServicesController extends \BaseController {
 	public function update($id)
 	{
 		$service = Service::find($id);
-		$service->update(Input::get());
-		return Redirect::action('admin.services.index');
+		if ($service->update(Input::get()))
+			return Redirect::action('admin.services.index');
 	}
 
 }

@@ -193,14 +193,22 @@
           <p class="copyright text-muted small">
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
           </p>
+          <div id="social">
+            <a href="#" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
+            <a href="#" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+            <a href="#" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
+          </div>
         </div>
-        <div class="col-sm-2">
-          <img src="{{ Config::get('site.logo_small_path') }}">
+
+        <div class="col-sm-3 text-right">
+          {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
         </div>
-        <div class="col-sm-4" id="social">
-          <a href="#" class="pull-right" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
-          <a href="#" class="pull-right" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-          <a href="#" class="pull-right" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
+
+        <div class="col-sm-3 text-right">
+          <p>
+            Developed by
+            {{ HTML::image('/img/tykus.png', 'Developed by ' . Config::get('site.author'), ['style'=>'height:40px;width:auto;']) }}
+          </p>
         </div>
       </div>
     </div>
