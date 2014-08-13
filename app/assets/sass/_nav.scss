@@ -21,7 +21,19 @@ $navbar-height: 82px;
 		> li > a:hover {
 	    color: $horizon-green;
 		}
-		
+
 	}
 
+}
+
+.back-to-top {
+  background-color: rgba(0, 0, 0, 0.80);
+  border-radius: 10px;
+  bottom: 2em;
+  display: none;
+  padding: 1em;
+  padding-bottom: 1.5em;
+  position: fixed;
+  right: 2em;
+  text-decoration: none;
 }

@@ -35,7 +35,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#home">
+        <a class="navbar-brand" href="#">
           <img src="img/logo_white.png" style="height:52px;width:auto;">
         </a>
       </div>
@@ -168,7 +168,12 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-sm-6">
+
+        <div class="col-sm-3 text-left">
+          {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
+        </div>
+
+        <div class="col-sm-6 text-center">
           <ul class="list-inline">
             <li>
               <a href="#home">Home</a>
@@ -201,18 +206,18 @@
         </div>
 
         <div class="col-sm-3 text-right">
-          {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
-        </div>
-
-        <div class="col-sm-3 text-right">
           <p>
             Developed by
-            {{ HTML::image('/img/tykus.png', 'Developed by ' . Config::get('site.author'), ['style'=>'height:40px;width:auto;']) }}
+            {{ HTML::linkImage(Config::get('site.author_url'), ['title'=>Config::get('site.author')], '/img/tykus.png', ['style'=>'height:40px;width:auto;']) }}
           </p>
         </div>
       </div>
     </div>
   </footer>
+
+  <a href="#" class="back-to-top" title="Back to top">
+    <i class="fa fa-chevron-up fa-2x fa-inverse"></i>
+  </a>
 
   <!-- Javascripts -->
   <script src="js/jquery.min.js"></script>
