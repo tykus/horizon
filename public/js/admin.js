@@ -129,17 +129,31 @@
     };
 
     Enquiries.prototype.sendReply = function(e) {
-      var data;
+      var data,
+        _this = this;
+      this.showSending();
       data = this.enquiryReplyForm.serialize();
-      e.preventDefault();
-      return $.ajax({
+      $.ajax({
         type: "POST",
         url: "/admin/enquiries/reply",
         data: data,
         success: function(data) {
-          return console.log(data);
+          return _this.showSendSuccess();
         }
       });
+      return e.preventDefault();
+    };
+
+    Enquiries.prototype.showSending = function() {
+      var btn;
+      btn = this.enquiryReplyForm.find('input:submit');
+      return btn.attr('disabled', 'disabled').val("Sending");
+    };
+
+    Enquiries.prototype.showSendSuccess = function() {
+      var btn;
+      btn = this.enquiryReplyForm.find('input:submit');
+      return btn.addClass('btn-success').val("Sent!");
     };
 
     return Enquiries;

@@ -28,16 +28,17 @@
     <p>You can reply directly to the query from here:</p>
     <div class="col-lg-12">
       {{ Form::open(array('url'=>'/admin/enquiries/reply', 'POST', 'class'=>'form-horizontal', 'id'=>"enquiry-reply-form")) }}
+      {{ Form::hidden('id', $enquiry->id) }}
       <div class="form-group">
         {{Form::label('email', 'Email', array('class'=>'col-sm-2 control-label')) }}
         <div class="col-sm-10">
-          {{ Form::text('email', e($enquiry->email), array('class'=>'form-control')) }}
+          {{ Form::text('email', e($enquiry->email), array('class'=>'form-control', 'disabled'=>'')) }}
         </div>
       </div>
       <div class="form-group">
         {{Form::label('subject', 'Subject', array('class'=>'col-sm-2 control-label')) }}
         <div class="col-sm-10">
-          {{ Form::text('subject', null, array('class'=>'form-control')) }}
+          {{ Form::text('subject', null, array('class'=>'form-control', 'placeholder'=>'Thank you for your enquiry.')) }}
         </div>
       </div>
       <div class='form-group'>

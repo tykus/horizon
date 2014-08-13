@@ -73,11 +73,20 @@ class Enquiries
     $("input[name='enquiry[]']:checked")
 
   sendReply: (e) ->
+    @showSending()
     data = @enquiryReplyForm.serialize()
-    e.preventDefault()
     $.ajax
       type: "POST"
       url: "/admin/enquiries/reply"
       data: data
-      success: (data) ->
-        console.log data
+      success: (data) =>
+        @showSendSuccess()
+    e.preventDefault()
+
+  showSending: ->
+    btn = @enquiryReplyForm.find('input:submit')
+    btn.attr('disabled','disabled').val("Sending");
+
+  showSendSuccess: ->
+    btn = @enquiryReplyForm.find('input:submit')
+    btn.addClass('btn-success').val("Sent!")

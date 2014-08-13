@@ -6,7 +6,17 @@ use \View;
 use \Mail;
 use \Response;
 
+use Horizon\Guest;
+use Horizon\Mailers\GuestMailer;
+
 class EnquiriesController extends \BaseController {
+
+	protected $mailer;
+
+	public function __construct(GuestMailer $mailer)
+	{
+		$this->mailer = $mailer;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -78,15 +88,14 @@ class EnquiriesController extends \BaseController {
 
 	public function reply()
 	{
-		$data = [
-			'message' => Input::get('message')
-		];
+		$enquiry = Enquiry::find(Input::get('id'));
+		$guest = new Guest($enquiry->name, $enquiry->email);
+		$data = array(
+			'message' => Input::get('message'),
+			'subject' => Input::get('subject')
+		);
 
-		Mail::send('emails.reply', $data, function($message)
-		{
-			$message->to(e(Input::get('email')))
-							->subject(e(Input::get('subject')));
-		});
+		$this->mailer->reply($guest, $data);
 
 		return Response::json(null, 204);
 
