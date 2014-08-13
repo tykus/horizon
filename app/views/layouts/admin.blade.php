@@ -59,7 +59,7 @@
             <li><a href="#"><i class="glyphicon glyphicon-picture"></i> Media Manager</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href=""><i class="glyphicon glyphicon-cog"></i> Services</a></li>
+            <li><a href="/admin/services"><i class="glyphicon glyphicon-cog"></i> Services</a></li>
             <li><a href=""><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
             <li><a href=""><i class="glyphicon glyphicon-question-sign"></i> FAQ's</a></li>
             <li><a href=""><i class="glyphicon glyphicon-map-marker"></i> Address / Location</a></li>

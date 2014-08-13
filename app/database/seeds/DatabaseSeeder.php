@@ -10,10 +10,12 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Enquiry::truncate();
+		Service::truncate();
 
 		Eloquent::unguard();
 
 		$this->call('EnquiriesTableSeeder');
+		$this->call('ServicesTableSeeder');
 	}
 
 }
