@@ -20,28 +20,6 @@ class ServicesController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 * GET /services/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /services
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 * GET /services/{id}
 	 *
@@ -79,18 +57,6 @@ class ServicesController extends \BaseController {
 		$service = Service::find($id);
 		$service->update(Input::get());
 		return Redirect::action('admin.services.index');
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /services/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }
