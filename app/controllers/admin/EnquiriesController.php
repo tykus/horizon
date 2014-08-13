@@ -1,10 +1,10 @@
 <?php namespace App\Controllers\Admin;
 
-use \Enquiry;
-use \Input;
-use \View;
-use \Mail;
-use \Response;
+use Enquiry;
+use Input;
+use View;
+use Mail;
+use Response;
 
 use Horizon\Guest;
 use Horizon\Mailers\GuestMailer;

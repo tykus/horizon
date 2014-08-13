@@ -30,15 +30,20 @@
           <td><a href="/admin/enquiries/{{ $enquiry->id }}" class="btn btn-default pull-right">Show</a></td>
         </tr>
       @endforeach
+      <tr>
+        <td>
+          <label>
+            <input type="checkbox" id="select-all" data-id="seven"> Select All
+          </label>
+        </td>
+        <td colspan="6">
+          <button id="mark-read-button" class="btn btn-xs btn-default">Mark selected as read</button>
+          <button id="mark-unread-button" class="btn btn-xs btn-default">Mark selected as unread</button>
+          <button id="delete-button" class="btn btn-xs btn-danger">Delete selected</button>
+        </td>
+      </tr>
     </table>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" id="select-all" data-id="seven"> Select All
-      </label>
-    </div>
-    <button id="mark-read-button" class="btn btn-default">Mark selected as read</button>
-    <button id="mark-unread-button" class="btn btn-default">Mark selected as unread</button>
-    <button id="delete-button" class="btn btn-danger">Delete selected</button>
+
   @else
     <p>No enquiries to display.</p>
   @endif
