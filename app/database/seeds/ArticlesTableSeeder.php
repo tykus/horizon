@@ -9,10 +9,14 @@ class ArticlesTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 5) as $index)
 		{
+      $title = $faker->sentence(5);
 			Article::create([
-
+        'title' => $title,
+        'slug' => Str::slug($title),
+        'content' => $faker->paragraph(20),
+        'published_date' => $faker->dateTimeThisMonth($max = 'now')
 			]);
 		}
 	}
