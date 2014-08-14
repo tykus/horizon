@@ -23,6 +23,11 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
 
   Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
 
+  	View::composer('layouts.admin', function($view)
+		{
+		    $view->with('settings', Setting::all());
+		});
+
     Route::get('/', array('uses' => 'DashboardController@index'));
 
     Route::resource('enquiries', 'EnquiriesController');
