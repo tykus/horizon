@@ -13,7 +13,16 @@
 
 Route::get('/', function()
 {
+	View::composer('contents', 'Horizon\Composers\ContentComposer');
+	
+
 	$about = Content::where('name', 'about')->first();
 
 	return View::make('home', compact('about'));
+});
+
+Route::get('/debug', function(){
+	// $contents = DB::table('contents')->remember(30)->get();
+	$contents = array("name"=>"Brian", "age"=>37);
+  new Horizon\Utilities\Utils("contents");
 });
