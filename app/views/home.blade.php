@@ -35,7 +35,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#home">
+        <a class="navbar-brand" href="#">
           <img src="img/logo_white.png" style="height:52px;width:auto;">
         </a>
       </div>
@@ -73,29 +73,17 @@
         <div class="col-lg-12">
           <h1 class="section-heading">Services</h1>
 
+          @foreach($services as $service)
+
           <div class="col-lg-4 service">
-            <img class="img-circle" src="img/depression.jpg">
-            <h3>Counselling &amp; Psychotherapy</h3>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <img class="img-circle" src="{{ $service->image_path }}">
+            <h3>{{{ $service->title }}}</h3>
+            <p>\{{{ $service->introduction }}}</p>
             <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
             </p>
           </div>
 
-          <div class="col-lg-4 service">
-            <img class="img-circle" src="img/addiction.jpg">
-            <h3>Dual Diagnosis</h3>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
-            </p>
-          </div>
-
-          <div class="col-lg-4 service">
-            <img class="img-circle" src="img/anxiety.jpg">
-            <h3>Young Adults</h3>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
-            </p>
-          </div>
+          @endforeach
 
         </div>
       </div>
@@ -135,13 +123,13 @@
             {{ Config::get('site.business.address') }}
           </p>
           <p class="lead">
-            <i class="fa fa-envelope"></i> 
+            <i class="fa fa-envelope"></i>
             {{ HTML::mailto(HTML::email(Config::get('site.business.email')), Config::get('site.business.email')) }}
             <br>
-            <i class="fa fa-phone"></i> 
+            <i class="fa fa-phone"></i>
             {{ Config::get('site.business.mobile') }}
             <br>
-            <i class="fa fa-globe"></i> 
+            <i class="fa fa-globe"></i>
             {{ HTML::link(Config::get('site.business.url'), Config::get('site.business.url')) }}
           </p>
         </div>
@@ -176,7 +164,12 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-sm-6">
+
+        <div class="col-sm-3 text-left">
+          {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
+        </div>
+
+        <div class="col-sm-6 text-center">
           <ul class="list-inline">
             <li>
               <a href="#home">Home</a>
@@ -201,18 +194,26 @@
           <p class="copyright text-muted small">
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
           </p>
+          <div id="social">
+            <a href="#" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
+            <a href="#" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+            <a href="#" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
+          </div>
         </div>
-        <div class="col-sm-2">
-          <img src="{{ Config::get('site.logo_small_path') }}">
-        </div>
-        <div class="col-sm-4" id="social">
-          <a href="#" class="pull-right" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
-          <a href="#" class="pull-right" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-          <a href="#" class="pull-right" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
+
+        <div class="col-sm-3 text-right">
+          <p>
+            Developed by
+            {{ HTML::linkImage(Config::get('site.author_url'), ['title'=>Config::get('site.author')], '/img/tykus.png', ['style'=>'height:40px;width:auto;']) }}
+          </p>
         </div>
       </div>
     </div>
   </footer>
+
+  <a href="#" class="back-to-top" title="Back to top">
+    <i class="fa fa-chevron-up fa-2x fa-inverse"></i>
+  </a>
 
   <!-- Javascripts -->
   <script src="js/jquery.min.js"></script>

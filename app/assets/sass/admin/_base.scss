@@ -1,0 +1,26 @@
+// FONTS
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
+$default-font: "Open Sans", Helvetica, sans-serif;
+
+// COLORS
+$main-white: #f8f8f8;
+$main-gray: #333;
+$light-gray: #eee;
+$main-blue: #1886ff;
+
+
+body {
+  background-color: $main-white;
+  color: $main-gray;
+  font-family: $default-font;
+  padding-top: 50px; // moving downwards to accommodate the navbar
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: $main-blue;
+  font-weight: 700;
+}

@@ -15,9 +15,34 @@
 
     App.prototype.bindEvents = function() {
       var _this = this;
-      return $('a[href*=#]:not([href=#])').click(function(e) {
+      $('a[href*=#]:not([href=#])').click(function(e) {
         return _this.smoothScroll(e);
       });
+      $(window).scroll(function(e) {
+        return _this.displayBackToTop(e);
+      });
+      $('.back-to-top').click(function(e) {
+        return _this.backToTop(e);
+      });
+      return $('.navbar-brand').click(function(e) {
+        return _this.backToTop(e);
+      });
+    };
+
+    App.prototype.backToTop = function(e) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: 0
+      }, 1000);
+      return false;
+    };
+
+    App.prototype.displayBackToTop = function(e) {
+      if ($(e.target).scrollTop() > 200) {
+        return $('.back-to-top').fadeIn(500);
+      } else {
+        return $('.back-to-top').fadeOut(500);
+      }
     };
 
     App.prototype.smoothScroll = function(e) {
@@ -29,7 +54,7 @@
           target = $("[name=" + (this.hash.slice(1)) + "]");
         }
         $('html,body').animate({
-          scrollTop: target.offset().top - 82
+          scrollTop: target.offset().top - 80
         }, 1000);
         return false;
       }

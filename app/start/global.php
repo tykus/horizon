@@ -79,3 +79,18 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Custom Macros
+|--------------------------------------------------------------------------
+|
+| This is where we create a custom macro which extends the HTML facade for
+| image links
+|
+*/
+HTML::macro('linkImage', function($url, $url_options = [], $image, $image_options=[])
+{
+    return '<a href="' . $url . '" ' . HTML::attributes($image_options) . '><img src="' . $image . '" ' . HTML::attributes($image_options) . '></a>';
+});

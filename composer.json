@@ -7,8 +7,9 @@
 		"laravel/framework": "4.2.*"
 	},
 	"require-dev": {
-		"way/generators": "2.*"
-	}, 
+    "way/generators": "2.*",
+    "fzaninotto/faker": "v1.3.0"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
@@ -16,9 +17,17 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
+<<<<<<< HEAD
 			"app/tests/TestCase.php",
 			"app/Horizon"
 		]
+=======
+			"app/tests/TestCase.php"
+		],
+		"psr-0": {
+			"Horizon": "app/"
+		}
+>>>>>>> master
 	},
 	"scripts": {
 		"post-install-cmd": [

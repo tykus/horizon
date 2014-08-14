@@ -9,11 +9,13 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Content::truncate();
+		Enquiry::truncate();
+		Service::truncate();
 
 		Eloquent::unguard();
 
-		$this->call('ContentsTableSeeder');
+		$this->call('EnquiriesTableSeeder');
+		$this->call('ServicesTableSeeder');
 	}
 
 }
