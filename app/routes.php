@@ -11,9 +11,24 @@
 |
 */
 
-Route::get('/', function()
-{
-	$about = Content::where('name', 'about')->first();
+Route::get('/', [
+  'uses' => 'HomeController@index',
+  'as' => 'home_path'
+]);
 
-	return View::make('home', compact('about'));
+
+// ADMIN ROUTES
+
+Route::group(array('namespace'=>'App\\Controllers'), function(){
+
+  Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
+    Route::get('/', array('uses' => 'DashboardController@index'));
+
+    Route::resource('enquiries', 'EnquiriesController');
+    Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+
+    Route::resource('services', 'ServicesController');
+
+  });
+
 });

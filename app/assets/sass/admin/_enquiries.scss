@@ -1,0 +1,30 @@
+#enquiries {
+
+  p {
+    font-size: 1.2em;
+
+    span.heading {
+      font-weight: 700;
+      text-align: right;
+    }
+
+  }
+
+}
+
+#reply {
+  font-size: 1.1em;
+
+  #editor {
+    color: #333;
+    overflow: scroll;
+    min-height: 200px;
+    max-height: 300px;
+  }
+
+  input[type=text] {
+    color: #333;
+    font-size: 1.1em;
+  }
+
+}
