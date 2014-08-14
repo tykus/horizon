@@ -11,14 +11,6 @@
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function()
-{
-	View::composer('contents', 'Horizon\Composers\ContentComposer');
-	
-
-	$about = Content::where('name', 'about')->first();
-=======
 Route::get('/', [
   'uses' => 'HomeController@index',
   'as' => 'home_path'
@@ -38,12 +30,5 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
     Route::resource('services', 'ServicesController');
 
   });
->>>>>>> master
 
-});
-
-Route::get('/debug', function(){
-	// $contents = DB::table('contents')->remember(30)->get();
-	$contents = array("name"=>"Brian", "age"=>37);
-  new Horizon\Utilities\Utils("contents");
 });

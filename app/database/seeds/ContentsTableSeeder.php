@@ -22,36 +22,36 @@ class ContentsTableSeeder extends Seeder {
 		$sloganContent = 'Inspiring positive change;';
 
 			Content::create([
-				'name' => 'about',
-				'content' => $aboutContent
+				'key' => 'about',
+				'value' => $aboutContent
 			]);
 			Content::create([
-				'name' => 'location',
-				'content' => $locationContent
+				'key' => 'location',
+				'value' => $locationContent
 			]);
 			Content::create([
-				'name' => 'name',
-				'content' => $nameContent
+				'key' => 'name',
+				'value' => $nameContent
 			]);
 			Content::create([
-				'name' => 'address',
-				'content' => $addressContent
+				'key' => 'address',
+				'value' => $addressContent
 			]);
 			Content::create([
-				'name' => 'email',
-				'content' => $emailContent
+				'key' => 'email',
+				'value' => $emailContent
 			]);
 			Content::create([
-				'name' => 'phone',
-				'content' => $phoneContent
+				'key' => 'phone',
+				'value' => $phoneContent
 			]);
 			Content::create([
-				'name' => 'mobile',
-				'content' => $mobileContent
+				'key' => 'mobile',
+				'value' => $mobileContent
 			]);
 			Content::create([
-				'name' => 'slogan',
-				'content' => $sloganContent
+				'key' => 'slogan',
+				'value' => $sloganContent
 			]);
 	}
 

@@ -1,5 +1,5 @@
 <?php
 
 class Content extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = ['key', 'value'];
 }
