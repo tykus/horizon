@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateContentsTable extends Migration {
+class CreateSettingsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateContentsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('contents', function(Blueprint $table)
+		Schema::create('settings', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('key')->unique();
@@ -29,7 +29,7 @@ class CreateContentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('contents');
+		Schema::drop('settings');
 	}
 
 }

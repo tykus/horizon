@@ -1,5 +1,5 @@
 <?php
 
-class Content extends \Eloquent {
+class Setting extends \Eloquent {
 	protected $fillable = ['key', 'value'];
 }

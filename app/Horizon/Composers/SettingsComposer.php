@@ -1,6 +1,6 @@
 <?php namespace Horizon\Composers;
  
-class ContentComposer {
+class SettingsComposer {
  
   public function compose($view)
   {
