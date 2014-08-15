@@ -26,7 +26,7 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
   	// TODO: work out where this should really belong!!!
   	View::composer('layouts.admin', function($view)
 		{
-		    $view->with('settings', Setting::all());
+		    $view->with('settings', Setting::onMenu());
 		});
 
 

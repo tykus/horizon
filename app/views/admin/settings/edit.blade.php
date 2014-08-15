@@ -5,7 +5,7 @@
 	<div id="settings" class="row">
 		<div class="col-lg-12">
 			
-		<h2 class="page-heading">Update Setting</h2>
+		<h2 class="page-heading">Update '{{ ucfirst($setting->key) }}' Setting</h2>
 		{{ Form::model($setting, [
 			'route'=>['admin.settings.update', $setting->id],
 			'class'=>'form-horizontal',
@@ -16,7 +16,17 @@
 		<div class="form-group">
 		  {{Form::label('value', ucfirst($setting->key), array('class'=>'col-sm-2 control-label')) }}
 		  <div class="col-sm-10">
-		    {{ Form::text('value', $setting->value, array('class'=>'form-control')) }}
+		    <?php
+		    	switch ($setting->field) {
+		    		case 'textarea':
+		    			echo Form::textarea('value', $setting->value, array('class'=>'form-control'));
+		    			break;
+		    		default:
+		    			echo Form::text('value', $setting->value, array('class'=>'form-control'));
+		    		break;
+		    	}
+		    	// TODO: check if there is Blade templating syntax for Switch
+		    ?>
 		  </div>
 		</div>
 
