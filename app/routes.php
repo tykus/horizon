@@ -23,13 +23,16 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
 
   Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
 
+  	// TODO: work out where this should really belong!!!
   	View::composer('layouts.admin', function($view)
 		{
 		    $view->with('settings', Setting::all());
 		});
 
+
     Route::get('/', array('uses' => 'DashboardController@index'));
 
+    // TODO: better not to use resourceful routing if not all routes are implemented
     Route::resource('enquiries', 'EnquiriesController');
     Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
 

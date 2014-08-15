@@ -21,3 +21,6 @@ class SettingsController extends \BaseController {
 	}
 
 }
+
+// TODO: make a new field to specify whether the setting should appear on the dropdown
+// e.g 'about' should have it's own section
