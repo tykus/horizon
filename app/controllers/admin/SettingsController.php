@@ -4,23 +4,28 @@ use Setting;
 use Input;
 use Response;
 use View;
+use Horizon\Repositories\SettingsRepositoryInterface;
 
 class SettingsController extends \BaseController {
 
+	protected $setting;
+
+	public function __construct(SettingsRepositoryInterface $setting)
+	{
+		$this->setting = $setting;
+	}
+
 	public function edit($key)
 	{
-		$setting = Setting::where('key', $key)->first();
+		$setting = $this->setting->findByKey($key);
 		return View::make('admin.settings.edit', compact('setting'));
 	}
 
 	public function update($id)
 	{
-		$setting = Setting::find($id);
-		if ($setting->update(Input::get()))
-			return Response::json(null, 204);
+		$this->setting->update($id, Input::get());
+
+		return Response::json(null, 204); // TODO: allow from non-AJAX request
 	}
 
 }
-
-// TODO: make a new field to specify whether the setting should appear on the dropdown
-// e.g 'about' should have it's own section

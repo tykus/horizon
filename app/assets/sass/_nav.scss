@@ -26,14 +26,23 @@ $navbar-height: 82px;
 
 }
 
-.back-to-top {
-  background-color: rgba(0, 0, 0, 0.80);
+a.back-to-top {
+  background-color: rgba(0, 0, 0, 0.60);
   border-radius: 10px;
   bottom: 2em;
+  color: $horizon-white;
   display: none;
+  font-weight: 700;
+  font-size: 1.1em;
+  height: 52px;
   padding: 1em;
-  padding-bottom: 1.5em;
   position: fixed;
   right: 2em;
+  text-decoration: none;
+}
+
+a.back-to-top:hover {
+  background-color: rgba(0, 0, 0, 0.80);
+  color: $horizon-white;
   text-decoration: none;
 }

@@ -7,8 +7,8 @@ class App
   bindEvents: ->
     $('a[href*=#]:not([href=#])').click (e) => @smoothScroll(e)
     $(window).scroll (e) => @displayBackToTop(e)
-    $('.back-to-top').click (e) => @backToTop(e)
     $('.navbar-brand').click (e) => @backToTop(e)
+    $('.back-to-top').click (e) => @backToTop(e)
 
   backToTop: (e) ->
     e.preventDefault()

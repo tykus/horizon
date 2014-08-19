@@ -21,10 +21,10 @@
       $(window).scroll(function(e) {
         return _this.displayBackToTop(e);
       });
-      $('.back-to-top').click(function(e) {
+      $('.navbar-brand').click(function(e) {
         return _this.backToTop(e);
       });
-      return $('.navbar-brand').click(function(e) {
+      return $('.back-to-top').click(function(e) {
         return _this.backToTop(e);
       });
     };
@@ -142,8 +142,9 @@
     };
 
     GoogleMapCanvas.prototype.buildMap = function() {
-      var mapOptions;
-      this.googleLatLng = new google.maps.LatLng(this.business.latitude, this.business.longitude);
+      var latitude, longitude, mapOptions, _ref;
+      _ref = this.business.location.split(","), longitude = _ref[0], latitude = _ref[1];
+      this.googleLatLng = new google.maps.LatLng(longitude, latitude);
       mapOptions = {
         zoom: 16,
         center: this.googleLatLng,

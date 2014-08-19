@@ -1,11 +1,20 @@
 <?php namespace Horizon\Composers;
  
+use Horizon\Repositories\EloquentSettingsRepository;
+
 class SettingsComposer {
- 
+  
+  protected $settings;
+
+  public function __construct(EloquentSettingsRepository $settings)
+  {
+  	$this->settings = $settings;
+  }
+
   public function compose($view)
   {
-  	$contents = DB::table('content')->remember(30)->get();
-    $view->with('content', $content->toArray());
+  	// In Admin, there is a 'Settings' menu which is dynamically generated, but slow-moving
+    $view->with('settings', $this->settings->getMenuItems());
   }
  
 }

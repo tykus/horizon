@@ -177,16 +177,17 @@
     };
 
     Settings.prototype.submitForm = function(e) {
-      var btn;
-      console.log(this.form.attr('action'));
+      var btn, spinner;
       btn = this.form.find('button[type=submit]');
-      btn.find('i').show();
+      spinner = btn.find('i');
+      spinner.show();
       $.ajax({
         type: "put",
         url: this.form.attr('action'),
         data: this.form.serialize(),
         success: function() {
-          return btn.find('i').delay(300).hide(function() {
+          console.log(spinner);
+          return spinner.delay(300).hide(function() {
             return btn.html("Updated!").addClass('btn-success disabled');
           });
         }

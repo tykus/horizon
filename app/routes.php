@@ -1,5 +1,10 @@
 <?php
 
+Event::listen('illuminate.query', function($query){
+	Log::write('info', $query);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,33 +16,25 @@
 |
 */
 
-Route::get('/', [
-  'uses' => 'HomeController@index',
-  'as' => 'home_path'
-]);
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
 
 
 // ADMIN ROUTES
-
 Route::group(array('namespace'=>'App\\Controllers'), function(){
 
   Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
 
-  	// TODO: work out where this should really belong!!!
-  	View::composer('layouts.admin', function($view)
-		{
-		    $view->with('settings', Setting::onMenu());
-		});
-
+		View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
     Route::get('/', array('uses' => 'DashboardController@index'));
 
     // TODO: better not to use resourceful routing if not all routes are implemented
-    Route::resource('enquiries', 'EnquiriesController');
     Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+    Route::resource('enquiries', 'EnquiriesController');
 
     Route::resource('services', 'ServicesController');
     Route::resource('settings', 'SettingsController');
+    // TODO: add after-filter to the update action to bust the cache & reset it
 
   });
 

@@ -94,3 +94,19 @@ HTML::macro('linkImage', function($url, $url_options = [], $image, $image_option
 {
     return '<a href="' . $url . '" ' . HTML::attributes($image_options) . '><img src="' . $image . '" ' . HTML::attributes($image_options) . '></a>';
 });
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Setting Runtime Configuration
+|--------------------------------------------------------------------------
+|
+| Getting configuration from database (cached query) at runtime from the 
+| EloquentSettingsRepository
+|
+*/
+$settings = new Horizon\Repositories\EloquentSettingsRepository(new \Setting);
+$settings->setConfig();
+
