@@ -17,7 +17,7 @@ Event::listen('illuminate.query', function($query){
 */
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
-
+Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
 
 // ADMIN ROUTES
 Route::group(array('namespace'=>'App\\Controllers'), function(){
