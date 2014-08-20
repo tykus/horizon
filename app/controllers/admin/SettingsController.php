@@ -23,9 +23,13 @@ class SettingsController extends \BaseController {
 
 	public function update($id)
 	{
-		$this->setting->update($id, Input::get());
+		// try/catch... with Validator messages
+		if ($this->setting->update($id, Input::get()) )
+		{
+			return Response::json(null, 204); // TODO: allow from non-AJAX request
+		}
 
-		return Response::json(null, 204); // TODO: allow from non-AJAX request
+		
 	}
 
 }

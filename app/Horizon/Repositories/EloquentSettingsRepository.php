@@ -2,6 +2,7 @@
 
 use Config;
 use Setting;
+use Validator;
 
 class EloquentSettingsRepository extends DbRepository implements SettingsRepositoryInterface {	
 	
@@ -20,12 +21,18 @@ class EloquentSettingsRepository extends DbRepository implements SettingsReposit
 	public function update($id, $data){
 		$setting = $this->findById($id);
 		
-		dd($setting);	
+		$rules = ['value' => 'required']; // TODO: move to somewhere else!!!!
+
 		// Validate data
+		$validate = Validator::make($data, $rules);
 
-		// Update the object
+		if ($validate->passes())
+		{
+			$result = $setting->update($data);
+		}
 
-		// return to caller
+		return $result;
+
 	}
 
 
