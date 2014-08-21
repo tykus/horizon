@@ -10,29 +10,8 @@ class ArticlesController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /articles/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /articles
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		$articles = Article::latest()->paginate(3);
+		return View::make('articles.index', compact('articles'));
 	}
 
 	/**
@@ -42,45 +21,18 @@ class ArticlesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		//
-	}
+		$article = Article::where('slug', $slug)->first();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /articles/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /articles/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /articles/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		if ($article)
+		{
+			return View::make('articles.show', compact('article'));
+		}
+		else
+		{
+			return Redirect::route('articles_path');
+		}
 	}
 
 }

@@ -9,7 +9,7 @@
 @section('content')
   <h1 class="page-header">Enquiries Inbox</h1>
   @if (count($enquiries))
-    <table id="enquiries" class="table table-striped">
+    <table class="table table-striped">
       <tr>
         <th></th>
         <th>Date</th>
@@ -19,6 +19,7 @@
         <th>Subject</th>
         <th></th>
       </tr>
+      <tbody id="enquiries">
       @foreach($enquiries as $enquiry)
         <tr @unless($enquiry->viewed) class="info" @endunless>
           <td><input type="checkbox" name="enquiry[]" data-id="{{ $enquiry->id }}"></td>
@@ -27,13 +28,14 @@
           <td>{{{ $enquiry->email }}}</td>
           <td>{{{ $enquiry->telephone }}}</td>
           <td>{{{ Str::limit($enquiry->message, 40) }}}</td>
-          <td>{{ HTML::linkRoute('admin.enquiries.show', 'Show', $enquiry->id, ['class'=>'btn btn-default pull-right'] ) }}
+          <td>{{ HTML::linkRoute('admin.enquiries.show', 'Show', $enquiry->id, ['class'=>'btn btn-default pull-right'] ) }}</td>
         </tr>
       @endforeach
+      </tbody>
       <tr>
         <td>
           <label>
-            <input type="checkbox" id="select-all" data-id="seven"> Select All
+            <input type="checkbox" id="select-all"> Select All
           </label>
         </td>
         <td colspan="6">

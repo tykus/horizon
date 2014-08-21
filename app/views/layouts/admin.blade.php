@@ -8,11 +8,12 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{{ Config::get('site.app_name') }}</title>
+    <title>{{ Config::get('site.app_name') }} Admin</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/css/admin.css" rel="stylesheet">
+    @yield('styles')
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,6 +61,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="/admin/services"><i class="glyphicon glyphicon-cog"></i> Services</a></li>
+            <li><a href="/admin/articles"><i class="glyphicon glyphicon-edit"></i> Articles</a></li>
             <li><a href=""><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
             <li><a href=""><i class="glyphicon glyphicon-question-sign"></i> FAQ's</a></li>
             <li><a href=""><i class="glyphicon glyphicon-map-marker"></i> Address / Location</a></li>
@@ -87,6 +89,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    @yield('scripts')
     <script src="/js/admin.js"></script>
+
   </body>
 </html>

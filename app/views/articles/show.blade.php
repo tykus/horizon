@@ -1,1 +1,0 @@
-/Users/brian/src/horizon/app/views/articles/show.blade.php
