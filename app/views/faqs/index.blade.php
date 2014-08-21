@@ -7,11 +7,11 @@
 
 	  	<h2 class="page-heading">Frequently Asked Questions</h2>
 
-	  	<ul>
+	  	<div class="list-group">
 	  	@foreach($faqs as $faq)
-	  		<li>{{ HTML::link('#' . $faq->id, $faq->question) }}</li>
+	  		{{ HTML::link('#' . $faq->id, $faq->question, ['class'=>'list-group-item']) }}
 	  	@endforeach
-	  	</ul>
+	  	</div>
 
 			@foreach ($faqs as $faq)
 				<div id="{{ $faq->id }}" class="panel panel-info">
