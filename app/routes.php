@@ -46,3 +46,15 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
   });
 
 });
+
+
+HTML::macro('clever_link', function($route, $text) {
+  if( Request::path() == $route ) {
+    $active = " class = 'active'";
+  }
+  else {
+    $active = '';
+  }
+
+  return '<li' . $active . '>' . html_entity_decode(link_to($route, $text)) . '</li>';
+});

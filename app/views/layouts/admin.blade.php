@@ -63,31 +63,29 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <img src="/{{ Config::get('site.logo_small_path') }}">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
-            <li><a href="/admin/enquiries"><i class="glyphicon glyphicon-envelope"></i> Enquiries Inbox</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-stats"></i> Google Analytics</a></li>
-            <li><a href="#"><i class="glyphicon glyphicon-picture"></i> Media Manager</a></li>
+            {{ HTML::clever_link("admin", '<i class="glyphicon glyphicon-dashboard"></i> Dashboard' ) }}
+            {{ HTML::clever_link("admin/enquiries", '<i class="glyphicon glyphicon-envelope"></i> Enquiries Inbox' ) }}
+            {{ HTML::clever_link("#", '<i class="glyphicon glyphicon-stats"></i> Google Analytics' ) }}
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="/admin/services"><i class="glyphicon glyphicon-cog"></i> Services</a></li>
-            <li><a href="/admin/articles"><i class="glyphicon glyphicon-edit"></i> Articles</a></li>
-            <li><a href="/admin/settings/about/edit"><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
-            <li><a href=""><i class="glyphicon glyphicon-question-sign"></i> FAQ's</a></li>
-            <li><a href=""><i class="glyphicon glyphicon-map-marker"></i> Address / Location</a></li>
+            {{ HTML::clever_link("admin/services", '<i class="glyphicon glyphicon-cog"></i> Services') }}
+            {{ HTML::clever_link("admin/articles", '<i class="glyphicon glyphicon-edit"></i> Articles') }}
+            {{ HTML::clever_link("admin/settings/about/edit", '<i class="glyphicon glyphicon-list-alt"></i> About / Bio') }}
+            {{ HTML::clever_link("admin/faqs", '<i class="glyphicon glyphicon-question-sign"></i> FAQ\'s') }}
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href=""><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
-            <li><a href=""><i class="glyphicon glyphicon-user"></i> Users Admin</a></li>
-            <li><a href=""><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
+            <li><a href="" class="disabled"><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
+            <li><a href="" class="disabled"><i class="glyphicon glyphicon-user"></i> Users Admin</a></li>
+            <li><a href="" class="disabled"><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
           </ul>
 
-          @yield('sidebar')
+          @yield('sidebar') {{-- include any special messages about the current content --}}
 
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          @yield('content')
+          @yield('content') {{-- the current content --}}
 
         </div>
       </div>
