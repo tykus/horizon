@@ -13,7 +13,7 @@
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
 Route::get('/articles', ['uses' => 'ArticlesController@index', 'as' => 'articles_path']);
-Route::get('/articles/{article}', ['uses' => 'ArticlesController@show', 'as' => 'article_path']);
+Route::get('/articles/{articles}', ['uses' => 'ArticlesController@show', 'as' => 'article_path']);
 
 Route::get('/debug', function(){
   echo Carbon\Carbon::now()->toDateString();
