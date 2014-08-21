@@ -14,7 +14,8 @@
 	  	</div>
 
 			@foreach ($faqs as $faq)
-				<div id="{{ $faq->id }}" class="panel panel-info">
+			<div id="{{ $faq->id }}" class="panel-wrapper">
+				<div class="panel panel-info">
 				  <div class="panel-heading">
 				    <h3 class="panel-title">{{ $faq->question }}</h3>
 				  </div>
@@ -22,6 +23,7 @@
 				    {{ $faq->answer }}
 				  </div>
 				</div>
+			</div>
 			@endforeach
 
 		</div>

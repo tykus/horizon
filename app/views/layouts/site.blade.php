@@ -46,6 +46,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#location">Location</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="/faqs">FAQs</a></li>
         </ul>
       </div>
     </div>
@@ -82,6 +83,10 @@
             <li class="footer-menu-divider">&sdot;</li>
             <li>
               <a href="#contact">Contact</a>
+            </li>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
+              <a href="/faqs">FAQs</a>
             </li>
           </ul>
           <p class="copyright text-muted small">
