@@ -30,6 +30,11 @@ class Article extends \Eloquent implements SluggableInterface
     return $query->orderBy('published_date', 'desc');
   }
 
+  public function scopeLatestPublished($query)
+  {
+    return $query->orderBy('published_date', 'desc')->whereNotNull('published_date');
+  }
+
   public function published()
   {
     return ! is_null($this->published_date);
