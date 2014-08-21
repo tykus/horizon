@@ -24,42 +24,50 @@ class SettingsTableSeeder extends Seeder {
 			Setting::create([
 				'key' => 'about',
 				'value' => $about,
-				'field' =>'textarea'
+				'field' =>'textarea',
+				'on_menu' => 0
 			]);
 			Setting::create([
 				'key' => 'location',
 				'value' => $location,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'name',
 				'value' => $name,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'address',
 				'value' => $address,
-				'field' =>'textarea'
+				'field' =>'textarea',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'email',
 				'value' => $email,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'phone',
 				'value' => $phone,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'mobile',
 				'value' => $mobile,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 			Setting::create([
 				'key' => 'slogan',
 				'value' => $slogan,
-				'field' =>'text'
+				'field' =>'text',
+				'on_menu' => 1
 			]);
 	}
 
