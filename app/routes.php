@@ -1,5 +1,10 @@
 <?php
 
+Event::listen('illuminate.query', function($query){
+	Log::write('info', $query);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -24,14 +29,19 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
 
   Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
 
+		View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
+
     Route::get('/', array('uses' => 'DashboardController@index'));
 
-    Route::resource('enquiries', 'EnquiriesController');
+    // TODO: better not to use resourceful routing if not all routes are implemented
     Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+    Route::resource('enquiries', 'EnquiriesController');
 
     Route::resource('services', 'ServicesController');
     Route::resource('articles', 'ArticlesController');
     Route::put('articles/publish/{articles}', array('uses' => 'ArticlesController@updatePublishedDate'));
+    Route::resource('settings', 'SettingsController');
+    // TODO: add after-filter to the update action to bust the cache & reset it
 
   });
 

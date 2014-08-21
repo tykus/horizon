@@ -12,12 +12,14 @@ class DatabaseSeeder extends Seeder {
 		Enquiry::truncate();
 		Service::truncate();
 		Article::truncate();
+		Setting::truncate();
 
 		Eloquent::unguard();
 
 		$this->call('EnquiriesTableSeeder');
 		$this->call('ServicesTableSeeder');
 		$this->call('ArticlesTableSeeder');
+		$this->call('SettingsTableSeeder');
 	}
 
 }

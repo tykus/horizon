@@ -9,10 +9,11 @@ class GoogleMapCanvas
       @infoWindow.open(@map,@marker)
 
   buildMap: ->
-    @googleLatLng = new google.maps.LatLng( @business.latitude, @business.longitude ); 
+    [longitude,latitude] = @business.location.split(",")
+    @googleLatLng = new google.maps.LatLng( longitude, latitude ); 
     mapOptions =
       zoom: 16,
-      center: @googleLatLng,
+      center: @googleLatLng, 
       panControl: false,
       zoomControl: false,
       scaleControl: true

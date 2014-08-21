@@ -3,6 +3,7 @@ class Admin
     console.log "Admin javascripts loaded"
     new Enquiries if $("#enquiries").length
     new Articles if $("#articles").length
+    new Settings if $("#settings").length
 
 $ ->
   new Admin if $("#admin").length

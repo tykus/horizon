@@ -38,7 +38,16 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                @foreach ($settings as $setting)
+                  <li>
+                    {{ HTML::linkRoute('admin.settings.edit', ucfirst($setting->key), $setting->key) }}
+                  </li>
+                @endforeach
+              </ul>
+            </li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Logout Robbie</a></li> <!-- TODO: echo this out whenever Auth is properly setup -->
           </ul>
@@ -62,7 +71,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="/admin/services"><i class="glyphicon glyphicon-cog"></i> Services</a></li>
             <li><a href="/admin/articles"><i class="glyphicon glyphicon-edit"></i> Articles</a></li>
-            <li><a href=""><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
+            <li><a href="/admin/settings/about/edit"><i class="glyphicon glyphicon-list-alt"></i> About / Bio</a></li>
             <li><a href=""><i class="glyphicon glyphicon-question-sign"></i> FAQ's</a></li>
             <li><a href=""><i class="glyphicon glyphicon-map-marker"></i> Address / Location</a></li>
           </ul>
