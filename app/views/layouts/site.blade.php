@@ -104,6 +104,7 @@
     </div>
   </footer>
 
+  <!-- Back to top link -->
   <a href="#" class="back-to-top" title="Back to top">
     Back to top 
     <i class="fa fa-chevron-up fa-inverse"></i>

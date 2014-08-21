@@ -54,7 +54,7 @@
           target = $("[name=" + (this.hash.slice(1)) + "]");
         }
         $('html,body').animate({
-          scrollTop: target.offset().top - 80
+          scrollTop: target.offset().top - 90
         }, 1000);
         return false;
       }
