@@ -3,9 +3,10 @@
 use Config;
 use Setting;
 use Validator;
+use Cache;
 
-class EloquentSettingsRepository extends DbRepository implements SettingsRepositoryInterface {	
-	
+class EloquentSettingsRepository extends DbRepository implements SettingsRepositoryInterface {
+
 	public function __construct(Setting $model)
 	{
 		$this->model = $model;
@@ -17,10 +18,11 @@ class EloquentSettingsRepository extends DbRepository implements SettingsReposit
 		return Setting::where('key', $key)->first();
 	}
 
-	// TODO: check if this can be abstracted into the parent class??? 
-	public function update($id, $data){
+	// TODO: check if this can be abstracted into the parent class???
+	public function update($id, $data) {
+
 		$setting = $this->findById($id);
-		
+
 		$rules = ['value' => 'required']; // TODO: move to somewhere else!!!!
 
 		// Validate data
@@ -31,22 +33,26 @@ class EloquentSettingsRepository extends DbRepository implements SettingsReposit
 			$result = $setting->update($data);
 		}
 
+		// Need to reset the cached settings after changing the settings
+		Cache::forget('config-settings');
+		$this->setConfig();
+
 		return $result;
 
 	}
 
 
-	public function getMenuItems() 
+	public function getMenuItems()
 	{
 		return Setting::where('on_menu', true)
-						->remember(1440, 'settings_menu') // cached for a day
-						->get(['key']); 
+						->rememberForever('settings_menu') // cached for a day
+						->get(['key']);
 	}
 
-	public function setConfig() 
+	public function setConfig()
 	{
 		$settings = Setting::where('key', '!=', 'about')
-									->remember(1440)
+									->rememberForever('config-settings')
 									->lists('value', 'key');
 
 		foreach($settings as $key => $value)
