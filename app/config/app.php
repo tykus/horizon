@@ -122,11 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-<<<<<<< HEAD
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-=======
 		'Horizon\ServiceProviders\BindingsServiceProvider',
->>>>>>> c7a3a31aa0233a8071aebf03d12d4d8d4fa7ad2d
 	),
 
 	/*
