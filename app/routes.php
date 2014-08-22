@@ -1,9 +1,9 @@
 <?php
 
-Event::listen('illuminate.query', function($query){
-	Log::write('info', $query);
+// TODO: remove this route in production
+Route::get('/debug', function(){
+  echo Carbon\Carbon::now()->toDateString();
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,7 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
 Route::get('/articles', ['uses' => 'ArticlesController@index', 'as' => 'articles_path']);
 Route::get('/articles/{articles}', ['uses' => 'ArticlesController@show', 'as' => 'article_path']);
 
-Route::get('/debug', function(){
-  echo Carbon\Carbon::now()->toDateString();
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +39,6 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
     Route::resource('articles', 'ArticlesController');
     Route::put('articles/publish/{articles}', array('uses' => 'ArticlesController@updatePublishedDate'));
     Route::resource('settings', 'SettingsController');
-    // TODO: add after-filter to the update action to bust the cache & reset it
 
   });
 
