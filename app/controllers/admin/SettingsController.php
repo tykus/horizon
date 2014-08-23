@@ -8,28 +8,28 @@ use Horizon\Repositories\SettingsRepositoryInterface;
 
 class SettingsController extends \BaseController {
 
-	protected $setting;
+  protected $setting;
 
-	public function __construct(SettingsRepositoryInterface $setting)
-	{
-		$this->setting = $setting;
-	}
+  public function __construct(SettingsRepositoryInterface $setting)
+  {
+    $this->setting = $setting;
+  }
 
-	public function edit($key)
-	{
-		$setting = $this->setting->findByKey($key);
-		return View::make('admin.settings.edit', compact('setting'));
-	}
+  public function edit($key)
+  {
+    $setting = $this->setting->findByKey($key);
+    return View::make('admin.settings.edit', compact('setting'));
+  }
 
-	public function update($id)
-	{
-		// try/catch... with Validator messages
-		if ($this->setting->update($id, Input::get()) )
-		{
-			return Response::json(null, 204); // TODO: allow from non-AJAX request
-		}
+  public function update($id)
+  {
+    dd( Input::get() );
 
+    if ($this->setting->update($id, Input::get()) )
+    {
+      return Response::json(null, 204); // TODO: allow from non-AJAX request
+    }
 
-	}
+  }
 
 }
