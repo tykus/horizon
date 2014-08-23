@@ -43,8 +43,11 @@
           <div class="alert alert-danger">
             {{ Session::get('errors') }}
           </div>
+        @elseif (Session::has('info'))
+          <div class="alert alert-info">
+            {{ Session::get('info') }}</h2>
+          </div>
         @endif
-
       </form>
 
 

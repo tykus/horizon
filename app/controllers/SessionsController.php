@@ -28,6 +28,7 @@ class SessionsController extends \BaseController {
 	public function destroy()
 	{
 		Auth::logout();
+		Session::flash('info', 'Logged out successfully');
 		return Redirect::route('login_path');
 	}
 
