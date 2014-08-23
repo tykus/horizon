@@ -37,7 +37,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li>{{ HTML::linkRoute('dashboard_path', 'Dashboard') }}</li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -51,9 +51,9 @@
             <li><a href="#">Profile</a></li>
             <li><a href="#">Logout Robbie</a></li> <!-- TODO: echo this out whenever Auth is properly setup -->
           </ul>
-          <form class="navbar-form navbar-right">
+          <!-- <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -86,6 +86,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           @yield('content') {{-- the current content --}}
+
+          <?php var_dump( Request::segments() ); ?>
 
         </div>
       </div>
