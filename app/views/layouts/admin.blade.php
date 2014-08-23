@@ -50,7 +50,7 @@
             </li>
             <li><a href="#">Profile</a></li>
             <li>
-              {{ HTML::linkRoute('logout_path', 'Logout ' . Auth::user()->username) }}
+              {{ HTML::linkRoute('logout_path', 'Logout ' . Auth::user()->name) }}
             </li>
           </ul>
           <!-- <form class="navbar-form navbar-right">

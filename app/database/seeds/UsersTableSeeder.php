@@ -5,9 +5,10 @@ class UsersTableSeeder extends Seeder {
 	public function run()
 	{
 		User::create([
-      'username' => 'brian',
+      'name' => 'Brian',
       'email' => 'brian@tykus.ie',
-      'password' => Hash::make('8251389')
+      'password' => Hash::make('8251389'),
+      'role' => 'admin'
     ]);
 	}
 

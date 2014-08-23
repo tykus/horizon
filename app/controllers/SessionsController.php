@@ -17,11 +17,11 @@ class SessionsController extends \BaseController {
 	public function store()
 	{
 		if (Auth::attempt(Input::only('email', 'password'))) {
-			return Auth::user()->username;
+			return Redirect::route('dashboard_path');
 		}
 		else
 		{
-			return "failed";
+			return Redirect::back()->withInput();
 		}
 	}
 
