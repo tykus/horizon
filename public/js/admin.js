@@ -321,8 +321,18 @@
 
     Settings.prototype.bindEvents = function() {
       var _this = this;
-      return this.form.submit(function(e) {
+      this.form.submit(function(e) {
         return _this.submitForm(e);
+      });
+      return this.attachRichTextEditor();
+    };
+
+    Settings.prototype.attachRichTextEditor = function() {
+      return $('textarea[name=value]').summernote({
+        height: 300,
+        codemirror: {
+          theme: 'monokai'
+        }
       });
     };
 

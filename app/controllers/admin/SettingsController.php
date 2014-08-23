@@ -29,7 +29,7 @@ class SettingsController extends \BaseController {
 			return Response::json(null, 204); // TODO: allow from non-AJAX request
 		}
 
-		
+
 	}
 
 }

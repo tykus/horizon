@@ -7,60 +7,60 @@ use Cache;
 
 class EloquentSettingsRepository extends DbRepository implements SettingsRepositoryInterface {
 
-	public function __construct(Setting $model)
-	{
-		$this->model = $model;
-	}
+  public function __construct(Setting $model)
+  {
+    $this->model = $model;
+  }
 
 
-	public function findByKey($key)
-	{
-		return Setting::where('key', $key)->first();
-	}
+  public function findByKey($key)
+  {
+    return Setting::where('key', $key)->first();
+  }
 
-	// TODO: check if this can be abstracted into the parent class???
-	public function update($id, $data) {
+  // TODO: check if this can be abstracted into the parent class???
+  public function update($id, $data) {
 
-		$setting = $this->findById($id);
+    $setting = $this->findById($id);
 
-		$rules = ['value' => 'required']; // TODO: move to somewhere else!!!!
+    $rules = ['value' => 'required']; // TODO: move to somewhere else!!!!
 
-		// Validate data
-		$validate = Validator::make($data, $rules);
+    // Validate data
+    $validate = Validator::make($data, $rules);
 
-		if ($validate->passes())
-		{
-			$result = $setting->update($data);
-		}
+    if ($validate->passes())
+    {
+      $result = $setting->update($data);
+    }
 
-		// Need to reset the cached settings after changing the settings
-		Cache::forget('config-settings');
-		$this->setConfig();
+    // Need to reset the cached settings after changing the settings
+    Cache::forget('config-settings');
+    $this->setConfig();
 
-		return $result;
+    return $result;
 
-	}
+  }
 
 
-	public function getMenuItems()
-	{
-		return Setting::where('on_menu', true)
-						->rememberForever('settings_menu') // cached for a day
-						->get(['key']);
-	}
+  public function getMenuItems()
+  {
+    return Setting::where('on_menu', true)
+            ->rememberForever('settings_menu') // cached for a day
+            ->get(['key']);
+  }
 
-	public function setConfig()
-	{
-		$settings = Setting::where('key', '!=', 'about')
-									->rememberForever('config-settings')
-									->lists('value', 'key');
+  public function setConfig()
+  {
+    $settings = Setting::where('key', '!=', 'about')
+                  ->rememberForever('config-settings')
+                  ->lists('value', 'key');
 
-		foreach($settings as $key => $value)
-			{
-				Config::set("site.business.$key", $value);
-			}
+    foreach($settings as $key => $value)
+      {
+        Config::set("site.business.$key", $value);
+      }
 
-	}
+  }
 
 
 }
