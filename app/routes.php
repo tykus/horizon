@@ -15,6 +15,10 @@ Route::get('/', ['uses'=>'HomeController@index', 'as'=>'home_path']);
 Route::get('/articles', ['uses'=>'ArticlesController@index', 'as'=>'articles_path']);
 Route::get('/articles/{articles}', ['uses'=>'ArticlesController@show', 'as'=>'article_path']);
 
+// Authentication Routes
+Route::get('/login', ['as'=>'login_path', 'uses'=>'SessionsController@create']);
+Route::get('/logout', ['as'=>'logout_path', 'uses'=>'SessionsController@destroy']);
+Route::resource('sessions', 'SessionsController');
 
 
 /*
