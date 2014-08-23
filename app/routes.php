@@ -29,19 +29,28 @@ Route::resource('sessions', 'SessionsController');
 
 Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'), function(){
 
+  # Getting the Settings menu link items
 	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
+  # Dashboard
   Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
-  // TODO: better not to use resourceful routing if not all routes are implemented
+  # Enquiries
   Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
   Route::resource('enquiries', 'EnquiriesController');
 
+  # Services
   Route::resource('services', 'ServicesController');
-  Route::resource('articles', 'ArticlesController');
+
+  # Articles
   Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
+  Route::resource('articles', 'ArticlesController');
+
+  # Settings
   Route::resource('settings', 'SettingsController');
 
+  # Users
+  Route::resource('users', 'UsersController');
 });
 
 

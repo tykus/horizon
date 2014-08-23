@@ -77,7 +77,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="" class="disabled"><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
-            <li><a href="" class="disabled"><i class="glyphicon glyphicon-user"></i> Users Admin</a></li>
+            <li>{{ HTML::clever_link("admin/users", '<i class="glyphicon glyphicon-user"></i> Users Admin') }}</li>
             <li><a href="" class="disabled"><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
           </ul>
 
