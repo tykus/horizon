@@ -49,7 +49,9 @@
               </ul>
             </li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout Robbie</a></li> <!-- TODO: echo this out whenever Auth is properly setup -->
+            <li>
+              {{ HTML::linkRoute('logout_path', 'Logout ' . Auth::user()->username) }}
+            </li>
           </ul>
           <!-- <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

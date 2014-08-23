@@ -27,24 +27,20 @@ Route::resource('sessions', 'SessionsController');
 |--------------------------------------------------------------------------
 */
 
-Route::group(array('namespace'=>'App\\Controllers'), function(){
+Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'), function(){
 
-  Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
+	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
-		View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
+  Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
-    Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
+  // TODO: better not to use resourceful routing if not all routes are implemented
+  Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
+  Route::resource('enquiries', 'EnquiriesController');
 
-    // TODO: better not to use resourceful routing if not all routes are implemented
-    Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
-    Route::resource('enquiries', 'EnquiriesController');
-
-    Route::resource('services', 'ServicesController');
-    Route::resource('articles', 'ArticlesController');
-    Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
-    Route::resource('settings', 'SettingsController');
-
-  });
+  Route::resource('services', 'ServicesController');
+  Route::resource('articles', 'ArticlesController');
+  Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
+  Route::resource('settings', 'SettingsController');
 
 });
 
