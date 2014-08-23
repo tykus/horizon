@@ -38,9 +38,18 @@
           </label>
         </div> -->
         {{ Form::submit('Sign In', ['class'=>'btn btn-lg btn-primary btn-block']) }}
+
+        @if (Session::has('errors'))
+          <div class="alert alert-danger">
+            {{ Session::get('errors') }}
+          </div>
+        @endif
+
       </form>
 
-    </div>f
+
+
+    </div>
 
   </body>
 </html>

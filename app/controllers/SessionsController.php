@@ -21,7 +21,7 @@ class SessionsController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->withInput();
+			return Redirect::back()->withInput()->with('errors', 'Authentication failed, please try again');
 		}
 	}
 
