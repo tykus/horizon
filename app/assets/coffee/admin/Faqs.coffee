@@ -11,18 +11,6 @@ class Faqs
     $("#sortable").on "sortupdate", (event, ui) =>
       @updateSortOrder()
     $("#sortable").disableSelection()
-    @form.submit (e) => @updateContent(e)
-
-  updateContent: (e) ->
-    e.preventDefault()
-    @spinner.show()
-    $.ajax
-      type: @form.attr('method')
-      url: @form.attr('action')
-      data: @form.serialize()
-      success: (data) =>
-        @spinner.hide()
-        @form.find('button').text("Done")
 
   updateSortOrder: ($elem) ->
     @displayUpdateSort( $('#success') )
@@ -47,6 +35,6 @@ class Faqs
     $helper = tr.clone()
     $helper.children().each (index) ->
       $(this).width($originals.eq(index).width())
-             .css("background-color", "#fc0")
+             .css("background-color", "#9cf")
              .css("border-bottom", "1px solid #dddddd")
     return $helper

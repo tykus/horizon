@@ -4,8 +4,6 @@
 
 	<h2 class="page-heading">Frequently Asked Questions</h2>
 
-	{{ HTML::linkRoute('admin.faqs.create', 'New FAQ', ['class'=>'btn btn-default']) }}
-
 	<table class="table table-striped" id="faqs">
 		<thead>
 			<tr>
@@ -26,6 +24,7 @@
 					  <ul class="dropdown-menu" role="menu">
 					    <li>{{ HTML::linkRoute('admin.faqs.show', 'Show', ['id'=>$faq->id]) }}</li>
 					    <li>{{ HTML::linkRoute('admin.faqs.edit', 'Edit', ['id'=>$faq->id]) }}</li>
+					    <li>{{ HTML::linkRoute('admin.faqs.destroy', 'Delete', ['id'=>$faq->id], ['data-method'=>'delete']) }}</li>
 					  </ul>
 					</div>
 				</td>
@@ -33,11 +32,21 @@
 		@endforeach
 		</tbody>
 	</table>
+
+
+	<div class="col-lg-12">
+		{{ $faqs->links() }}
+	</div>
+
+	<div class="col-lg-12">
+		{{ HTML::linkRoute('admin.faqs.create', 'New FAQ', null, ['class'=>'btn btn-default']) }}
+	</div>
 @stop
 
 @section('sidebar')
 	<div class="alert alert-info">
-		This content is editable in place.
+		You can change the order that the FAQs will appear on the website by dragging and dropping 
+		the questions into the order you want in the table on the right.
 	</div>
 @stop
 

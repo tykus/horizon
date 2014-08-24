@@ -14,10 +14,12 @@
 		    <button type="submit" class="btn btn-default">
 		    	Update <i class="fa fa-spinner fa-spin" style="display:none"></i>
 		    </button>
+				{{ HTML::linkRoute('admin.faqs.index', 'Back to index (cancel)', null, ['class'=>'btn btn-default']) }}
 		  </div>
 		</div>
 
 		{{ Form::close() }}
+
 	</div>
 	
 @stop

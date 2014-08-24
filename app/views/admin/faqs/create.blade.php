@@ -14,12 +14,7 @@
 		    <button type="submit" class="btn btn-default">
 		    	Add <i class="fa fa-spinner fa-spin" style="display:none"></i>
 		    </button>
-		  </div>
-		</div>
-
-		<div class="form-group">
-		  <div class="col-sm-10 col-sm-offset-2">
-				{{ HTML::linkRoute('admin.faqs.index', 'Back to index', null, ['class'=>'btn btn-default']) }}
+				{{ HTML::linkRoute('admin.faqs.index', 'Back to index (cancel)', null, ['class'=>'btn btn-default']) }}
 		  </div>
 		</div>
 

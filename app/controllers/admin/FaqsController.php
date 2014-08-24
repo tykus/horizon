@@ -4,20 +4,25 @@ use \Faq;
 use \View;
 use \Input;
 use \Response;
+use \Redirect;
 
 class FaqsController extends \BaseController {
 
 	public function index()
 	{
-		$faqs = Faq::orderBy('sort_order', 'asc')->get();
-
+		$faqs = Faq::orderBy('sort_order', 'asc')->paginate(10);
 		return View::make('admin.faqs.index', compact('faqs'));
+	}
+
+	public function show($id)
+	{
+		$faq = Faq::findOrFail($id);
+		return View::make('admin.faqs.show', compact('faq'));
 	}
 	
 	public function edit($id)
 	{
 		$faq = Faq::find($id);
-
 		return View::make('admin.faqs.edit', compact('faq'));
 	}
 
@@ -25,8 +30,7 @@ class FaqsController extends \BaseController {
 	{
 		$faq = FAQ::find($id);
 		$faq->update(Input::get());
-		return Response::json($faq->toArray(), 200);
-		// return Redirect::route('admin.faqs.index');
+		return Redirect::route('admin.faqs.index');
 	}
 
 	public function create()
@@ -38,10 +42,10 @@ class FaqsController extends \BaseController {
 	public function store()
 	{
 		$faq = Faq::create(Input::get());
-		return Response::json($faq->toArray(), 200);
+		return Redirect::route('admin.faqs.index');
 	}
 
-	public function delete($id)
+	public function destroy($id)
 	{
 		Faq::find($id)->delete();
 		return Response::json(null, 204);
@@ -57,7 +61,6 @@ class FaqsController extends \BaseController {
 			$faq->sort_order = $position;
 			$faq->save();
 		}
-
 		return Response::json(['message'=>'ok', 200]);
 	}
 
