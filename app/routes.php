@@ -1,43 +1,63 @@
 <?php
 
-Event::listen('illuminate.query', function($query){
-	Log::write('info', $query);
+// TODO: remove this route in production
+Route::get('/debug', function(){
+  echo Carbon\Carbon::now()->toDateString();
 });
-
 
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
 Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
 
-// ADMIN ROUTES
-Route::group(array('namespace'=>'App\\Controllers'), function(){
+// Articles
+Route::get('/articles', ['uses'=>'ArticlesController@index', 'as'=>'articles_path']);
+Route::get('/articles/{articles}', ['uses'=>'ArticlesController@show', 'as'=>'article_path']);
 
-  Route::group(array('namespace'=>'Admin', 'prefix'=>'admin'), function(){
+// Authentication Routes
+Route::get('/login', ['as'=>'login_path', 'uses'=>'SessionsController@create']);
+Route::get('/logout', ['as'=>'logout_path', 'uses'=>'SessionsController@destroy']);
+Route::resource('sessions', 'SessionsController');
 
-		View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
-    Route::get('/', array('uses' => 'DashboardController@index'));
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
 
-    // TODO: better not to use resourceful routing if not all routes are implemented
-    Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
-    Route::resource('enquiries', 'EnquiriesController');
-    Route::post('faqs/sort', array('uses' => 'FaqsController@sort'));
-    Route::resource('faqs', 'FaqsController');
+Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'), function(){
 
-    Route::resource('services', 'ServicesController');
-    Route::resource('settings', 'SettingsController');
-    // TODO: add after-filter to the update action to bust the cache & reset it
+	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
-  });
+  Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+  Route::resource('enquiries', 'EnquiriesController');
+  Route::post('faqs/sort', array('uses' => 'FaqsController@sort'));
+  Route::resource('faqs', 'FaqsController');
+  Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
+  Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
+  Route::resource('enquiries', 'EnquiriesController');
+
+  Route::resource('services', 'ServicesController');
+  Route::resource('articles', 'ArticlesController');
+  Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
+  Route::resource('settings', 'SettingsController');
+
+});
+
+
+HTML::macro('clever_link', function($route, $text) {
+  if( Request::path() == $route ) {
+    $active = " class = 'active'";
+  }
+  else {
+    $active = '';
+  }
+
+  return '<li' . $active . '>' . html_entity_decode(link_to($route, $text)) . '</li>';
 });

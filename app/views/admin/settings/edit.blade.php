@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-	
+
 	<div id="settings" class="row">
 		<div class="col-lg-12">
-			
+
 		<h2 class="page-heading">Update <u>{{ ucfirst($setting->key) }}</u> Setting</h2>
 		{{ Form::model($setting, [
 			'route'=>['admin.settings.update', $setting->id],
@@ -44,3 +44,5 @@
 	</div>
 
 @stop
+
+@include('common.summernote')

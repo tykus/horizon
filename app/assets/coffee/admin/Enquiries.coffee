@@ -18,10 +18,7 @@ class Enquiries
     @enquiryReplyForm.submit (e) => @sendReply(e)
 
   selectAllClicked: ->
-    if @checkboxSelectAll.prop('checked')
-      @selectAllCheckboxes()
-    else
-      @unselectAllCheckboxes()
+    @allCheckboxes.prop('checked', @checkboxSelectAll.prop('checked'))
 
   checkboxClicked: () ->
     if @allCheckboxes.not(':checked').length

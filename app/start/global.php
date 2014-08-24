@@ -103,7 +103,7 @@ HTML::macro('linkImage', function($url, $url_options = [], $image, $image_option
 | Setting Runtime Configuration
 |--------------------------------------------------------------------------
 |
-| Getting configuration from database (cached query) at runtime from the 
+| Getting configuration from database (cached query) at runtime from the
 | EloquentSettingsRepository
 |
 */

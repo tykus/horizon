@@ -78,7 +78,7 @@
           <div class="col-lg-4 service">
             <img class="img-circle" src="{{ $service->image_path }}">
             <h3>{{{ $service->title }}}</h3>
-            <p>\{{{ $service->introduction }}}</p>
+            <p>{{{ $service->introduction }}}</p>
             <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
             </p>
           </div>
