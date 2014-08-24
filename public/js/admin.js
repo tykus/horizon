@@ -185,7 +185,19 @@
       $("#sortable").on("sortupdate", function(event, ui) {
         return _this.updateSortOrder();
       });
-      return $("#sortable").disableSelection();
+      $("#sortable").disableSelection();
+      return $('.delete-resource').submit(function(e) {
+        var form;
+        form = $(e.target);
+        e.preventDefault();
+        return $.ajax({
+          type: 'delete',
+          url: form.attr('action'),
+          success: function(data) {
+            return form.closest('tr').fadeOut(500);
+          }
+        });
+      });
     };
 
     Faqs.prototype.updateSortOrder = function($elem) {

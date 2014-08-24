@@ -11,6 +11,15 @@ class Faqs
     $("#sortable").on "sortupdate", (event, ui) =>
       @updateSortOrder()
     $("#sortable").disableSelection()
+    $('.delete-resource').submit (e) ->
+      form = $(e.target)
+      e.preventDefault()
+      $.ajax
+        type: 'delete'
+        url: form.attr('action')
+        success: (data) ->
+          form.closest('tr').fadeOut(500)
+
 
   updateSortOrder: ($elem) ->
     @displayUpdateSort( $('#success') )
