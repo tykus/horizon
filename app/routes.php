@@ -31,6 +31,7 @@ Route::group(array('namespace'=>'App\\Controllers'), function(){
     // TODO: better not to use resourceful routing if not all routes are implemented
     Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
     Route::resource('enquiries', 'EnquiriesController');
+    Route::post('faqs/sort', array('uses' => 'FaqsController@sort'));
     Route::resource('faqs', 'FaqsController');
 
     Route::resource('services', 'ServicesController');
