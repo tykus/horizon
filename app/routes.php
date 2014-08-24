@@ -50,6 +50,7 @@ Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'b
   Route::resource('settings', 'SettingsController');
 
   # Users
+  Route::get('my-profile', ['as'=>'my-profile', 'uses'=>'UsersController@edit']);
   Route::resource('users', 'UsersController');
 });
 

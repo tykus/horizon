@@ -1,0 +1,43 @@
+@extends('layouts.admin')
+
+@section('content')
+
+  <h1 class="page-heading">Edit Profile</h1>
+
+  {{ Form::model($user, ['route'=>'admin.users.update', 'method'=>'PUT', 'class'=>'form-horizontal']) }}
+
+  <div class="form-group">
+    {{Form::label('name', 'Name', array('class'=>'col-sm-2 control-label')) }}
+    <div class="col-sm-10">
+      {{ Form::text('name', e($user->name), array('class'=>'form-control')) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{Form::label('email', 'Email', array('class'=>'col-sm-2 control-label')) }}
+    <div class="col-sm-10">
+      {{ Form::email('email', e($user->email), array('class'=>'form-control')) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{Form::label('password', 'Password', array('class'=>'col-sm-2 control-label')) }}
+    <div class="col-sm-10">
+      {{ Form::password('password', null, array('class'=>'form-control')) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{Form::label('password_confirmation', 'Confirm Password', array('class'=>'col-sm-2 control-label')) }}
+    <div class="col-sm-10">
+      {{ Form::password('password_confirmation', null, array('class'=>'form-control')) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      {{ Form::submit('Update Profile', array('class'=>'btn btn-default')) }}
+    </div>
+  </div>
+  {{ Form::close() }}
+@stop

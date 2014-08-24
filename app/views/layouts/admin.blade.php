@@ -48,7 +48,7 @@
                 @endforeach
               </ul>
             </li>
-            <li><a href="#">Profile</a></li>
+            <li>{{ HTML::linkRoute('my-profile', 'Profile') }}</li>
             <li>
               {{ HTML::linkRoute('logout_path', 'Logout ' . Auth::user()->name) }}
             </li>

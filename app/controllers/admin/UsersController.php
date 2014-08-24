@@ -1,9 +1,12 @@
 <?php namespace App\Controllers\Admin;
 
+use \Hash;
 use \User;
 use \Input;
 use \View;
+use \Auth;
 use \Redirect;
+
 
 class UsersController extends \BaseController {
 
@@ -13,18 +16,29 @@ class UsersController extends \BaseController {
     return View::make('admin.users.index', compact('users'));
   }
 
-  public function edit($id)
+  public function edit()
   {
-    // Make this accessible only to the current Auth::user()
+    $id = Auth::user()->id;
     $user = User::find($id);
     return View::make('admin.users.edit', compact('user'));
   }
 
-  public function update($id)
+  public function update()
   {
+    // TODO: validation
+    $id = Auth::user()->id;
     $user = User::find($id);
-    # Update the user
-    return Redirect::route('admin.users.index');
+    $user->name = Input::get('name');
+    $user->email = Input::get('email');
+    if ( ( Input::get('password') != '' ) && ( Input::get('password') == Input::get('password_confirmation') ) )
+    {
+      $user->password = Hash::make( Input::get('password') );
+    }
+
+    if ( $user->save() )
+    {
+      return Redirect::route('admin.users.index');
+    }
   }
 
   public function create()
