@@ -89,8 +89,6 @@
 
           @yield('content') {{-- the current content --}}
 
-          <?php var_dump( Request::segments() ); ?>
-
         </div>
       </div>
     </div>

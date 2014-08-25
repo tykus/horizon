@@ -25,7 +25,7 @@ class UsersController extends \BaseController {
 
   public function update()
   {
-    // TODO: validation
+    // TODO: validation & refactor into a UserRepository
     $id = Auth::user()->id;
     $user = User::find($id);
     $user->name = Input::get('name');
@@ -43,8 +43,16 @@ class UsersController extends \BaseController {
 
   public function create()
   {
-    $user = new User;
-    return View::make('admin.users.create', compact('user'));
+    if ( Auth::user()->isAdmin() )
+    {
+      $user = new User;
+      return View::make('admin.users.create', compact('user'));
+    }
+    else
+    {
+      return Redirect::route('admin.users.index');
+    }
+
   }
 
   public function store()

@@ -28,5 +28,5 @@
       @endforeach
     </tbody>
   </table>
-
+  {{ HTML::linkRoute('admin.users.create', 'New User', null, ['class'=>'btn btn-default']) }}
 @stop
