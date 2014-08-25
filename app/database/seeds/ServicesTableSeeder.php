@@ -9,28 +9,34 @@ class ServicesTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
+    $title = 'Counselling & Psychotherapy';
     Service::create([
-      'title' => 'Counselling & Psychotherapy',
+      'title' => $title,
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
       'image_path' => '/img/depression.jpg',
-      'sort_order' => 1
+      'sort_order' => 1,
+      'slug' => Str::slug($title)
     ]);
 
+    $title = 'Dual Diagnosis';
     Service::create([
-      'title' => 'Dual Diagnosis',
+      'title' => $title,
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
       'image_path' => '/img/addiction.jpg',
-      'sort_order' => 2
+      'sort_order' => 2,
+      'slug' => Str::slug($title)
     ]);
 
+    $title = 'Young Adults';
 		Service::create([
-      'title' => 'Young Adults',
+      'title' => $title,
       'description' => $faker->paragraph(20),
       'introduction' => $faker->paragraph(5),
       'image_path' => '/img/anxiety.jpg',
-      'sort_order' => 3
+      'sort_order' => 3,
+      'slug' => Str::slug($title)
 		]);
 
 	}
