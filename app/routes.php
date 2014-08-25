@@ -17,12 +17,17 @@ Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
 // Articles
 Route::get('/articles', ['uses'=>'ArticlesController@index', 'as'=>'articles_path']);
 Route::get('/articles/{articles}', ['uses'=>'ArticlesController@show', 'as'=>'article_path']);
+Route::get('/services/{services}', ['uses'=>'ServicesController@show', 'as'=>'service_path']);
 
 // Authentication Routes
 Route::get('/login', ['as'=>'login_path', 'uses'=>'SessionsController@create']);
 Route::get('/logout', ['as'=>'logout_path', 'uses'=>'SessionsController@destroy']);
 Route::resource('sessions', 'SessionsController');
 
+App::missing(function($exception)
+{
+    return Response::view('errors.missing', array(), 404);
+});
 
 /*
 |--------------------------------------------------------------------------
