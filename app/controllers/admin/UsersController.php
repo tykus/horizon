@@ -66,14 +66,10 @@ class UsersController extends \BaseController {
 
   public function store()
   {
-    $user = User::create([
-      'email'=>Input::get('email'),
-      'name'=>Input::get('name'),
-      'password'=>Input::get('password'),
-      'role'=>Input::get('role')
-    ]);
+    $user = User::create(
+      Input::only('email','name','password','role')
+    );
 
-    dd($user);
     Session::flash('info', 'New user was successfully created.');
     return Redirect::route('admin.users.index');
   }
