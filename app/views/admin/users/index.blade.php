@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+]@extends('layouts.admin')
 
 @section('content')
 
@@ -28,5 +28,7 @@
       @endforeach
     </tbody>
   </table>
-  {{ HTML::linkRoute('admin.users.create', 'New User', null, ['class'=>'btn btn-default']) }}
+  @if (Auth::user()->isAdmin())
+    {{ HTML::linkRoute('admin.users.create', 'New User', null, ['class'=>'btn btn-default']) }}
+  @endif
 @stop

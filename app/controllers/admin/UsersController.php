@@ -6,6 +6,8 @@ use \Input;
 use \View;
 use \Auth;
 use \Redirect;
+use \Response;
+use \Session;
 
 
 class UsersController extends \BaseController {
@@ -30,7 +32,13 @@ class UsersController extends \BaseController {
     $user = User::find($id);
     $user->name = Input::get('name');
     $user->email = Input::get('email');
-    if ( ( Input::get('password') != '' ) && ( Input::get('password') == Input::get('password_confirmation') ) )
+
+    if ( Auth::user()->isAdmin() )
+    {
+      $user->role = Input::get('role');
+    }
+
+    if ( ( Input::get('password') != '' ) && ( Input::get('password') == Input::get('password-confirmation') ) )
     {
       $user->password = Hash::make( Input::get('password') );
     }
@@ -50,6 +58,7 @@ class UsersController extends \BaseController {
     }
     else
     {
+      Session::flash('error', 'You do not have permission to access that resource.');
       return Redirect::route('admin.users.index');
     }
 
@@ -57,10 +66,33 @@ class UsersController extends \BaseController {
 
   public function store()
   {
-    $user = User::create(
-      Input::only('email', 'name', 'password')
-    );
+    $user = User::create([
+      'email'=>Input::get('email'),
+      'name'=>Input::get('name'),
+      'password'=>Input::get('password'),
+      'role'=>Input::get('role')
+    ]);
+
+    dd($user);
+    Session::flash('info', 'New user was successfully created.');
     return Redirect::route('admin.users.index');
+  }
+
+  public function checkEmailExists()
+  {
+    $user = User::where('email', Input::get('email'))->first();
+
+    if ($user)
+    {
+      $data = ['match_found' => true, 'message' => 'User email already exists'];
+    }
+    else
+    {
+      $data = ['match_found' => false, 'message' => 'User email available'];
+    }
+
+    return Response::json($data, 200);
+
   }
 
 }

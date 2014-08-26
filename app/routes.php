@@ -27,23 +27,23 @@ Route::resource('sessions', 'SessionsController');
 |--------------------------------------------------------------------------
 */
 
-Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'), function(){
+Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'], function(){
 
   # Getting the Settings menu link items
 	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
   # Dashboard
-  Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
+  Route::get('/', ['as'=>'dashboard_path', 'uses'=>'DashboardController@index']);
 
   # Enquiries
-  Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
+  Route::post('enquiries/reply', ['uses'=>'EnquiriesController@reply']);
   Route::resource('enquiries', 'EnquiriesController');
 
   # Services
   Route::resource('services', 'ServicesController');
 
   # Articles
-  Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
+  Route::put('articles/publish/{articles}', ['uses'=>'ArticlesController@updatePublishedDate']);
   Route::resource('articles', 'ArticlesController');
 
   # Settings
@@ -51,6 +51,7 @@ Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'b
 
   # Users
   Route::get('my-profile', ['as'=>'my-profile', 'uses'=>'UsersController@edit']);
+  Route::post('/users/checkEmailExists', ['uses'=>'UsersController@checkEmailExists']);
   Route::resource('users', 'UsersController');
 });
 

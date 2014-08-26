@@ -18,4 +18,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return Auth::user()->role == 'admin';
   }
 
+  public function setPassword($value)
+  {
+    return Hash::make($value);
+  }
+
 }
