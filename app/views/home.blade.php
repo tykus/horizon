@@ -68,7 +68,7 @@
 
   <!-- Page Content -->
   <div id="services" class="content-services">
-  @include('services._home')
+    @include('services._home')
   </div>
 
   <div id="about" class="content-about">

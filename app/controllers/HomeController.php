@@ -7,7 +7,7 @@ class HomeController extends BaseController {
 	{
 		// TODO create a Repository / ServiceProvider to get all of this data
 		$about = Setting::where('key','about')->first();
-		$services = Service::all();
+		$services = Service::sorted();
 		return View::make('home', compact('services', 'about'));
 	}
 
