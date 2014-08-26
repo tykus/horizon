@@ -41,11 +41,11 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#location">Location</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#location">Location</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -68,26 +68,7 @@
 
   <!-- Page Content -->
   <div id="services" class="content-services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="section-heading">Services</h1>
-
-          @foreach($services as $service)
-
-          <div class="col-lg-4 service">
-            <img class="img-circle" src="{{ $service->image_path }}">
-            <h3>{{{ $service->title }}}</h3>
-            <p>{{{ $service->introduction }}}</p>
-            <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
-            </p>
-          </div>
-
-          @endforeach
-
-        </div>
-      </div>
-    </div>
+  @include('services._home')
   </div>
 
   <div id="about" class="content-about">
