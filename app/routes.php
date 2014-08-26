@@ -11,7 +11,10 @@ Route::get('/debug', function(){
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', ['uses'=>'HomeController@index', 'as'=>'home_path']);
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
+Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
+
+// Articles
 Route::get('/articles', ['uses'=>'ArticlesController@index', 'as'=>'articles_path']);
 Route::get('/articles/{articles}', ['uses'=>'ArticlesController@show', 'as'=>'article_path']);
 
@@ -38,6 +41,9 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   # Enquiries
   Route::post('enquiries/reply', ['uses'=>'EnquiriesController@reply']);
   Route::resource('enquiries', 'EnquiriesController');
+  Route::post('faqs/sort', array('uses' => 'FaqsController@sort'));
+  Route::resource('faqs', 'FaqsController');
+  Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
   # Services
   Route::resource('services', 'ServicesController');

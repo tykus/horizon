@@ -1,0 +1,27 @@
+#faqs {
+
+	div.panel-wrapper {
+		padding-top: 20px;
+	}
+
+	div.panel-heading {
+		background-color: $horizon-blue;
+		border-bottom: 1px solid $horizon-blue;
+		color: $horizon-white;
+	}
+
+	div.panel {
+		margin-bottom: 50px;
+	}
+
+	div.panel-info {
+		border-color: $horizon-blue;
+	}
+	
+	padding-top: 100px;
+
+	.page-heading {
+		font-weight: 700;
+		margin-bottom: 50px;
+	}
+}
