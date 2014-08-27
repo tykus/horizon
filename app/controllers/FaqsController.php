@@ -10,9 +10,9 @@ class FaqsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$faqs = Faq::all();
+		$faqs = Faq::sorted()->get();
 
-		return View::make('faqs.index', compact('faqs'));
+		return View::make('site.faqs.index', compact('faqs'));
 	}
 
 }

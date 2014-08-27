@@ -25,5 +25,5 @@
 @stop
 
 @section('scripts')
-	{{ @include('admin.common.summernote') }}
+	@include('admin.common.summernote')
 @stop

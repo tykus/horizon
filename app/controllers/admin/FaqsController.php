@@ -10,7 +10,7 @@ class FaqsController extends \BaseController {
 
 	public function index()
 	{
-		$faqs = Faq::orderBy('sort_order', 'asc')->paginate(10);
+		$faqs = Faq::sorted()->paginate(10);
 		return View::make('admin.faqs.index', compact('faqs'));
 	}
 
@@ -19,7 +19,7 @@ class FaqsController extends \BaseController {
 		$faq = Faq::findOrFail($id);
 		return View::make('admin.faqs.show', compact('faq'));
 	}
-	
+
 	public function edit($id)
 	{
 		$faq = Faq::find($id);
