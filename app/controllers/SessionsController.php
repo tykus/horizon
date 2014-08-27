@@ -10,7 +10,7 @@ class SessionsController extends \BaseController {
 		}
 		else
 		{
-			return View::make('sessions.create');
+			return View::make('site.sessions.create');
 		}
 	}
 

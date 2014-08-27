@@ -11,7 +11,7 @@
         <th></th>
       </tr>
       @foreach($services as $service)
-        <tr id="faq-{{ $faq->id }}">
+        <tr id="service-{{ $service->id }}">
           <td>{{ HTML::image($service->image_path, null, ['class'=>'img-thumbnail', 'width'=>'80', 'height'=>'80']) }}</td>
           <td>{{{ $service->title }}}</td>
           <td>{{{ Str::limit($service->introduction, 40) }}}</td>

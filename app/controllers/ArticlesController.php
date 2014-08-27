@@ -11,7 +11,7 @@ class ArticlesController extends \BaseController {
 	public function index()
 	{
 		$articles = Article::latestPublished()->paginate(3);
-		return View::make('articles.index', compact('articles'));
+		return View::make('site.articles.index', compact('articles'));
 	}
 
 	/**
@@ -27,7 +27,7 @@ class ArticlesController extends \BaseController {
 
 		if ($article)
 		{
-			return View::make('articles.show', compact('article'));
+			return View::make('site.articles.show', compact('article'));
 		}
 		else
 		{
