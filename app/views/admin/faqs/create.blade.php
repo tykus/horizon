@@ -4,7 +4,7 @@
 
 	<div id="faqs">
 	  <h1 class="page-header">New FAQ</h1>
-		
+
 		{{ Form::model($faq, ['route'=>'admin.faqs.store', 'method'=>'POST', 'class'=>'form-horizontal', 'id'=>'faq-form']) }}
 
 		@include('admin.faqs._form')
@@ -24,5 +24,5 @@
 @stop
 
 @section('scripts')
-	{{-- @include('common.summernote') --}}
+	{{ @include('admin.common.summernote') --}}
 @stop

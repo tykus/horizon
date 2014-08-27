@@ -45,4 +45,4 @@
 
 @stop
 
-@include('common.summernote')
+@include('admin.common.summernote')
