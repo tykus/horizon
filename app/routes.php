@@ -5,8 +5,11 @@
 |--------------------------------------------------------------------------
 */
 
-// Home page
+// View Composers
+View::composer('layouts.site', 'Horizon\Composers\SiteLayoutComposer');
 View::composer('site.home', 'Horizon\Composers\HomeViewComposer');
+
+// Home page
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
 Route::get('/terms', ['uses' => 'HomeController@terms', 'as' => 'terms_path']);
 Route::get('/privacy', ['uses' => 'HomeController@privacy', 'as' => 'privacy_path']);

@@ -10,10 +10,11 @@
           <h3 class="panel-title">{{ $article->title }}</h3>
         </div>
         <div class="panel-body">
-          {{ $article->content }}
+          {{ Str::limit($article->content, 200) }}
         </div>
         <div class="panel-footer">
           {{ $article->published_date }}
+          {{ HTML::linkRoute('article_path', 'more...', $article->slug, ['class'=>'pull-right']) }}
         </div>
       </div>
     @endforeach

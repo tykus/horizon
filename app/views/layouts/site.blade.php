@@ -46,7 +46,12 @@
           <li><a href="/#about">About</a></li>
           <li><a href="/#location">Location</a></li>
           <li><a href="/#contact">Contact</a></li>
-          <li><a href="/faqs">FAQs</a></li>
+          @if ($faqCount)
+            <li>{{ HTML::linkRoute('faqs_path', 'FAQs') }}</li>
+          @endif
+          @if ($articleCount)
+            <li>{{ HTML::linkRoute('articles_path', 'Articles') }}</li>
+          @endif
         </ul>
       </div>
     </div>
@@ -100,7 +105,12 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#location">Location</a></li>
             <li><a href="/#contact">Contact</a></li>
-            <li><a href="/faqs">FAQs</a></li>
+            @if ($faqCount)
+              <li>{{ HTML::linkRoute('faqs_path', 'FAQs') }}</li>
+            @endif
+            @if ($articleCount)
+              <li>{{ HTML::linkRoute('articles_path', 'Articles') }}</li>
+            @endif
           </ul>
         </div>
       </div>
