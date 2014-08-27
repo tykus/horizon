@@ -22,19 +22,20 @@
         {{ HTML::link(Config::get('site.business.url'), Config::get('site.business.url')) }}
       </p>
     </div>
+
     <div class="col-sm-6 col-sm-offset-3">
-      <form method="post" action="/enquiries" class="form-horizontal" role="form" id="contact-form">
+      {{ Form::open(['route'=>'enquiry_path', 'action'=>'POST', 'class'=>'form-horizontal', 'id'=>'contact-form']) }}
         <div class="form-group">
-          <input type="text" class="form-control" name="name" placeholder="Name" required>
+          {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name', 'required'=>'']) }}
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" name="email" placeholder="Email" required>
+          {{ Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Email', 'required'=>'']) }}
         </div>
         <div class="form-group">
-          <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
+          {{ Form::text('telephone', null, ['class'=>'form-control', 'placeholder'=>'Phone', 'required'=>'']) }}
         </div>
         <div class="form-group">
-          <textarea class="form-control" name="message" placeholder="Message"></textarea>
+          {{ Form::textarea('message', null, ['class'=>'form-control', 'placeholder'=>'Message']) }}
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default" id="submit">
@@ -42,7 +43,8 @@
             <i id="spinner" class="fa fa-spinner fa-spin hidden"></i>
           </button>
         </div>
-      </form>
+      {{ Form::close() }}
     </div>
+
   </div>
 </div>
