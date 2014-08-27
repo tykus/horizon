@@ -7,4 +7,9 @@ class Enquiry extends \Eloquent {
   {
     return $query->orderBy('created_at', 'desc');
   }
+
+  public function scopeUnread($query)
+  {
+    return $query->whereViewed(false);
+  }
 }

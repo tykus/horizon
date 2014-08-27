@@ -20,24 +20,26 @@
 
   <div class="row">
     <div id="inbox" class="col-lg-6">
-      <h2>Inbox</h2>
-      <table class="table table-striped">
-        <tr>
-          <th>Date</th>
-          <th>Name</th>
-          <th>Subject</th>
-          <th></th>
-        </tr>
-        @foreach($enquiries as $enquiry)
-          <tr @unless($enquiry->viewed) class="info" @endunless>
-            <td>{{{ $enquiry->created_at }}}</td>
-            <td>{{{ $enquiry->name }}}</td>
-            <td>{{{ Str::limit($enquiry->message, 40) }}}</td>
-            <td><button class="btn btn-default pull-right">Show</button></td>
+      <h2>Unread Enquiries</h2>
+      @if (count($enquiries))
+        <table class="table table-striped">
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th></th>
           </tr>
-        @endforeach
-      </table>
-      <button class="btn btn-default pull-right">Go to Inbox</button>
+          @foreach($enquiries as $enquiry)
+            <tr @unless($enquiry->viewed) class="info" @endunless>
+              <td>{{{ $enquiry->created_at }}}</td>
+              <td>{{{ $enquiry->name }}}</td>
+              <td>{{ HTML::linkRoute('admin.enquiries.show', 'Show', $enquiry->id, ['class'=>'btn btn-default pull-right']) }}</td>
+            </tr>
+          @endforeach
+        </table>
+      @else
+        <p><em>No unread enquiries.</em></p>
+      @endif
+      {{ HTML::linkRoute('admin.enquiries.index', 'Go to inbox', null, ['class'=>'btn btn-default pull-right']) }}
     </div>
 
     <div id="media" class="col-lg-6">
