@@ -1,4 +1,11 @@
 <?php
+
+Route::get('/debug', function(){
+  $data = file_get_contents("http://freegeoip.net/json/78.143.132.214");
+  $response = Response::make($data, 200);
+  $response->headers->set('Content-Type', 'application/json');
+  return $response;
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
