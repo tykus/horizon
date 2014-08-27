@@ -11,7 +11,11 @@ Route::get('/debug', function(){
 |--------------------------------------------------------------------------
 */
 
+// Home page
+View::composer('home', 'Horizon\Composers\HomeViewComposer');
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
+
+// FAQs
 Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
 
 // Articles
