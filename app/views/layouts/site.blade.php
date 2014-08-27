@@ -52,7 +52,9 @@
     </div>
   </nav>
 
-  @yield('content')
+  <div id="content">
+    @yield('content')
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -72,11 +74,15 @@
 
         <div class="col-sm-6 text-center">
           <ul class="list-inline">
-            <li><a href="#home">Cookies</a></li>
+            <li><a href="#">Cookies</a></li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li><a href="#services">Privacy</a></li>
+            <li>
+            {{ HTML::linkRoute('privacy_path', 'Privacy') }}
+            </li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li><a href="#about">Terms of Use</a></li>
+            <li>
+              {{ HTML::linkRoute('terms_path', 'Terms of Use') }}
+            </li>
           </ul>
           <p class="copyright text-muted small">
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
@@ -88,7 +94,7 @@
         </div>
 
         <div class="col-sm-3 text-right">
-          <ul>
+          <ul class="list-unstyled">
             <li><a href="/#home">Home</a></li>
             <li><a href="/#services">Services</a></li>
             <li><a href="/#about">About</a></li>

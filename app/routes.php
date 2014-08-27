@@ -1,10 +1,4 @@
 <?php
-
-// TODO: remove this route in production
-Route::get('/debug', function(){
-  echo Carbon\Carbon::now()->toDateString();
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,8 +6,10 @@ Route::get('/debug', function(){
 */
 
 // Home page
-View::composer('home', 'Horizon\Composers\HomeViewComposer');
+View::composer('site.home', 'Horizon\Composers\HomeViewComposer');
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
+Route::get('/terms', ['uses' => 'HomeController@terms', 'as' => 'terms_path']);
+Route::get('/privacy', ['uses' => 'HomeController@privacy', 'as' => 'privacy_path']);
 
 // FAQs
 Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
