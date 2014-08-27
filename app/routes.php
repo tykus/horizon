@@ -1,11 +1,5 @@
 <?php
 
-Route::get('/debug', function(){
-  $data = file_get_contents("http://freegeoip.net/json/78.143.132.214");
-  $response = Response::make($data, 200);
-  $response->headers->set('Content-Type', 'application/json');
-  return $response;
-});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -70,6 +64,9 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   Route::get('my-profile', ['as'=>'my-profile', 'uses'=>'UsersController@edit']);
   Route::post('/users/checkEmailExists', ['uses'=>'UsersController@checkEmailExists']);
   Route::resource('users', 'UsersController');
+
+  # Access Logs
+  Route::resource('access_logs', 'AccessLogsController');
 });
 
 
