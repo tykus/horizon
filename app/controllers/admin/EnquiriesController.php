@@ -83,7 +83,7 @@ class EnquiriesController extends \BaseController {
 		$enquiry = Enquiry::find(Input::get('id'));
 		$guest = new Guest($enquiry->name, $enquiry->email);
 		$data = array(
-			'message' => Input::get('message'),
+			'body' => Input::get('message'),
 			'subject' => Input::get('subject')
 		);
 

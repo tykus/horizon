@@ -8,8 +8,9 @@ class GuestMailer extends Mailer {
   {
     $view = 'emails.reply';
     $subject = $data['subject'] || "Thank you for your enquiry.";
+    $viewData = $data;
 
-    return $this->sendTo($guest, $subject, $view, $data);
+    return $this->sendTo($guest, $subject, $view, $viewData);
   }
 
 }
