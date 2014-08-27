@@ -26,19 +26,8 @@ class EnquiriesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$enquiries = Enquiry::all();
+		$enquiries = Enquiry::sorted()->get();
 		return View::make('admin.enquiries.index', compact('enquiries'));
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /enquiries/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
 	}
 
 	/**
@@ -51,6 +40,9 @@ class EnquiriesController extends \BaseController {
 	public function show($id)
 	{
 		$enquiry = Enquiry::find($id);
+		$enquiry->update([
+			'viewed' => true
+		]);
 		return View::make('admin.enquiries.show', compact('enquiry'));
 	}
 
