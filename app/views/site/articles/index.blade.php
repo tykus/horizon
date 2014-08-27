@@ -13,7 +13,7 @@
           {{ Str::limit($article->content, 200) }}
         </div>
         <div class="panel-footer">
-          {{ $article->published_date }}
+          {{ $article->published_date->diffForHumans() }}
           {{ HTML::linkRoute('article_path', 'more...', $article->slug, ['class'=>'pull-right']) }}
         </div>
       </div>
