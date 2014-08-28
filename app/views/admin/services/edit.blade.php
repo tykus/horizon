@@ -52,3 +52,5 @@
       {{ HTML::image($service->image_path, $service->title, ['class'=>'img-thumbnail']) }}
     </div>
 @stop
+
+@include('common.summernote')

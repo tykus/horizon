@@ -6,6 +6,7 @@ class Admin
     new Articles if $("#articles").length
     new Settings if $("#settings").length
     new Faqs if $("#faqs").length
+    new Services if ("#services").length
 
 $ ->
   new Admin if $("#admin").length
