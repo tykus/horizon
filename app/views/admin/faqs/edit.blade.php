@@ -4,7 +4,7 @@
 
 	<div id="faqs">
 	  <h1 class="page-header">Edit FAQ</h1>
-		
+
 		{{ Form::model($faq, ['route'=>['admin.faqs.update', $faq->id], 'method'=>'PUT', 'class'=>'form-horizontal', 'id'=>'faq-form']) }}
 
 		@include('admin.faqs._form')
@@ -21,9 +21,9 @@
 		{{ Form::close() }}
 
 	</div>
-	
+
 @stop
 
 @section('scripts')
-	{{-- @include('common.summernote') --}}
+	@include('admin.common.summernote')
 @stop

@@ -48,7 +48,7 @@
                 @endforeach
               </ul>
             </li>
-            <li><a href="#">Profile</a></li>
+            <li>{{ HTML::linkRoute('my-profile', 'Profile') }}</li>
             <li>
               {{ HTML::linkRoute('logout_path', 'Logout ' . Auth::user()->name) }}
             </li>
@@ -77,7 +77,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="" class="disabled"><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
-            <li><a href="" class="disabled"><i class="glyphicon glyphicon-user"></i> Users Admin</a></li>
+            <li>{{ HTML::clever_link("admin/users", '<i class="glyphicon glyphicon-user"></i> Users Admin') }}</li>
             <li><a href="" class="disabled"><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
           </ul>
 
@@ -87,9 +87,8 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
+          @include('admin.common.alerts')
           @yield('content') {{-- the current content --}}
-
-          <?php var_dump( Request::segments() ); ?>
 
         </div>
       </div>

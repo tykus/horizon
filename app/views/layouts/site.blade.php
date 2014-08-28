@@ -46,13 +46,20 @@
           <li><a href="/#about">About</a></li>
           <li><a href="/#location">Location</a></li>
           <li><a href="/#contact">Contact</a></li>
-          <li><a href="/faqs">FAQs</a></li>
+          @if ($faqCount)
+            <li>{{ HTML::linkRoute('faqs_path', 'FAQs') }}</li>
+          @endif
+          @if ($articleCount)
+            <li>{{ HTML::linkRoute('articles_path', 'Articles') }}</li>
+          @endif
         </ul>
       </div>
     </div>
   </nav>
 
-  @yield('content')
+  <div id="content">
+    @yield('content')
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -60,38 +67,9 @@
       <div class="row">
 
         <div class="col-sm-3 text-left">
-          {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
-        </div>
-
-        <div class="col-sm-6 text-center">
-          <ul class="list-inline">
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#services">Services</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#location">Location</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-            <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              <a href="/faqs">FAQs</a>
-            </li>
-          </ul>
-          <p class="copyright text-muted small">
-            Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
-          </p>
+          <div>
+            {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
+          </div>
           <div id="social">
             <a href="#" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
             <a href="#" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
@@ -99,11 +77,41 @@
           </div>
         </div>
 
-        <div class="col-sm-3 text-right">
-          <p>
-            Developed by
-            {{ HTML::linkImage(Config::get('site.author_url'), ['title'=>Config::get('site.author')], '/img/tykus.png', ['style'=>'height:40px;width:auto;']) }}
+        <div class="col-sm-6 text-center">
+          <ul class="list-inline">
+            <li><a href="#">Cookies</a></li>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
+            {{ HTML::linkRoute('privacy_path', 'Privacy') }}
+            </li>
+            <li class="footer-menu-divider">&sdot;</li>
+            <li>
+              {{ HTML::linkRoute('terms_path', 'Terms of Use') }}
+            </li>
+          </ul>
+          <p class="copyright text-muted small">
+            Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
           </p>
+          <div class="text-center">
+            Developed by<br>
+            {{ HTML::linkImage(Config::get('site.author_url'), ['title'=>Config::get('site.author')], '/img/tykus.png', ['style'=>'height:40px;width:auto;']) }}
+         </div>
+        </div>
+
+        <div class="col-sm-3 text-right">
+          <ul class="list-unstyled">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#location">Location</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            @if ($faqCount)
+              <li>{{ HTML::linkRoute('faqs_path', 'FAQs') }}</li>
+            @endif
+            @if ($articleCount)
+              <li>{{ HTML::linkRoute('articles_path', 'Articles') }}</li>
+            @endif
+          </ul>
         </div>
       </div>
     </div>
@@ -111,7 +119,7 @@
 
   <!-- Back to top link -->
   <a href="#" class="back-to-top" title="Back to top">
-    Back to top 
+    Back to top
     <i class="fa fa-chevron-up fa-inverse"></i>
   </a>
 

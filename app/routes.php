@@ -1,18 +1,29 @@
 <?php
 
-// TODO: remove this route in production
 Route::get('/debug', function(){
-  echo Carbon\Carbon::now()->toDateString();
+  $data = file_get_contents("http://freegeoip.net/json/78.143.132.214");
+  $response = Response::make($data, 200);
+  $response->headers->set('Content-Type', 'application/json');
+  return $response;
 });
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home_path']);
-Route::get('/faqs', ['uses' => 'FaqsController@index', 'as' => 'faqs_path']);
+// View Composers
+View::composer('layouts.site', 'Horizon\Composers\SiteLayoutComposer');
+View::composer('site.home', 'Horizon\Composers\HomeViewComposer');
+
+// Home page
+Route::get('/', ['uses'=>'HomeController@index', 'as'=>'home_path']);
+Route::get('/terms', ['uses'=>'HomeController@terms', 'as'=>'terms_path']);
+Route::get('/privacy', ['uses'=>'HomeController@privacy', 'as'=>'privacy_path']);
+Route::post('/enquiries', ['uses'=>'EnquiriesController@store', 'as'=>'enquiry_path']);
+
+// FAQs
+Route::get('/faqs', ['uses'=>'FaqsController@index', 'as'=>'faqs_path']);
 
 // Articles
 Route::get('/articles', ['uses'=>'ArticlesController@index', 'as'=>'articles_path']);
@@ -35,24 +46,35 @@ App::missing(function($exception)
 |--------------------------------------------------------------------------
 */
 
-Route::group(array('namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'), function(){
+Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'], function(){
 
+  # Getting the Settings menu link items
 	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
 
-  Route::post('enquiries/reply', array('uses' => 'EnquiriesController@reply'));
+  # Dashboard
+  Route::get('/', ['as'=>'dashboard_path', 'uses'=>'DashboardController@index']);
+
+  # Enquiries
+  Route::post('enquiries/reply', ['uses'=>'EnquiriesController@reply']);
   Route::resource('enquiries', 'EnquiriesController');
-  Route::post('faqs/sort', array('uses' => 'FaqsController@sort'));
+  Route::post('faqs/sort', array('uses'=>'FaqsController@sort'));
   Route::resource('faqs', 'FaqsController');
   Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
-  Route::post('enquiries/reply', array('uses'=>'EnquiriesController@reply'));
-  Route::resource('enquiries', 'EnquiriesController');
-
+  # Services
   Route::resource('services', 'ServicesController');
+
+  # Articles
+  Route::put('articles/publish/{articles}', ['uses'=>'ArticlesController@updatePublishedDate']);
   Route::resource('articles', 'ArticlesController');
-  Route::put('articles/publish/{articles}', array('uses'=>'ArticlesController@updatePublishedDate'));
+
+  # Settings
   Route::resource('settings', 'SettingsController');
 
+  # Users
+  Route::get('my-profile', ['as'=>'my-profile', 'uses'=>'UsersController@edit']);
+  Route::post('/users/checkEmailExists', ['uses'=>'UsersController@checkEmailExists']);
+  Route::resource('users', 'UsersController');
 });
 
 
