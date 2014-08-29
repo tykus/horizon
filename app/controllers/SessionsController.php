@@ -1,6 +1,6 @@
 <?php
 
-use Horizon\Utilities\GeoLocate;
+use Horizon\Utilities\Geolocate;
 
 class SessionsController extends \BaseController {
 
