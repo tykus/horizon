@@ -46,7 +46,6 @@
     <div class="col-lg-6">
       <div class="row">
         <div class="col-lg-12">
-          <h2>Access Log</h2>
           @include('admin.accesslogs._index')
         </div>
       </div>

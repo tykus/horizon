@@ -1,3 +1,7 @@
+<h2>Access Log</h2>
+<p class="text-muted">
+  These are your most recent logins, go to the {{ HTML::linkRoute('admin.accesslogs.index', 'Access Log') }} to view all recent logins.
+</p>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -21,3 +25,4 @@
   @endforeach
   </tbody>
 </table>
+
