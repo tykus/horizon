@@ -66,7 +66,7 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   Route::resource('users', 'UsersController');
 
   # Access Logs
-  Route::resource('access_logs', 'AccessLogsController');
+  Route::resource('accesslogs', 'AccessLogsController');
 });
 
 

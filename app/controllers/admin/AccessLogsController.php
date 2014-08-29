@@ -14,18 +14,7 @@ class AccessLogsController extends \BaseController {
 	public function index()
 	{
 		$access_logs = AccessLog::orderBy('created_at', 'desc')->get();
-		return View::make('admin.accesslogs.index')
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /accesslogs
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		return View::make('admin.accesslogs.index', compact('access_logs'));
 	}
 
 	/**
@@ -37,7 +26,8 @@ class AccessLogsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$access_log = AccessLog::find($id);
+		return View::make('admin.accesslogs.show', compact('access_log'));
 	}
 
 }

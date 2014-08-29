@@ -78,7 +78,8 @@
           <ul class="nav nav-sidebar">
             <li><a href="" class="disabled"><i class="glyphicon glyphicon-warning-sign"></i> Site Errors</a></li>
             <li>{{ HTML::clever_link("admin/users", '<i class="glyphicon glyphicon-user"></i> Users Admin') }}</li>
-            <li><a href="" class="disabled"><i class="glyphicon glyphicon-lock"></i> Access Log</a></li>
+            {{ HTML::clever_link("admin/accesslogs", '<i class="glyphicon glyphicon-lock"></i> Access Log') }}
+
           </ul>
 
           @yield('sidebar') {{-- include any special messages about the current content --}}
