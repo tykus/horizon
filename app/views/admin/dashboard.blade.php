@@ -39,44 +39,31 @@
       @else
         <p><em>No unread enquiries.</em></p>
       @endif
+      {{ $enquiries->links() }}
       {{ HTML::linkRoute('admin.enquiries.index', 'Go to inbox', null, ['class'=>'btn btn-default pull-right']) }}
     </div>
 
-    <div id="media" class="col-lg-6">
-      <h2>Media Manager </h2>
-      <p>All of the image files being used on the client-side of the application will be managed from here.</p>
-      {{-- TODO: remove! this is only for templating --}}
-      @foreach(range(1, 10) as $index)
-        <img src="{{ $faker->imageUrl($width = 120, $height = 120, 'cats') }}" class="img-thumbnail img-responsive">
-      @endforeach
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Access Log</h2>
+          @include('admin.accesslogs._index')
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Site Errors</h2>
+          @include('admin.accesslogs._index')
+        </div>
+      </div>
     </div>
 
   </div>
 
   <div class="row">
 
-    <div class="col-lg-4">
+    <div class="col-lg-12">
       <h2>Google Analytics</h2>
-    </div>
-
-    <div class="col-lg-3">
-      <h2>Access Log</h2>
-    </div>
-
-    <div class="col-lg-4">
-      <h2>Site Errors</h2>
-      <table class="table table-striped">
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-        </tr>
-      @foreach(range(1, 10) as $index)
-        <tr>
-          <td>{{{ $faker->date }}}</td>
-          <td>{{{ $faker->sentence(6) }}}</td>
-        </tr>
-      @endforeach
-      </table>
     </div>
 
   </div>

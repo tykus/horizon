@@ -38,7 +38,8 @@ Route::resource('sessions', 'SessionsController');
 Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before'=>'auth'], function(){
 
   # Getting the Settings menu link items
-	View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
+  View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
+	View::composer('admin.dashboard', 'Horizon\Composers\DashboardComposer');
 
   # Dashboard
   Route::get('/', ['as'=>'dashboard_path', 'uses'=>'DashboardController@index']);
