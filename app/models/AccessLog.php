@@ -8,9 +8,9 @@ class AccessLog extends \Eloquent {
     return $query->where('email', $user->email);
   }
 
-  public function scopeLatest($query, $number=5)
+  public function scopeLatest($query)
   {
-    return $query->orderBy('created_at', 'desc')->limit($number);
+    return $query->orderBy('created_at', 'desc');
   }
 
   public function getLocation()

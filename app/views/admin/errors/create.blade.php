@@ -1,1 +1,0 @@
-/vagrant/app/views/errors/create.blade.php

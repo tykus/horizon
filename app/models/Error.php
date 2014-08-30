@@ -9,5 +9,4 @@ class Error extends \Eloquent {
   {
     $query->orderBy('created_at', 'desc');
   }
-
 }
