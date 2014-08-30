@@ -4,12 +4,15 @@
   <h1 class="page-header">Services</h1>
   @if (count($services))
     <table id="services" class="table table-striped">
-      <tr>
-        <th>Image</th>
-        <th>Title</th>
-        <th>Introduction</th>
-        <th></th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Introduction</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="sortable">
       @foreach($services as $service)
         <tr id="service-{{ $service->id }}">
           <td>{{ HTML::image($service->image_path, null, ['class'=>'img-thumbnail', 'width'=>'80', 'height'=>'80']) }}</td>
@@ -29,8 +32,16 @@
           </td>
         </tr>
       @endforeach
+      </tbody>
     </table>
+    <div id="success" class="alert alert-success" style="display:none">
+      Updated successfully.
+    </div>
   @else
     <p>No services to display.</p>
   @endif
+@stop
+
+@section('scripts')
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 @stop

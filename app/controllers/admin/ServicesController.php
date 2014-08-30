@@ -1,9 +1,10 @@
 <?php namespace App\Controllers\Admin;
 
-use View;
 use Input;
 use Redirect;
+use Response;
 use Service;
+use View;
 
 class ServicesController extends \BaseController {
 
@@ -57,6 +58,19 @@ class ServicesController extends \BaseController {
 		$service = Service::find($id);
 		if ($service->update(Input::get()))
 			return Redirect::action('admin.services.index');
+	}
+
+	public function sort()
+	{
+		$ordering = Input::get('service');
+
+		foreach($ordering as $position => $id)
+		{
+			$service = Service::find($id);
+			$service->sort_order = $position;
+			$service->save();
+		}
+		return Response::json(['message'=>'ok', 200]);
 	}
 
 }

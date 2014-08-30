@@ -52,7 +52,9 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
   # Services
+  Route::put('services/sort', array('uses'=>'ServicesController@sort'));
   Route::resource('services', 'ServicesController');
+
 
   # Articles
   Route::put('articles/publish/{articles}', ['uses'=>'ArticlesController@updatePublishedDate']);

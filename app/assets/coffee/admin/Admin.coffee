@@ -5,6 +5,7 @@ class Admin
     new Enquiries if $("#enquiries").length
     new Articles if $("#articles").length
     new Settings if $("#settings").length
+    new Services if $("#services").length
     new Users if $("#users").length
     new Faqs if $("#faqs").length
 
