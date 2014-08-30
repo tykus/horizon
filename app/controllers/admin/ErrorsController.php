@@ -1,5 +1,8 @@
 <?php namespace App\Controllers\Admin;
 
+use \View;
+use \Error;
+
 class ErrorsController extends \BaseController {
 
 	/**
@@ -10,29 +13,8 @@ class ErrorsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /errors/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /errors
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		$errors = Error::latest()->get();
+		return View::make('admin.errors.index', compact('errors'));
 	}
 
 	/**
@@ -44,7 +26,7 @@ class ErrorsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return View::make('admin.errors.show')->with('error', Error::find($id));
 	}
 
 	/**
