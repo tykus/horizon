@@ -9,6 +9,10 @@
     color: $main-blue;
   }
 
+  #sortable {
+  	cursor: move;
+  }
+
 }
 @media (min-width: 768px) {
   .main {

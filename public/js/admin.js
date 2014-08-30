@@ -419,10 +419,14 @@
 
   Services = (function() {
     function Services() {
-      this.introduction = $('input[name=introduction]');
-      this.description = $('input[name=description]');
       this.sortable = $("#sortable");
       this.bindEvents();
+      $('textarea').summernote({
+        height: 300,
+        codemirror: {
+          theme: 'monokai'
+        }
+      });
     }
 
     Services.prototype.bindEvents = function() {

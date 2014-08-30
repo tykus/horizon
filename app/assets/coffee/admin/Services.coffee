@@ -1,9 +1,11 @@
 class Services
   constructor: ->
-    @introduction = $('input[name=introduction]')
-    @description = $('input[name=description]')
     @sortable = $("#sortable")
     @bindEvents()
+    $('textarea').summernote
+      height: 300
+      codemirror:
+        theme: 'monokai'
 
   bindEvents: ->
     @sortable.sortable
