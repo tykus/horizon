@@ -72,7 +72,7 @@
           <ul class="nav nav-sidebar">
             {{ HTML::clever_link("admin/services", '<i class="glyphicon glyphicon-cog"></i> Services') }}
             {{ HTML::clever_link("admin/articles", '<i class="glyphicon glyphicon-edit"></i> Articles') }}
-            {{ HTML::clever_link("admin/settings/about/edit", '<i class="glyphicon glyphicon-list-alt"></i> About / Bio') }}
+            {{ HTML::clever_link("admin/contents/about/edit", '<i class="glyphicon glyphicon-list-alt"></i> About / Bio') }}
             {{ HTML::clever_link("admin/faqs", '<i class="glyphicon glyphicon-question-sign"></i> FAQ\'s') }}
           </ul>
           <ul class="nav nav-sidebar">

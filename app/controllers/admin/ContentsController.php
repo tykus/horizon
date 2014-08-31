@@ -1,6 +1,7 @@
 <?php namespace App\Controllers\Admin;
 
 use \Content;
+use \Input;
 use \Response;
 use \View;
 
@@ -23,12 +24,12 @@ class ContentsController extends \BaseController {
 	 * Update the specified resource in storage.
 	 * PUT /admin.contentscontroller/{id}
 	 *
-	 * @param  int  $page
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($page)
+	public function update($id)
 	{
-		$content = Content::where('page', $page)->firstOrFail();
+		$content = Content::find($id);
 		$content->update(Input::get());
 		return Response::json(null, 204);
 	}
