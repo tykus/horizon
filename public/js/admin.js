@@ -227,7 +227,7 @@
         url: this.form.attr('action'),
         data: formData,
         success: function() {
-          return _this.spinner.hide().closest('button').addClass('btn-success');
+          return _this.spinner.hide().closest('button').addClass('btn-success').disable();
         }
       });
     };

@@ -26,12 +26,12 @@ class Contents
   submitForm: (e) ->
     e.preventDefault()
     @spinner.show()
-    @textarea.val($('.note-editable').code())
+    @textarea.val( $('.note-editable').code() )
     formData = @form.serialize()
     $.ajax
       type: "put"
       url: @form.attr('action')
       data: formData
       success: =>
-        @spinner.hide().closest('button').addClass('btn-success')
+        @spinner.hide().closest('button').addClass('btn-success').disable()
 
