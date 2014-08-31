@@ -13,6 +13,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = ['password', 'remember_token'];
 	protected $fillable = ['name', 'password', 'email'];
 
+  public function lastLogin()
+  {
+    return $this->hasMany('AccessLog', 'email', 'email')->orderBy('created_at', 'desc')->limit(1);
+  }
+
   public function isAdmin()
   {
     return Auth::user()->role == 'admin';

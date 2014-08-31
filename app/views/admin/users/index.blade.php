@@ -18,7 +18,15 @@
       <tr>
         <td>{{{ $user->name }}}</td>
         <td>{{{ $user->email }}}</td>
-        <td><em>last login</em></td>
+        <td>
+          {{-- TODO: ridiculous having to use foreach here - change the association to return a relation, not a collection! --}}
+          @foreach($user->last_login as $login)
+            <span class="f32">
+              <i class="flag {{ strtolower($login->country_code) }}"></i>
+            </span>
+            {{ $login->country_name }} at {{ $login->created_at }}
+          @endforeach
+        </td>
         <td>
           @if ( $user == Auth::user() )
             {{ HTML::linkRoute('admin.users.edit', 'Edit Profile', $user->id, ['class'=>'btn btn-default']) }}
