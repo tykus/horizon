@@ -56,7 +56,9 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   Route::put('/contents/{contents}', ['as'=>'admin.contents.update', 'uses'=>'ContentsController@update']);
 
   # Services
+  Route::put('services/sort', array('uses'=>'ServicesController@sort'));
   Route::resource('services', 'ServicesController');
+
 
   # Articles
   Route::put('articles/publish/{articles}', ['uses'=>'ArticlesController@updatePublishedDate']);

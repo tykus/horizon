@@ -14,7 +14,7 @@ class AddSortOrderToServicesTable extends Migration {
 	{
 		Schema::table('services', function(Blueprint $table)
 		{
-			$table->integer('sort_order')->unique();
+			$table->integer('sort_order');
 		});
 	}
 
