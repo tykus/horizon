@@ -51,6 +51,10 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
   Route::resource('faqs', 'FaqsController');
   Route::get('/', array('as'=>'dashboard_path', 'uses'=>'DashboardController@index'));
 
+  # Contents
+  Route::get('/contents/{contents}/edit', ['as'=>'admin.contents.edit', 'uses'=>'ContentsController@edit']);
+  Route::put('/contents/{contents}', ['as'=>'admin.contents.update', 'uses'=>'ContentsController@update']);
+
   # Services
   Route::resource('services', 'ServicesController');
 
