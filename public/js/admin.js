@@ -419,26 +419,32 @@
 
   Services = (function() {
     function Services() {
-      this.sortable = $("#sortable");
-      this.bindEvents();
-      $('textarea').summernote({
+      this.displayRichTextEditor();
+      this.makeTableSortable();
+    }
+
+    Services.prototype.displayRichTextEditor = function() {
+      return $('textarea').summernote({
         height: 300,
         codemirror: {
           theme: 'monokai'
         }
       });
-    }
+    };
 
-    Services.prototype.bindEvents = function() {
+    Services.prototype.makeTableSortable = function() {
       var _this = this;
-      this.sortable.sortable({
-        helper: this.fixHelperModified,
-        axis: "y"
-      });
-      this.sortable.on("sortupdate", function(event, ui) {
-        return _this.updateSortOrder();
-      });
-      return this.sortable.disableSelection();
+      if ($('#sortable').length) {
+        this.sortable = $('#sortable');
+        this.sortable.sortable({
+          helper: this.fixHelperModified,
+          axis: "y"
+        });
+        this.sortable.on("sortupdate", function(event, ui) {
+          return _this.updateSortOrder();
+        });
+        return this.sortable.disableSelection();
+      }
     };
 
     Services.prototype.updateSortOrder = function() {

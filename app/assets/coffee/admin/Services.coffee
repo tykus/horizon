@@ -1,19 +1,23 @@
 class Services
   constructor: ->
-    @sortable = $("#sortable")
-    @bindEvents()
+    @displayRichTextEditor()
+    @makeTableSortable()
+
+  displayRichTextEditor: ->
     $('textarea').summernote
       height: 300
       codemirror:
         theme: 'monokai'
 
-  bindEvents: ->
-    @sortable.sortable
-      helper: @fixHelperModified
-      axis: "y"
-    @sortable.on "sortupdate", (event, ui) =>
-      @updateSortOrder()
-    @sortable.disableSelection()
+  makeTableSortable: ->
+    if $('#sortable').length
+      @sortable = $('#sortable')
+      @sortable.sortable
+        helper: @fixHelperModified
+        axis: "y"
+      @sortable.on "sortupdate", (event, ui) =>
+        @updateSortOrder()
+      @sortable.disableSelection()
 
   updateSortOrder: ->
     sort_order = @sortable.sortable("serialize")
