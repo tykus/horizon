@@ -16,7 +16,7 @@ class ServicesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$services = Service::sorted();
+		$services = Service::sorted()->get();
 		return View::make('admin.services.index', compact('services'));
 	}
 

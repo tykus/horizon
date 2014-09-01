@@ -7,7 +7,8 @@
           <img class="img-circle" src="{{ $service->image_path }}">
           <h3>{{{ $service->title }}}</h3>
           <p>{{{ $service->introduction }}}</p>
-          <p><a class="btn btn-default pull-right" href="#" role="button">View details »</a>
+          <p>
+            {{ HTML::linkRoute('service_path', 'View details »', $service->slug, ['class'=>'btn btn-default pull-right']) }}
           </p>
         </div>
       @endforeach
