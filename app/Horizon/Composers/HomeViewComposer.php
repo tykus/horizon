@@ -8,7 +8,7 @@
     public function compose($view)
     {
       $about = Content::where('page', 'about')->first();
-      $services = Service::sorted();
+      $services = Service::sorted()->get();
 
       $view->with('about', $about)
            ->with('services', $services);

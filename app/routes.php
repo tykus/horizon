@@ -10,6 +10,7 @@
 View::composer('layouts.site', 'Horizon\Composers\SiteLayoutComposer');
 View::composer('layouts.sticky', 'Horizon\Composers\SiteLayoutComposer');
 View::composer('site.home', 'Horizon\Composers\HomeViewComposer');
+View::composer('errors.missing', 'Horizon\Composers\MissingViewComposer');
 
 // Home page
 Route::get('/', ['uses'=>'HomeController@index', 'as'=>'home_path']);
@@ -29,6 +30,11 @@ Route::get('/login', ['as'=>'login_path', 'uses'=>'SessionsController@create']);
 Route::get('/logout', ['as'=>'logout_path', 'uses'=>'SessionsController@destroy']);
 Route::resource('sessions', 'SessionsController');
 
+// Services
+Route::get('/services/{services}', ['as'=>'service_path', 'uses'=>'ServicesController@show']);
+Route::get('/services', function(){
+  return Service::all();
+});
 
 /*
 |--------------------------------------------------------------------------
