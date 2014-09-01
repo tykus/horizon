@@ -6,8 +6,8 @@ return array(
 
 	'description' => '',
 	'keywords' => '',
-	'logo_path' => '/img/logo.png',
-	'logo_small_path' => '/img/logo_small.png',
+	'logo_path' => '/img/logo-spiral.png',
+	'logo_small_path' => '/img/logo-spiral-small.png',
 
 	'author' => 'Tykus Web Development',
 	'author_url' => 'http://www.tykus.ie',
