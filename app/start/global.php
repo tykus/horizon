@@ -116,3 +116,10 @@ HTML::macro('linkImage', function($url, $url_options = [], $image, $image_option
 $settings = new Horizon\Repositories\EloquentSettingsRepository(new \Setting);
 $settings->setConfig();
 
+
+/**
+ * Registering error handler for missing resources
+ */
+App::missing(function(){
+    return Response::view('errors.missing', ['url'=>Request::url()], 404);
+});
