@@ -1,13 +1,13 @@
 <?php namespace Horizon\Composers;
 
   use \Service;
-  use \Setting;
+  use \Content;
 
   class HomeViewComposer {
 
     public function compose($view)
     {
-      $about = Setting::where('key', 'about')->first();
+      $about = Content::where('page', 'about')->first();
       $services = Service::sorted();
 
       $view->with('about', $about)

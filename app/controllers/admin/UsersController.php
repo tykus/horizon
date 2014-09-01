@@ -14,7 +14,7 @@ class UsersController extends \BaseController {
 
   public function index()
   {
-    $users = User::all();
+    $users = User::with('lastLogin')->get();
     return View::make('admin.users.index', compact('users'));
   }
 

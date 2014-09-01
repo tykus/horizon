@@ -8,6 +8,7 @@ class Admin
     new Services if $("#services").length
     new Users if $("#users").length
     new Faqs if $("#faqs").length
+    new Contents if $("#contents").length
 
 $ ->
   new Admin if $("#admin").length

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder {
 		Service::truncate();
 		Article::truncate();
 		Setting::truncate();
+		Content::truncate();
 		Faq::truncate();
 		DB::table('users')->truncate();
 
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ArticlesTableSeeder');
 		$this->call('SettingsTableSeeder');
 		$this->call('FaqsTableSeeder');
+		$this->call('ContentsTableSeeder');
 		$this->call('UsersTableSeeder');
 	}
 
