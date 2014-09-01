@@ -1,10 +1,11 @@
 // Home Section on Homepage
 .intro-header {
-  padding-bottom: 50px;
-  text-align: center;
-  color: $horizon-blue;
   background: url(../img/steps.jpg) no-repeat bottom right;
   background-size: cover;
+  color: $horizon-blue;
+  min-height: 500px;
+  padding-bottom: 50px;
+  text-align: center;
 
   .intro-message {
     position: relative;

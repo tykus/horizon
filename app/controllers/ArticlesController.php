@@ -10,7 +10,7 @@ class ArticlesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$articles = Article::latestPublished()->paginate(3);
+		$articles = Article::latestPublished()->get(['title', 'content', 'published_date', 'slug']);
 		return View::make('site.articles.index', compact('articles'));
 	}
 
