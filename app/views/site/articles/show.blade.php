@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.sticky')
 
 @section('content')
   <div id="article">

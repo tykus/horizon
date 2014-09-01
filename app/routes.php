@@ -8,6 +8,7 @@
 
 // View Composers
 View::composer('layouts.site', 'Horizon\Composers\SiteLayoutComposer');
+View::composer('layouts.sticky', 'Horizon\Composers\SiteLayoutComposer');
 View::composer('site.home', 'Horizon\Composers\HomeViewComposer');
 
 // Home page
