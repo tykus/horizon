@@ -3,6 +3,7 @@ class App
     new GoogleMapCanvas() if $('#map-canvas').length
     new ContactForm($('#contact-form')) if $('#contact-form').length
     new Faqs if $('#faqs').length
+    new CookieNotice if $('#cookies-notice').length
     @bindEvents()
 
   bindEvents: ->
@@ -19,7 +20,7 @@ class App
     return false
 
   displayBackToTop: (e) ->
-    if $(e.target).scrollTop() > 200
+    if $(e.target).scrollTop() > 300
       $('.back-to-top').fadeIn(500)
     else
       $('.back-to-top').fadeOut(500)

@@ -10,17 +10,19 @@ class GoogleMapCanvas
 
   buildMap: ->
     [longitude,latitude] = @business.location.split(",")
-    @googleLatLng = new google.maps.LatLng( longitude, latitude ); 
+    @horizon = new google.maps.LatLng( longitude, latitude );
     mapOptions =
       zoom: 16,
-      center: @googleLatLng, 
+      scrollwheel: false,
+      streetViewControl: false,
+      center: @horizon,
       panControl: false,
-      zoomControl: false,
+      zoomControl: true,
       scaleControl: true
     @map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
     @placeMarker()
 
-  placeMarker: -> 
+  placeMarker: ->
     # TODO: can this be done with Handlebars????
     content = """
       <img src="/img/logo_small.png"><br>
@@ -32,6 +34,6 @@ class GoogleMapCanvas
       content: content
 
     @marker = new google.maps.Marker
-      position: @googleLatLng,
+      position: @horizon,
       map: @map,
       title: @business.name

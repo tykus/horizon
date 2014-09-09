@@ -79,15 +79,11 @@
 
         <div class="col-sm-6 text-center">
           <ul class="list-inline">
-            <li><a href="#">Cookies</a></li>
+            <li>{{ HTML::linkRoute('cookies_path', 'Cookies') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li>
-            {{ HTML::linkRoute('privacy_path', 'Privacy') }}
-            </li>
+            <li>{{ HTML::linkRoute('privacy_path', 'Privacy') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              {{ HTML::linkRoute('terms_path', 'Terms of Use') }}
-            </li>
+            <li>{{ HTML::linkRoute('terms_path', 'Terms of Use') }}</li>
           </ul>
           <p class="copyright text-muted small">
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
@@ -123,10 +119,18 @@
     <i class="fa fa-chevron-up fa-inverse"></i>
   </a>
 
+  <!-- Cookies Notice -->
+  <div id="cookies-notice" style="display:none">
+    <div class="container">
+      This site uses cookies. By continuing to use this site, you agree with our cookies policy.
+      {{ HTML::link('#', 'OK', ['class'=>'btn btn-default pull-right']) }}
+    </div>
+  </div>
+
   <!-- Javascripts -->
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <script src="/js/app.js"></script>
   <script type="text/javascript">
     var map_info = <?php echo json_encode(Config::get('site.business')); ?>

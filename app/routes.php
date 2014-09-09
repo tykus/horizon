@@ -16,6 +16,7 @@ View::composer('errors.missing', 'Horizon\Composers\MissingViewComposer');
 Route::get('/', ['uses'=>'HomeController@index', 'as'=>'home_path']);
 Route::get('/terms', ['uses'=>'HomeController@terms', 'as'=>'terms_path']);
 Route::get('/privacy', ['uses'=>'HomeController@privacy', 'as'=>'privacy_path']);
+Route::get('/cookies', ['uses'=>'HomeController@cookies', 'as'=>'cookies_path']);
 Route::post('/enquiries', ['uses'=>'EnquiriesController@store', 'as'=>'enquiry_path']);
 
 // FAQs
