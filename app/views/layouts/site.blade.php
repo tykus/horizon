@@ -123,6 +123,14 @@
     <i class="fa fa-chevron-up fa-inverse"></i>
   </a>
 
+  <!-- Cookies Notice -->
+  <div id="cookies-notice" style="display:none">
+    <div class="container">
+      This site uses cookies. By continuing to use this site, you agree with our cookies policy.
+      {{ HTML::link('#', 'OK', ['class'=>'btn btn-default pull-right']) }}
+    </div>
+  </div>
+
   <!-- Javascripts -->
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
