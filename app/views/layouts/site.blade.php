@@ -36,7 +36,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <img src="/img/logo-spiral-white.png" style="height:52px;width:auto;">
+          <img src="{{ Config::get('site.logo_small_white_path') }}" style="height:52px;width:auto;">
         </a>
       </div>
       <div class="collapse navbar-collapse">
