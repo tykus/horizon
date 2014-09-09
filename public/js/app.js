@@ -40,9 +40,9 @@
 
     App.prototype.introParallax = function(e) {
       var currentPosition, speed;
-      speed = 3.0;
-      currentPosition = (-window.pageXOffset / speed) + "px " + (-window.pageYOffset / speed) + "px";
-      return $('.intro-header').css('backgroundPosition', currentPosition);
+      speed = 10.0;
+      currentPosition = (-window.pageYOffset / speed) + "px";
+      return $('.intro-header').css('background-position-y', currentPosition);
     };
 
     App.prototype.backToTop = function(e) {

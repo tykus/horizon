@@ -14,9 +14,9 @@ class App
     $('.back-to-top').click (e) => @backToTop(e)
 
   introParallax: (e) ->
-    speed = 3.0
-    currentPosition = (-window.pageXOffset / speed) + "px " + (-window.pageYOffset / speed) + "px"
-    $('.intro-header').css('backgroundPosition', currentPosition)
+    speed = 10.0
+    currentPosition = (-window.pageYOffset / speed) + "px"
+    $('.intro-header').css('background-position-y', currentPosition)
 
   backToTop: (e) ->
     e.preventDefault()

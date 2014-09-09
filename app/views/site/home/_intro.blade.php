@@ -4,8 +4,9 @@
       <div class="intro-message">
         <img src="{{ Config::get('site.logo_path') }}" class="col-sm-8 col-sm-offset-2 ">
         <div class="clearfix"></div>
-        <h3>{{ Config::get('site.business.slogan') }}</h3>
       </div>
     </div>
   </div>
 </div>
+
+<h3>{{ Config::get('site.business.slogan') }}</h3>
