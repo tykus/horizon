@@ -6,7 +6,7 @@ return array(
 
 	'description' => '',
 	'keywords' => '',
-	'logo_path' => '/img/logo-spiral.png',
+	'logo_path' => '/img/logo-spiral-white.png',
 	'logo_small_path' => '/img/logo-spiral-small.png',
 
 	'author' => 'Tykus Web Development',
