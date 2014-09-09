@@ -3,6 +3,7 @@ class App
     new GoogleMapCanvas() if $('#map-canvas').length
     new ContactForm($('#contact-form')) if $('#contact-form').length
     new Faqs if $('#faqs').length
+    new CookieNotice if $('#cookies-notice').length
     @bindEvents()
 
   bindEvents: ->
