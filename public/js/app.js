@@ -188,12 +188,14 @@
     GoogleMapCanvas.prototype.buildMap = function() {
       var latitude, longitude, mapOptions, _ref;
       _ref = this.business.location.split(","), longitude = _ref[0], latitude = _ref[1];
-      this.googleLatLng = new google.maps.LatLng(longitude, latitude);
+      this.horizon = new google.maps.LatLng(longitude, latitude);
       mapOptions = {
         zoom: 16,
-        center: this.googleLatLng,
+        scrollwheel: false,
+        streetViewControl: false,
+        center: this.horizon,
         panControl: false,
-        zoomControl: false,
+        zoomControl: true,
         scaleControl: true
       };
       this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -207,7 +209,7 @@
         content: content
       });
       return this.marker = new google.maps.Marker({
-        position: this.googleLatLng,
+        position: this.horizon,
         map: this.map,
         title: this.business.name
       });

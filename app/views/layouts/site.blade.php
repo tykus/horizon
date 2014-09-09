@@ -130,7 +130,7 @@
   <!-- Javascripts -->
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <script src="/js/app.js"></script>
   <script type="text/javascript">
     var map_info = <?php echo json_encode(Config::get('site.business')); ?>
