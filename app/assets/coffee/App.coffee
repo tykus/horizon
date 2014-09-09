@@ -9,8 +9,14 @@ class App
   bindEvents: ->
     $('a[href*=#]:not([href=#])').click (e) => @smoothScroll(e)
     $(window).scroll (e) => @displayBackToTop(e)
+    $(window).scroll (e) => @introParallax(e)
     $('.navbar-brand').click (e) => @backToTop(e)
     $('.back-to-top').click (e) => @backToTop(e)
+
+  introParallax: (e) ->
+    speed = 3.0
+    currentPosition = (-window.pageXOffset / speed) + "px " + (-window.pageYOffset / speed) + "px"
+    $('.intro-header').css('backgroundPosition', currentPosition)
 
   backToTop: (e) ->
     e.preventDefault()

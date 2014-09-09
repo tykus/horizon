@@ -1,7 +1,12 @@
 // Home Section on Homepage
 .intro-header {
-  background: url(../img/steps.jpg) no-repeat bottom right;
-  background-size: cover;
+  // background: url(../img/man.jpg) no-repeat center center;
+  // background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../img/man.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size:cover;
   color: $horizon-blue;
   min-height: 500px;
   padding-bottom: 50px;
