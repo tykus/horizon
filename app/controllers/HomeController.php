@@ -18,4 +18,9 @@ class HomeController extends BaseController {
     return View::make('site.privacy');
   }
 
+  public function cookies()
+  {
+    return View::make('site.cookies');
+  }
+
 }

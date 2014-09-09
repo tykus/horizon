@@ -79,15 +79,11 @@
 
         <div class="col-sm-6 text-center">
           <ul class="list-inline">
-            <li><a href="#">Cookies</a></li>
+            <li>{{ HTML::linkRoute('cookies_path', 'Cookies') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li>
-            {{ HTML::linkRoute('privacy_path', 'Privacy') }}
-            </li>
+            <li>{{ HTML::linkRoute('privacy_path', 'Privacy') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
-            <li>
-              {{ HTML::linkRoute('terms_path', 'Terms of Use') }}
-            </li>
+            <li>{{ HTML::linkRoute('terms_path', 'Terms of Use') }}</li>
           </ul>
           <p class="copyright text-muted small">
             Copyright &copy; {{ date('Y') }} {{ Config::get('site.business.name') }}
