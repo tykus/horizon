@@ -44,7 +44,7 @@
     };
 
     App.prototype.displayBackToTop = function(e) {
-      if ($(e.target).scrollTop() > 200) {
+      if ($(e.target).scrollTop() > 300) {
         return $('.back-to-top').fadeIn(500);
       } else {
         return $('.back-to-top').fadeOut(500);
@@ -178,24 +178,22 @@
     function CookieNotice() {
       this.notice = $("#cookies-notice");
       this.button = this.notice.find('.btn');
-      this.setupNotice();
+      this.acknowledged = Cookie.get('acknowledge');
+      this.showNotice();
       this.bindEvents();
     }
 
-    CookieNotice.prototype.setupNotice = function() {
-      var acknowledged;
-      acknowledged = Cookie.get('acknowledge');
-      console.log(acknowledged != null);
-      console.log(acknowledged === "true");
-      if (!((acknowledged != null) && acknowledged === "true")) {
-        return this.showNotice();
-      }
-    };
-
     CookieNotice.prototype.bindEvents = function() {
       var _this = this;
-      return this.button.click(function(e) {
+      this.button.click(function(e) {
         return _this.acknowledgeNotice();
+      });
+      return $(window).scroll(function(e) {
+        if ($(e.target).scrollTop() > 200) {
+          return _this.hideNotice();
+        } else {
+          return _this.showNotice();
+        }
       });
     };
 
@@ -205,7 +203,9 @@
     };
 
     CookieNotice.prototype.showNotice = function() {
-      return this.notice.show();
+      if (!((this.acknowledged != null) && this.acknowledged === "true")) {
+        return this.notice.show();
+      }
     };
 
     CookieNotice.prototype.hideNotice = function() {
