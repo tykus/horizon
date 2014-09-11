@@ -1,6 +1,6 @@
 class Services
   constructor: ->
-    @displayRichTextEditor()
+    @displayRichTextEditor() if $('textarea').length
     @makeTableSortable()
 
   displayRichTextEditor: ->

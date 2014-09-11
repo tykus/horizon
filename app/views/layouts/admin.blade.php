@@ -63,7 +63,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <img src="/{{ Config::get('site.logo_small_path') }}">
+          <img src="{{ Config::get('site.logo_small_path') }}">
           <ul class="nav nav-sidebar">
             {{ HTML::clever_link("admin", '<i class="glyphicon glyphicon-dashboard"></i> Dashboard' ) }}
             {{ HTML::clever_link("admin/enquiries", '<i class="glyphicon glyphicon-envelope"></i> Enquiries Inbox' ) }}

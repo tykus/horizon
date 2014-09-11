@@ -469,7 +469,9 @@
 
   Services = (function() {
     function Services() {
-      this.displayRichTextEditor();
+      if ($('textarea').length) {
+        this.displayRichTextEditor();
+      }
       this.makeTableSortable();
     }
 
