@@ -86,6 +86,12 @@ class ServicesController extends \BaseController {
     }
   }
 
+  public function create()
+  {
+    $service = new Service;
+    return View::make('admin.services.create', compact('service'));
+  }
+
   public function sort()
   {
     $ordering = Input::get('service');
