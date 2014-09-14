@@ -5,7 +5,7 @@
     <h1 class="page-header">Edit Service</h1>
 
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-sm-10">
         {{ Form::model($service, [
             'route' => array('admin.services.update', $service->id),
             'class'=>'form-horizontal',
@@ -34,9 +34,9 @@
         </div>
 
         <div class="form-group">
-          {{Form::label('image_path', 'Image', array('class'=>'col-sm-2 control-label')) }}
+          {{Form::label('image', 'Image', array('class'=>'col-sm-2 control-label')) }}
           <div class="col-sm-10">
-            {{ Form::file('image_path') }}
+            {{ Form::file('image') }}
           </div>
         </div>
 
@@ -49,7 +49,7 @@
         {{ Form::close() }}
       </div>
 
-      <div class="col-lg-2">
+      <div class="col-sm-2">
         {{ HTML::image($service->image_path, $service->title, ['class'=>'img-thumbnail']) }}
       </div>
     </div>
