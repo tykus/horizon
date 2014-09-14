@@ -101,6 +101,13 @@ class ServicesController extends \BaseController {
     return Redirect::route('admin.services.index');
   }
 
+  public function destroy($id)
+  {
+    Service::find($id)->delete();
+    Session::flash('info', 'Service successfully deleted.');
+    return Redirect::route('admin.services.index');
+  }
+
   public function sort()
   {
     $ordering = Input::get('service');
