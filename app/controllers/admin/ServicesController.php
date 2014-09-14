@@ -63,16 +63,7 @@ class ServicesController extends \BaseController {
 
     if ($image)
     {
-      $image_path = '/img/' . $image->getClientOriginalName();
-
-      $img = Image::make($image);
-      $img->resize(null, 334, function ($constraint) {
-          $constraint->aspectRatio();
-          $constraint->upsize();
-      });
-      $img->crop(334,334);
-      $img->save(public_path() . $image_path);
-      $service->image_path = $image_path;
+      $service->image_path = $this->save_image($image);
     }
 
     $service->title = Input::get('title');
@@ -92,6 +83,24 @@ class ServicesController extends \BaseController {
     return View::make('admin.services.create', compact('service'));
   }
 
+  public function store()
+  {
+    $service = Service::create(Input::get());
+    $service->fill(Input::only(['title', 'introduction', 'description']));
+
+    $image = Input::file('image');
+
+    if ($image)
+    {
+      $service->image_path = $this->save_image($image);
+    }
+
+    $service->save();
+
+    Session::flash('info', 'Service successfully created.');
+    return Redirect::route('admin.services.index');
+  }
+
   public function sort()
   {
     $ordering = Input::get('service');
@@ -103,6 +112,20 @@ class ServicesController extends \BaseController {
       $service->save();
     }
     return Response::json(['message'=>'ok', 200]);
+  }
+
+  private function save_image($image)
+  {
+    $image_path = '/img/' . $image->getClientOriginalName();
+
+    $img = Image::make($image);
+    $img->resize(null, 334, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
+    $img->crop(334,334);
+    $img->save(public_path() . $image_path);
+    return $image_path;
   }
 
 }
