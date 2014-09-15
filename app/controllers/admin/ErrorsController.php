@@ -30,18 +30,6 @@ class ErrorsController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 * GET /errors/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
 	 * Update the specified resource in storage.
 	 * PUT /errors/{id}
 	 *
