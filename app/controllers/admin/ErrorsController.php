@@ -13,7 +13,7 @@ class ErrorsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$errors = Error::latest()->get();
+		$errors = Error::latest()->paginate(10);
 		return View::make('admin.errors.index', compact('errors'));
 	}
 
