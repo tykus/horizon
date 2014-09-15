@@ -13,7 +13,7 @@ class AccessLogsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$access_logs = AccessLog::orderBy('created_at', 'desc')->get();
+		$access_logs = AccessLog::orderBy('created_at', 'desc')->paginate(10);
 		return View::make('admin.accesslogs.index', compact('access_logs'));
 	}
 

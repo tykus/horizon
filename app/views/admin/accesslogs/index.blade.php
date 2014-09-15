@@ -29,4 +29,5 @@
     @endforeach
     </tbody>
   </table>
+  {{ $access_logs->links() }}
 @stop
