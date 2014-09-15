@@ -1,8 +1,11 @@
 <?php
 
-class Error extends \Eloquent {
-	protected $fillable = ['url', 'description'];
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
+class Error extends \Eloquent {
+	use SoftDeletingTrait;
+
+	protected $fillable = ['url', 'description'];
   protected $softDelete = true;
 
   public function scopeLatest($query)

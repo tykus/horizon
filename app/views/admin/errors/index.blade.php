@@ -2,9 +2,10 @@
 
 @section('content')
   <h1 class="page-heading">Errors Log</h1>
-  <table class="table table-striped">
+  <table id="errors" class="table table-striped">
     <thead>
       <tr>
+        <th>Delete</th>
         <th>Date</th>
         <th>URL</th>
         <th>Description</th>
@@ -14,6 +15,9 @@
     <tbody>
     @foreach ($errors as $error)
       <tr>
+        <td>
+          <input type="checkbox" data-id="{{ $error->id }}">
+        </td>
         <td>{{ $error->created_at }}</td>
         <td>{{ $error->url }}</td>
         <td>{{ Str::limit($error->description, 120) }}</td>

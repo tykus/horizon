@@ -30,18 +30,6 @@ class ErrorsController extends \BaseController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 * PUT /errors/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /errors/{id}
 	 *
@@ -50,7 +38,7 @@ class ErrorsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Error::find($id)->delete();
 	}
 
 }
