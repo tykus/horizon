@@ -11,6 +11,9 @@ class SettingsTableSeeder extends Seeder {
 		$phone = '087-654-3210';
 		$mobile = '087-654-3210';
 		$slogan = 'Inspiring positive change';
+		$facebook = 'http"//www.facebook.com/horizoncentre';
+		$twitter = '';
+		$linkedin = '';
 
 			Setting::create([
 				'key' => 'location',
@@ -51,6 +54,24 @@ class SettingsTableSeeder extends Seeder {
 			Setting::create([
 				'key' => 'slogan',
 				'value' => $slogan,
+				'field' =>'text',
+				'on_menu' => 1
+			]);
+			Setting::create([
+				'key' => 'facebook',
+				'value' => $facebook,
+				'field' =>'text',
+				'on_menu' => 1
+			]);
+			Setting::create([
+				'key' => 'twitter',
+				'value' => $twitter,
+				'field' =>'text',
+				'on_menu' => 1
+			]);
+			Setting::create([
+				'key' => 'linkedin',
+				'value' => $linkedin,
 				'field' =>'text',
 				'on_menu' => 1
 			]);

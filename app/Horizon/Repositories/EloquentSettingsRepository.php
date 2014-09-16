@@ -18,12 +18,15 @@ class EloquentSettingsRepository extends DbRepository implements SettingsReposit
     return Setting::where('key', $key)->first();
   }
 
-  // TODO: check if this can be abstracted into the parent class???
+  /**
+   * @param $id int
+   * @param $data
+   */
   public function update($id, $data) {
 
     $setting = $this->findById($id);
 
-    $rules = ['value' => 'required']; // TODO: move to somewhere else!!!!
+    $rules = ['value' => 'required']; // TODO: move elsewhere!!!!
 
     // Validate data
     $validate = Validator::make($data, $rules);
@@ -56,9 +59,9 @@ class EloquentSettingsRepository extends DbRepository implements SettingsReposit
                   ->lists('value', 'key');
 
     foreach($settings as $key => $value)
-      {
-        Config::set("site.business.$key", $value);
-      }
+    {
+      Config::set("site.business.$key", $value);
+    }
 
   }
 

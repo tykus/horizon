@@ -1,5 +1,11 @@
 footer {
-  .col1 { text-align: left; }
+  .col1 {
+    text-align: left;
+
+    img {
+      padding-bottom: 30px;
+    }
+  }
   .col2 { text-align: center; }
   .col3 { text-align: right; }
 
