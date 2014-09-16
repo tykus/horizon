@@ -25,6 +25,7 @@
 
     <div class="col-sm-6 col-sm-offset-3">
       {{ Form::open(['route'=>'enquiry_path', 'action'=>'POST', 'class'=>'form-horizontal', 'id'=>'contact-form']) }}
+        {{ Form::text('captcha', null, ['id'=>'captcha']) }}
         <div class="form-group">
           {{ Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Name', 'required'=>'']) }}
         </div>
