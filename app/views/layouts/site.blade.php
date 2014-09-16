@@ -66,7 +66,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-sm-3 text-left">
+        <div class="col-sm-3 col1">
           <div>
             {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
           </div>
@@ -77,7 +77,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 col2">
           <ul class="list-inline">
             <li>{{ HTML::linkRoute('cookies_path', 'Cookies') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
@@ -94,7 +94,7 @@
          </div>
         </div>
 
-        <div class="col-sm-3 text-right">
+        <div class="col-sm-3 col3">
           <ul class="list-unstyled">
             <li><a href="/#home">Home</a></li>
             <li><a href="/#services">Services</a></li>

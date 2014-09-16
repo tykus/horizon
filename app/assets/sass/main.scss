@@ -1,6 +1,7 @@
 @import "colors";
 @import "typography";
 @import "nav";
+@import "footer";
 @import "home";
 @import "about";
 @import "services";
@@ -23,19 +24,4 @@ body, html {
 }
 .section-heading {
   margin-bottom: 30px;
-}
-footer {
-  padding: 100px 0;
-  background-color: #f8f8f8;
-  #social a {
-    color: $horizon-blue;
-    font-size: 2.5em;
-    padding-right: 1em;
-  }
-  #social a:hover{
-    color: $horizon-green;
-  }
-  p.copyright {
-    margin: 15px 0 0;
-  }
 }
