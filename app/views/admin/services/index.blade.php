@@ -42,6 +42,9 @@
     @else
       <p>No services to display.</p>
     @endif
+
+    {{ HTML::linkRoute('admin.services.create', 'New Service', null, ['class'=>'btn btn-default']) }}
+
   </div>
 @stop
 
