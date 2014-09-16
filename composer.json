@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"cviebrock/eloquent-sluggable": "dev-master"
+		"cviebrock/eloquent-sluggable": "dev-master",
+		"intervention/image": "dev-master"
 	},
 	"require-dev": {
     "way/generators": "2.*",
