@@ -4,4 +4,12 @@
   #captcha {
   	display:none;
   }
+
+  .form-error {
+  	border-color: #ff0000;
+  	border-width: 1px;
+  	border-style: solid;
+  	border-radius: 4px;
+  	box-shadow: 0 0 5px rgba(255,0,0,.075);
+  }
 }

@@ -1,8 +1,11 @@
 class GoogleMapCanvas
 	constructor: () ->
     @business = window.map_info
-    @buildMap()
-    @bindEvents()
+    if google? 
+      @buildMap()
+      @bindEvents()
+    else 
+      console.log "No Google, are you in China?"
 
   bindEvents: ->
     google.maps.event.addListener @marker, 'click', =>

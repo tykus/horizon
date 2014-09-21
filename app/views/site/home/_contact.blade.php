@@ -41,8 +41,11 @@
         <div class="form-group">
           <button type="submit" class="btn btn-default" id="submit">
             Send
-            <i id="spinner" class="fa fa-spinner fa-spin hidden"></i>
           </button>
+          <div id="alert" class="alert pull-right" style="display:none">
+            <span id="message"></span>
+            <i id="spinner" class="fa fa-spinner fa-spin hidden"></i>
+          </div>
         </div>
       {{ Form::close() }}
     </div>

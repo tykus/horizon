@@ -88,39 +88,113 @@
 
   ContactForm = (function() {
     function ContactForm() {
-      this.contactForm = $("#contact-form");
-      this.formURL = this.contactForm.attr("action");
-      this.submitButton = this.contactForm.find("button[type=submit]");
-      this.spinner = this.submitButton.find("#spinner");
+      this.getJQueryObjects();
       this.bindEvents();
     }
 
+    ContactForm.prototype.getJQueryObjects = function() {
+      this.contactForm = $("#contact-form");
+      this.formURL = this.contactForm.attr("action");
+      this.submitButton = this.contactForm.find("button[type=submit]");
+      this.name = $('input[name=name]');
+      this.email = $('input[name=email]');
+      this.telephone = $('input[name=telephone]');
+      this.message = $('textarea[name=message]');
+      this.alert = $('.alert');
+      this.alert_message = $('span#message');
+      return this.spinner = $("#spinner");
+    };
+
     ContactForm.prototype.bindEvents = function() {
       var _this = this;
-      return this.contactForm.submit(function(e) {
+      this.contactForm.submit(function(e) {
         return _this.submitForm(e);
+      });
+      this.name.blur(function() {
+        return _this.checkName();
+      });
+      this.email.blur(function() {
+        return _this.checkEmail();
+      });
+      this.telephone.blur(function() {
+        return _this.checkTelephone();
+      });
+      this.name.focus(function() {
+        return _this.removeFieldError(_this.name);
+      });
+      this.email.focus(function() {
+        return _this.removeFieldError(_this.email);
+      });
+      return this.telephone.focus(function() {
+        return _this.removeFieldError(_this.telephone);
       });
     };
 
     ContactForm.prototype.submitForm = function(e) {
-      var formData,
+      var failure_message, formData,
         _this = this;
       e.preventDefault();
-      formData = this.contactForm.serialize();
-      this.showSpinner();
-      return $.ajax({
-        url: this.formURL,
-        type: "POST",
-        data: formData,
-        success: function(data, textStatus, jqXHR) {
-          _this.hideSpinner();
-          return _this.markSubmitSuccess();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          _this.hideSpinner();
-          return _this.markSubmitError();
-        }
-      });
+      failure_message = "Your enquiry was not sent";
+      this.alert.addClass('alert-info').show();
+      if (this.validate()) {
+        formData = this.contactForm.serialize();
+        this.showSpinner();
+        return $.ajax({
+          url: this.formURL,
+          type: "POST",
+          data: formData,
+          success: function(data, textStatus, jqXHR) {
+            _this.hideSpinner();
+            return _this.markSubmitSuccess(data.message);
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            _this.hideSpinner();
+            return _this.markSubmitError(failure_message);
+          }
+        });
+      } else {
+        this.alert_message.text(failure_message);
+        return this.alert.addClass('alert-warning').fadeIn(500);
+      }
+    };
+
+    ContactForm.prototype.validate = function() {
+      var ok;
+      ok = true;
+      ok = this.checkName() && ok;
+      ok = this.checkEmail() && ok;
+      ok = this.checkTelephone() && ok;
+      return ok;
+    };
+
+    ContactForm.prototype.checkName = function() {
+      var nameRegex;
+      nameRegex = new RegExp(/^.{1,30}$/);
+      return this.validateField(this.name, nameRegex);
+    };
+
+    ContactForm.prototype.checkEmail = function() {
+      var emailRegex;
+      emailRegex = new RegExp(/^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-\_]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$/);
+      return this.validateField(this.email, emailRegex);
+    };
+
+    ContactForm.prototype.checkTelephone = function() {
+      var phoneRegex;
+      phoneRegex = new RegExp(/^\({0,1}\d{2,4}\){0,1}[-]{0,1}\s{0,1}\d{5,7}$/);
+      return this.validateField(this.telephone, phoneRegex);
+    };
+
+    ContactForm.prototype.validateField = function(field, regexp) {
+      var ok, val;
+      val = field.val();
+      ok = regexp.test(val);
+      if (ok) {
+        this.removeFieldError(field);
+      } else {
+        this.markFieldError(field);
+      }
+      return ok;
     };
 
     ContactForm.prototype.showSpinner = function() {
@@ -131,12 +205,38 @@
       return this.spinner.addClass("hidden");
     };
 
-    ContactForm.prototype.markSubmitSuccess = function() {
-      return this.submitButton.removeClass("btn-default").addClass("btn-success").addClass("disabled").html("Your enquiry has been sent");
+    ContactForm.prototype.markSubmitSuccess = function(message) {
+      this.resetAlert();
+      this.alert_message.text(message);
+      this.alert.addClass('alert-success').fadeIn(500);
+      this.contactForm[0].reset();
+      return this.hideAlert();
     };
 
-    ContactForm.prototype.markSubmitError = function() {
-      return this.submitButton.removeClass("btn-default").addClass("btn-danger").html("Your enquiry has not been sent");
+    ContactForm.prototype.markSubmitError = function(message) {
+      this.resetAlert();
+      this.alert_message.text(message);
+      return this.alert.addClass('alert-warning').fadeIn(500);
+    };
+
+    ContactForm.prototype.resetAlert = function() {
+      this.alert.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning');
+      return this.alert_message.text('');
+    };
+
+    ContactForm.prototype.markFieldError = function(elem) {
+      return elem.addClass('form-error');
+    };
+
+    ContactForm.prototype.removeFieldError = function(elem) {
+      return elem.removeClass('form-error');
+    };
+
+    ContactForm.prototype.hideAlert = function() {
+      var _this = this;
+      return this.alert.delay(2000).fadeOut(1000, function() {
+        return _this.resetAlert();
+      });
     };
 
     return ContactForm;
@@ -267,8 +367,12 @@
   GoogleMapCanvas = (function() {
     function GoogleMapCanvas() {
       this.business = window.map_info;
-      this.buildMap();
-      this.bindEvents();
+      if (typeof google !== "undefined" && google !== null) {
+        this.buildMap();
+        this.bindEvents();
+      } else {
+        console.log("No Google, are you in China?");
+      }
     }
 
     GoogleMapCanvas.prototype.bindEvents = function() {
