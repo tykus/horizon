@@ -23,8 +23,6 @@ class SettingsController extends \BaseController {
 
   public function update($id)
   {
-    dd( Input::get() );
-
     if ($this->setting->update($id, Input::get()) )
     {
       return Response::json(null, 204); // TODO: allow from non-AJAX request

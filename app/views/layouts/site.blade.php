@@ -66,18 +66,36 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-sm-3 text-left">
+        <div class="col-sm-3 col1">
           <div>
             {{ HTML::image(Config::get('site.logo_small_path'), Config::get('site.business.name')) }}
           </div>
-          <div id="social">
-            <a href="#" title="Follow us on Facebook"><i class="fa fa-facebook-square"></i></a>
-            <a href="#" title="Connect with us on LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-            <a href="#" title="Follow us on Twitter"><i class="fa fa-twitter-square"></i></a>
+          <div id="social" class="row">
+            @if (Config::get('site.business.facebook') != '')
+              <div class="col-sm-4 col1">
+                <a href="{{ Config::get('site.business.facebook')}}" title="Follow us on Facebook">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+              </div>
+            @endif
+            @if (Config::get('site.business.linkedin') != '')
+              <div class="col-sm-4 col2">
+                <a href="{{ Config::get('site.business.linkedin')}}" title="Connect with us on LinkedIn">
+                  <i class="fa fa-linkedin-square"></i>
+                </a>
+              </div>
+            @endif
+            @if (Config::get('site.business.twitter') != '')
+              <div class="col-sm-4 col3">
+                <a href="{{ Config::get('site.business.twitter')}}" title="Follow us on Twitter">
+                  <i class="fa fa-twitter-square"></i>
+                </a>
+              </div>
+            @endif
           </div>
         </div>
 
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 col2">
           <ul class="list-inline">
             <li>{{ HTML::linkRoute('cookies_path', 'Cookies') }}</li>
             <li class="footer-menu-divider">&sdot;</li>
@@ -94,7 +112,7 @@
          </div>
         </div>
 
-        <div class="col-sm-3 text-right">
+        <div class="col-sm-3 col3">
           <ul class="list-unstyled">
             <li><a href="/#home">Home</a></li>
             <li><a href="/#services">Services</a></li>

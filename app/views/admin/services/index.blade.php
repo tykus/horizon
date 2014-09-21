@@ -28,6 +28,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li>{{ HTML::linkRoute('admin.services.show', 'Show', ['id'=>$service->id]) }}</li>
                 <li>{{ HTML::linkRoute('admin.services.edit', 'Edit', ['id'=>$service->id]) }}</li>
+                <li>{{ HTML::linkRoute('admin.services.destroy', 'Delete', ['id'=>$service->id], ['data-method'=>'delete']) }}</li>
               </ul>
             </div>
             </td>
@@ -41,6 +42,9 @@
     @else
       <p>No services to display.</p>
     @endif
+
+    {{ HTML::linkRoute('admin.services.create', 'New Service', null, ['class'=>'btn btn-default']) }}
+
   </div>
 @stop
 

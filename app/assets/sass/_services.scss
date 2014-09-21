@@ -1,22 +1,27 @@
 .content-services {
-    background-color: $horizon-white;
-    padding: 100px 0;
-    border-top: 1px solid $horizon-light-grey;
-    border-bottom: 1px solid $horizon-light-grey;
+  background-color: $horizon-white;
+  padding: 100px 0;
+  border-top: 1px solid $horizon-light-grey;
+  border-bottom: 1px solid $horizon-light-grey;
+
+  .service {
+    margin: 0;
 
     img {
-        display: block;
-        height: 200px;
-        margin: 0 auto;
-        width: auto;
+      clear: both;
+      display: block;
+      height: 200px;
+      margin: 0 auto;
+      width: auto;
     }
+  }
 
-    h3 {
-        text-align: center;
-    }
+  h3 {
+    text-align: center;
+  }
 
-    p {
-        text-align: justify;
-        vertical-align: middle;
-    }
+  p {
+    text-align: justify;
+    vertical-align: middle;
+  }
 }

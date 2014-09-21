@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="intro-message">
-        <img src="{{ Config::get('site.logo_path') }}" class="col-sm-8 col-sm-offset-2 ">
+        <img src="{{ Config::get('site.logo_path') }}" class="col-sm-8 col-sm-offset-2 img-responsive">
         <div class="clearfix"></div>
       </div>
     </div>

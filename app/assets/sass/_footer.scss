@@ -1,0 +1,31 @@
+footer {
+  .col1 {
+    text-align: left;
+
+    img {
+      padding-bottom: 30px;
+    }
+  }
+  .col2 { text-align: center; }
+  .col3 { text-align: right; }
+
+  padding: 50px 0;
+  background-color: #f8f8f8;
+  #social a {
+    color: $horizon-blue;
+    font-size: 2.5em;
+  }
+  #social a:hover{
+    color: $horizon-green;
+  }
+  p.copyright {
+    margin: 15px 0 0;
+  }
+
+  @media(max-width:767px){
+    // Moving to stacked layout changes the text alignment
+    .col1 { text-align: center; border-bottom: 1px dotted $horizon-light-grey; }
+    .col2 { text-align: center; border-bottom: 1px dotted $horizon-light-grey; }
+    .col3 { text-align: center; }
+  }
+}
