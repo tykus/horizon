@@ -54,8 +54,8 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'horizon',
+			'host'      => getenv('DATABASE_HOST'),
+			'database'  => getenv('DATABASE_NAME'),
 			'username'  => getenv('DATABASE_USERNAME'),
 			'password'  => getenv('DATABASE_PASSWORD'),
 			'charset'   => 'utf8',
