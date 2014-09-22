@@ -26,7 +26,7 @@ class EnquiriesController extends \BaseController {
 
     # @TODO: find the user a better way!!!
     $user = User::whereName('Robert')->first();
-      
+
     $data = Input::only('name', 'email', 'telephone', 'message');
     $v = Validator::make($data, Enquiry::$rules);
     if ($v->passes())
@@ -38,7 +38,7 @@ class EnquiriesController extends \BaseController {
       return Response::json(['message'=>'Problem with enquiry submission'], 400);
     }
     # Fire an event here "enquiryReceived" and listen for it in the global.php file
-    // $this->mailer->forward($user, $enquiry->toArray());
+    $this->mailer->forward($user, $enquiry->toArray());
   }
 
 
