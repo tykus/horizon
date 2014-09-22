@@ -6,13 +6,13 @@
   <div class="row">
     <div class="col-lg-10">
       <h2>Title</h2>
-      <p class="lead">{{{ $service->title }}}</p>
+      <p class="lead">{{ $service->title }}</p>
 
       <h2>Introduction Text <span class="text-muted">(appears on homepage only)</span></h2>
-      <p class="lead">{{{ $service->introduction }}}</p>
+      <p class="lead">{{ $service->introduction }}</p>
 
       <h2>Full Description</h2>
-      <p class="lead">{{{ $service->description }}}</p>
+      <p class="lead">{{ $service->description }}</p>
     </div>
     <div class="col-lg-2">
       {{ HTML::image($service->image_path, $service->title, ['class'=>'img-thumbnail']) }}
