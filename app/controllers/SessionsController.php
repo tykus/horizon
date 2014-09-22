@@ -35,7 +35,7 @@ class SessionsController extends \BaseController {
 		AccessLog::create(array_merge($ip_locator, $login_attempt_details));
 
 		if ($login_success) {
-			return Redirect::route('dashboard_path');
+			return Redirect::intended();
 		}
 		else
 		{
