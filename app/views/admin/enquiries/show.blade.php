@@ -19,7 +19,7 @@
       </p>
       <p>
         <span class="heading col-sm-2">Message</span>
-        {{{ $enquiry->message }}}
+        {{{ $enquiry->body }}}
       </p>
     </div>
   </div>

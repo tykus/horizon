@@ -20,25 +20,27 @@ class EnquiriesController extends \BaseController {
     {
       # If the captcha field has been filled out, it is likely a Bot
       # Don't send the enquiry.
-      $message = ['message'=>'Thanks!'];
-      return Response::json($message, 200);
+      $response = ['message'=>'Thanks!'];
+      return Response::json($response, 200);
     }
 
-    # @TODO: find the user a better way!!!
+    # @TODO: find the user a better way, he might change this!!!
     $user = User::whereName('Robert')->first();
+    $data = Input::only('name', 'email', 'telephone', 'body');
 
-    $data = Input::only('name', 'email', 'telephone', 'message');
+    # Validate User-supplied data
     $v = Validator::make($data, Enquiry::$rules);
     if ($v->passes())
     {
       # @TODO: fire an event - enquiry received
       $enquiry = Enquiry::create($data);
+      # Fire an event here "enquiryReceived" and listen for it in the global.php file
+      $this->mailer->forward($user, $enquiry->toArray());
       return Response::json(['message'=>'Your enquiry has been sent, thank you'], 200);
     } else {
       return Response::json(['message'=>'Problem with enquiry submission'], 400);
     }
-    # Fire an event here "enquiryReceived" and listen for it in the global.php file
-    $this->mailer->forward($user, $enquiry->toArray());
+
   }
 
 
