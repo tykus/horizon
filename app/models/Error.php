@@ -10,7 +10,7 @@ class Error extends \Eloquent {
 
   public function scopeLatest($query)
   {
-    $query->orderBy('created_at', 'desc')->limit(10);
+    $query->orderBy('created_at', 'desc');
   }
 
 }
