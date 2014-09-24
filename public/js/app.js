@@ -99,7 +99,6 @@
       this.name = $('input[name=name]');
       this.email = $('input[name=email]');
       this.telephone = $('input[name=telephone]');
-      this.message = $('textarea[name=message]');
       this.alert = $('.alert');
       this.alert_message = $('span#message');
       return this.spinner = $("#spinner");

@@ -36,7 +36,7 @@
           {{ Form::text('telephone', null, ['class'=>'form-control', 'placeholder'=>'Phone', 'required'=>'']) }}
         </div>
         <div class="form-group">
-          {{ Form::textarea('message', null, ['class'=>'form-control', 'placeholder'=>'Message']) }}
+          {{ Form::textarea('body', null, ['class'=>'form-control', 'placeholder'=>'Message Body']) }}
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default" id="submit">

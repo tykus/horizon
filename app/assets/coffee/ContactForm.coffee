@@ -10,7 +10,6 @@ class ContactForm
     @name = $('input[name=name]')
     @email = $('input[name=email]')
     @telephone = $('input[name=telephone]')
-    @message = $('textarea[name=message]')
     @alert = $('.alert')
     @alert_message = $('span#message')
     @spinner = $("#spinner")
@@ -54,7 +53,7 @@ class ContactForm
 
   checkName: ->
     nameRegex = new RegExp /^.{1,30}$/
-    @validateField @name, nameRegex    
+    @validateField @name, nameRegex
 
   checkEmail: ->
     emailRegex = new RegExp /^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-\_]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])$/
@@ -67,10 +66,10 @@ class ContactForm
   validateField: (field, regexp) ->
     val = field.val()
     ok = regexp.test(val)
-    if ok 
-      @removeFieldError(field) 
+    if ok
+      @removeFieldError(field)
     else
-      @markFieldError(field) 
+      @markFieldError(field)
     ok
 
   showSpinner: ->
