@@ -11,7 +11,7 @@ class UserMailer extends Mailer {
     $view = 'emails.forward';
     $this->setupViewData($data);
 
-    return $this->sendTo($user, $this->viewData['subject'], $view, $this->viewData);
+    return $this->sendTo($user, $this->view_data['subject'], $view, $this->view_data);
   }
 
   /**
