@@ -55,7 +55,7 @@ class EnquiriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$enquiry = Enquiry::find($id);
+		$enquiry = Enquiry::findOrFail($id);
 		$enquiry->viewed = json_decode(Input::get('viewed'));
 
 		$success = $enquiry->save();
