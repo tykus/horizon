@@ -1,7 +1,7 @@
 <?php
 
 class Enquiry extends \Eloquent {
-	protected $fillable = ['name','email','telephone','message','viewed'];
+	protected $fillable = ['name','email','telephone','body','viewed'];
 
 	public static $rules = [
 		'name' => 'required',
