@@ -17,8 +17,6 @@
       {{ HTML::image(URL::asset('/img/logo_small.png'), 'Horizon Centre') }}
     </div>
     <dl>
-      <dt>Subject</dt>
-      <dd>{{ $subject }}</dd>
       <dt>From</dt>
       <dd>{{ $name }}</dd>
       <dt>Email</dt>
