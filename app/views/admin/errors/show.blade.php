@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1 class='page-heading'>Admin Access Details</h1>
+  <h1 class='page-heading'>Error Details</h1>
 
   <div class="panel panel-info">
     <div class="panel-heading">
