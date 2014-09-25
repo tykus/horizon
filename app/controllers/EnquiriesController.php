@@ -30,16 +30,24 @@ class EnquiriesController extends \BaseController {
 
     # Validate User-supplied data
     $v = Validator::make($data, Enquiry::$rules);
-    if ($v->passes())
+    if ($v->fails())
     {
-      # @TODO: fire an event - enquiry received
-      $enquiry = Enquiry::create($data);
-      # Fire an event here "enquiryReceived" and listen for it in the global.php file
-      $this->mailer->forward($user, $enquiry->toArray());
-      return Response::json(['message'=>'Your enquiry has been sent, thank you'], 200);
-    } else {
       return Response::json(['message'=>'Problem with enquiry submission'], 400);
     }
+
+    # @TODO: fire an event - enquiry received
+    $enquiry = Enquiry::create($data);
+    # Fire an event here "enquiryReceived" and listen for it in the global.php file
+    $this->mailer->forward($user, $enquiry->toArray());
+    if (Request::ajax())
+    {
+      return Response::json(['message'=>'Your enquiry has been sent, thank you'], 200);
+    }
+    else
+    {
+      return Redirect::back();
+    }
+
 
   }
 
