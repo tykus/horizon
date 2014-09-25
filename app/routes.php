@@ -41,7 +41,7 @@ Route::group(['namespace'=>'App\\Controllers\\Admin', 'prefix'=>'admin', 'before
 
   # --------------------------------------------------------------------------
   # View Composers
-  # -------------------------------------------------------------------------- 
+  # --------------------------------------------------------------------------
   View::composer('layouts.admin', 'Horizon\Composers\SettingsComposer');
   View::composer('admin.dashboard', 'Horizon\Composers\DashboardComposer');
 
@@ -95,7 +95,12 @@ HTML::macro('clever_link', function($route, $text) {
     $active = '';
   }
 
-  return '<li' . $active . '>' . 
-            html_entity_decode(link_to($route, $text)) . 
+  return '<li' . $active . '>' .
+            html_entity_decode(link_to($route, $text)) .
           '</li>';
 });
+
+# --------------------------------------------------------------------------
+# Event Listeners
+# --------------------------------------------------------------------------
+Event::listen('enquiry.received', 'Horizon\Events\EnquiryEventListener');
